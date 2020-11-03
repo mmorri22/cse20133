@@ -124,11 +124,23 @@ stackTest: stackTest.o
 
 stackTest.o: stackTest.cpp
 	$(PP) $(PQCXX) -c stackTest.cpp		
+
+
+
+# Towers of Hanoi Example
+# Command: make hanoi
+hanoiObjs :=  hanoi.o
+
+hanoi: hanoi.o
+	$(PP) $(PQCXX) -o hanoi $(hanoiObjs)
+
+hanoi.o: hanoi.cpp Tower.h
+	$(PP) $(PQCXX) -c hanoi.cpp	
 	
 
 # Make all
-all: quadPair quadPair2 fwdList iterator inigo stackTest
+all: quadPair quadPair2 fwdList iterator inigo stackTest hanoi
  
 # Make clean
 clean :
-	rm -rf *.o namespace nameGood nameGood2 quadPair quadPair2 fwdList inigo iterator stackTest
+	rm -rf *.o quadPair quadPair2 fwdList inigo iterator stackTest hanoi
