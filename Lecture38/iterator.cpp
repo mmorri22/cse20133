@@ -38,7 +38,7 @@ int main(){
     std::forward_list<int> flistInt = {1,2,7,3,4};
 	printValues(flistInt);
 
-	for(auto fwdPtr = flistInt.begin(); fwdPtr != flistInt.end(); ++fwdPtr){
+	for(auto fwdPtr = flistInt.begin(); *fwdPtr != 3; ++fwdPtr){
 		if(*fwdPtr == 7){
 			*fwdPtr = 1842;
 		}
