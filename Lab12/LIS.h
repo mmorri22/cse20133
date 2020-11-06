@@ -9,9 +9,17 @@
 template<class T>
 long unsigned int getLIS( const std::vector< T >& theVec ){
 	
-	std::vector< T > LIS_Vec;
+	// Perform the steps for the Longest Increasing Subsequence
 	
-	return LIS_Vec.size() + theVec.size();
 }
+
+
+template<class T>
+void FindAndUpdateElement( std::vector< T >& LIS_Vec, T searchVal  ){
+	
+	// Find the appropriate location to replace the search vec
+	
+}
+
 
 #endif
