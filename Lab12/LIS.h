@@ -5,16 +5,15 @@
 #include <string>  /* C++ string */
 #include <vector> /* Calls the vector library */
 
-
 template<class T>
-long unsigned int getLIS( const std::vector< T >& theVec ){
+void FindAndUpdateElement( std::vector< T >& LIS_Vec, T searchVal  ){
+
 
 
 }
 
 template<class T>
-void FindAndUpdateElement( std::vector< T >& LIS_Vec, T searchVal  ){
-
+long unsigned int getLIS( const std::vector< T >& theVec ){
 
 
 }
