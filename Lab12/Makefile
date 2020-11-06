@@ -15,10 +15,7 @@ Lab12: $(Lab12Objs)
 	$(PP) $(CXXFLAGS) -o Lab12 $(Lab12Objs)
 
 Lab12.o: Lab12.cpp LIS.h
-	$(PP) $(CXXFLAGS) -c Lab12.cpp
-
-LIS.o: LIS.cpp LIS.h
-	$(PP) $(CXXFLAGS) -c LIS.cpp	
+	$(PP) $(CXXFLAGS) -c Lab12.cpp	
 
 # Make all
 all: Lab12 
