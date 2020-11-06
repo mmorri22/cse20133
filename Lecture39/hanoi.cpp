@@ -9,6 +9,7 @@
 
 #include <iostream>
 #include <stack>
+#include <cstdlib>
 #include "Tower.h"
 
 /*********************************************
@@ -60,6 +61,7 @@ int main(int argc, char**argv){
 	
 	if(argc != 2){
 		std::cout << "Incorrect number of inputs\n" << std::endl;
+		exit(-1);
 	}
     
     // Total Number of Plates

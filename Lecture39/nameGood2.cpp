@@ -6,7 +6,6 @@
 * An example of fixing namespace conflict
 * and simplifying using compiler directives
 *
-* Lecture 02 - Part 2 - Slide 13
 **********************************************/
 #include <iostream>
 

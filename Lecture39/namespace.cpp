@@ -5,7 +5,6 @@
 * 
 * An example of when using namespace can be bad 
 *
-* Lecture 02 - Part 2 - Slide 10
 **********************************************/
 #include <iostream>
 
