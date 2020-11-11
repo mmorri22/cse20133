@@ -16,6 +16,19 @@ CXXFLAGS := -m64 -std=c++11 -Weffc++ $(FLAGS)
 
 
 
+# Command: make queueTest
+# Upconter solution
+queueTestObjs :=  queueTest.o Student.o
+
+queueTest: $(queueTestObjs)
+	$(PP) $(CXXFLAGS) -o queueTest $(queueTestObjs)
+
+queueTest.o: queueTest.cpp Student.h
+	$(PP) $(CXXFLAGS) -c queueTest.cpp
+
+Student.o: Student.cpp Student.h
+	$(PP) $(CXXFLAGS) -c Student.cpp
+
 # Command: make HW09
 # Upconter solution
 HW09Objs :=  HW09.o DFF.o
