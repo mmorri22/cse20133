@@ -8,7 +8,7 @@ CC := gcc
 
 # CFLAGS are the compiler flages for when we compile C code in this course
 FLAGS := -O2 -g -Wall -Wextra -Wconversion -Wshadow -Werror -lm
-CFLAGS := -std=c11 $(FLAGS)
+CFLAGS := -std=c2x $(FLAGS)
 
 # Create the Hours Object
 hours.o: hours.c
@@ -49,21 +49,8 @@ fscanf: $(fscanf_objs)
 	./fscanf
 
 
-# Create the Insert Sort Object
-insert_sort.o: insert_sort.c
-	$(CC) $(CFLAGS) -c insert_sort.c
-
-# Float Compile Objects
-insert_sort_objs := insert_sort.o
-
-# Float Compile Executable
-insert_sort: $(insert_sort_objs)
-	$(CC) $(CFLAGS) -o insert_sort $(insert_sort_objs)
-	./insert_sort
-
-
 # Executable Names
-executable_names := hours ptr_trace fscanf insert_sort
+executable_names := hours ptr_trace fscanf
 
 # Make all
 all: $(executable_names)
