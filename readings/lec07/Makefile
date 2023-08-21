@@ -8,7 +8,7 @@ CC := gcc
 
 # CFLAGS are the compiler flags for when we compile C code in this course
 FLAGS := -O2 -g -Wall -Wextra -Wconversion -Wshadow -Werror -lm
-CFLAGS := -std=c11 $(FLAGS)
+CFLAGS := -std=c2x $(FLAGS)
 
 # Create the Square Library Object
 square_lib.o: square_lib.c
