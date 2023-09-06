@@ -9,11 +9,7 @@ int main( void ){
 
 	/* Average of two doubles */
 
-	/* Call if-else function */
-
-	/* Call while function */
-
-	/* Call for function */
+	/* Print the result */
 
 	return 0;
 }
