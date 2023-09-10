@@ -8,7 +8,7 @@ CC := gcc
 
 # CFLAGS are the compiler flages for when we compile C code in this course
 FLAGS := -O2 -g -Wall -Wextra -Wconversion -Wshadow -Werror -lm
-CFLAGS := -std=c11 $(FLAGS)
+CFLAGS := -std=c2x $(FLAGS)
 
 
 # Create the Static Basic Object
@@ -37,34 +37,23 @@ static_pbr: $(static_pbr_objs)
 	./static_pbr
 
 
-# Create the fscanf Object
-fscanf.o: fscanf.c
-	$(CC) $(CFLAGS) -c fscanf.c
+
+# Create the Insertion Sort Object
+insertion_sort.o: insertion_sort.c
+	$(CC) $(CFLAGS) -c insertion_sort.c
 
 # Float Compile Objects
-fscanf_objs := fscanf.o
+insertion_sort_objs := insertion_sort.o
 
 # Float Compile Executable
-fscanf: $(fscanf_objs)
-	$(CC) $(CFLAGS) -o fscanf $(fscanf_objs)
-	./fscanf
+insertion_sort: $(insertion_sort_objs)
+	$(CC) $(CFLAGS) -o insertion_sort $(insertion_sort_objs)
+	./insertion_sort
 
-
-# Create the fscanf_pbr Object
-fscanf_pbr.o: fscanf_pbr.c
-	$(CC) $(CFLAGS) -c fscanf_pbr.c
-
-# Float Compile Objects
-fscanf_pbr_objs := fscanf_pbr.o
-
-# Float Compile Executable
-fscanf_pbr: $(fscanf_pbr_objs)
-	$(CC) $(CFLAGS) -o fscanf_pbr $(fscanf_pbr_objs)
-	./fscanf_pbr
 
 
 # Executable Names
-executable_names := static_basic static_pbr fscanf fscanf_pbr
+executable_names := static_basic static_pbr insertion_sort
 
 # Make all
 all: $(executable_names)
