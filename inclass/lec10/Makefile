@@ -37,8 +37,34 @@ static_pbr: $(static_pbr_objs)
 	./static_pbr
 
 
+# Create the fscanf Object
+fscanf.o: fscanf.c
+	$(CC) $(CFLAGS) -c fscanf.c
+
+# Float Compile Objects
+fscanf_objs := fscanf.o
+
+# Float Compile Executable
+fscanf: $(fscanf_objs)
+	$(CC) $(CFLAGS) -o fscanf $(fscanf_objs)
+	./fscanf
+
+
+# Create the fscanf_pbr Object
+fscanf_pbr.o: fscanf_pbr.c
+	$(CC) $(CFLAGS) -c fscanf_pbr.c
+
+# Float Compile Objects
+fscanf_pbr_objs := fscanf_pbr.o
+
+# Float Compile Executable
+fscanf_pbr: $(fscanf_pbr_objs)
+	$(CC) $(CFLAGS) -o fscanf_pbr $(fscanf_pbr_objs)
+	./fscanf_pbr
+
+
 # Executable Names
-executable_names := static_basic static_pbr
+executable_names := static_basic static_pbr fscanf fscanf_pbr
 
 # Make all
 all: $(executable_names)
