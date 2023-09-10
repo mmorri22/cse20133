@@ -1,37 +1,29 @@
 #include <stdio.h>
 
-/* function prototype */
-void function (int a, int * b);
+int main(){
 
-int main()
-{
-   int m = 3;
-   int n = 5;
+  int a = 10;
+  int b = 25;
+  int c = 19;
 
-   fprintf( stdout, "main - int m = %d at %p\n", m, &m);
-   fprintf( stdout, "main - int n = %d at %p\n", n, &n);
+  int* p1 = &a;
+  int* p2 = &b;
+  int* p3 = &c;
 
-   function(m, &n) ;
+  fprintf( stdout, "%d %p\n", a, &a);
+  fprintf( stdout, "%d %p\n", b, &b);
+  fprintf( stdout, "%d %p\n", c, &c);
 
-   fprintf( stdout, "main - int m = %d at %p\n", m, &m);
-   fprintf( stdout, "main - int n = %d at %p\n", n, &n);
+  fprintf( stdout, "%d %p %p\n", *p1, p1, &p1);
+  fprintf( stdout, "%x %p %p\n", *p2, p2, &p2);
+  fprintf( stdout, "%x %p %p\n", *p3, p3, &p3);
 
-   return 0;
-}
+  p1 = p2;
+  p3 = &a;
 
-void function (int a, int * b){
+  fprintf( stdout, "%d %p %p\n", *p1, p1, &p1);
+  fprintf( stdout, "%x %p %p\n", *p2, p2, &p2);
+  fprintf( stdout, "%x %p %p\n", *p3, p3, &p3);
 
-  fprintf( stdout, "before function - int a = %d at %p\n", a, &a);
-
-  /* Step 1 - How would we print the address and value of what b is pointing at? */
-
-   a = 7 ;
-   *b = a ;
-   b = &a ;
-   *b = 4 ;
-
-   fprintf( stdout, "after function - int a = %d at %p\n", a, &a);
-
-   /* Step 1b - How would we print the address and value of what b is pointing at? */
-
+  return 0;
 }

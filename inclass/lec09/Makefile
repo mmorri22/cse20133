@@ -10,18 +10,6 @@ CC := gcc
 FLAGS := -O2 -g -Wall -Wextra -Wconversion -Wshadow -Werror -lm
 CFLAGS := -std=c2x $(FLAGS)
 
-# Create the Hours Object
-hours.o: hours.c
-	$(CC) $(CFLAGS) -c hours.c
-
-# Hours Objects
-hours_objs := hours.o
-
-# Hours Executable and Run
-hours: $(hours_objs)
-	$(CC) $(CFLAGS) -o hours $(hours_objs)
-	./hours
-
 
 # Create the Trace Object
 ptr_trace.o: ptr_trace.c
@@ -34,6 +22,19 @@ ptr_trace_objs := ptr_trace.o
 ptr_trace: $(ptr_trace_objs)
 	$(CC) $(CFLAGS) -o ptr_trace $(ptr_trace_objs)
 	./ptr_trace
+
+
+# Create the Trace Object Pass By Reference
+ptr_trace_pbr.o: ptr_trace_pbr.c
+	$(CC) $(CFLAGS) -c ptr_trace_pbr.c
+
+# Trace Objects
+ptr_trace_pbr_objs := ptr_trace_pbr.o
+
+# Trace Executable and Run
+ptr_trace_pbr: $(ptr_trace_pbr_objs)
+	$(CC) $(CFLAGS) -o ptr_trace_pbr $(ptr_trace_pbr_objs)
+	./ptr_trace_pbr
 
 
 # Create the fscanf Object
@@ -49,8 +50,21 @@ fscanf: $(fscanf_objs)
 	./fscanf
 
 
+# Create the fscanf_pbr Object
+fscanf_pbr.o: fscanf_pbr.c
+	$(CC) $(CFLAGS) -c fscanf_pbr.c
+
+# Float Compile Objects
+fscanf_pbr_objs := fscanf_pbr.o
+
+# Float Compile Executable
+fscanf_pbr: $(fscanf_pbr_objs)
+	$(CC) $(CFLAGS) -o fscanf_pbr $(fscanf_pbr_objs)
+	./fscanf_pbr
+
+
 # Executable Names
-executable_names := hours ptr_trace fscanf
+executable_names := ptr_trace fscanf_pbr fscanf ptr_trace_pbr
 
 # Make all
 all: $(executable_names)
