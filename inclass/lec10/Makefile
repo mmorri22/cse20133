@@ -7,7 +7,7 @@
 CC := gcc
 
 # CFLAGS are the compiler flages for when we compile C code in this course
-FLAGS := -O2 -g -Wall -Wextra -Wconversion -Wshadow -Werror -lm
+FLAGS := -O2 -g -Wall -Wextra -Wconversion -Wshadow -Werror
 CFLAGS := -std=c2x $(FLAGS)
 
 
@@ -20,7 +20,7 @@ static_basic_objs := static_basic.o
 
 # Trace Executable and Run
 static_basic: $(static_basic_objs)
-	$(CC) $(CFLAGS) -o ptr_trace $(static_basic_objs)
+	$(CC) $(CFLAGS) -o static_basic $(static_basic_objs) -lm
 	./static_basic
 
 
@@ -33,27 +33,38 @@ static_pbr_objs := static_pbr.o
 
 # Trace Executable and Run
 static_pbr: $(static_pbr_objs)
-	$(CC) $(CFLAGS) -o static_pbr $(static_pbr_objs)
+	$(CC) $(CFLAGS) -o static_pbr $(static_pbr_objs) -lm
 	./static_pbr
 
 
+# Create the fscanf  Object
+fscanf.o: fscanf.c
+	$(CC) $(CFLAGS) -c fscanf.c
 
-# Create the Insertion Sort Object
-insertion_sort.o: insertion_sort.c
-	$(CC) $(CFLAGS) -c insertion_sort.c
+# Trace Objects
+fscanf_objs := fscanf.o
 
-# Float Compile Objects
-insertion_sort_objs := insertion_sort.o
+# Trace Executable and Run
+fscanf: $(fscanf_objs)
+	$(CC) $(CFLAGS) -o fscanf $(fscanfc_objs) -lm
+	./fscanf
 
-# Float Compile Executable
-insertion_sort: $(insertion_sort_objs)
-	$(CC) $(CFLAGS) -o insertion_sort $(insertion_sort_objs)
-	./insertion_sort
 
+# Create the Static Basic Pass By Reference Object
+fscanf_pbr.o: fscanf_pbr.c
+	$(CC) $(CFLAGS) -c fscanf_pbr.c
+
+# Static Basic Objects
+fscanf_pbr_objs := fscanf_pbr.o
+
+# Trace Executable and Run
+fscanf_pbr: $(fscanf_pbr_objs)
+	$(CC) $(CFLAGS) -o fscanf_pbr $(fscanf_pbr_objs) -lm
+	./fscanf_pbr
 
 
 # Executable Names
-executable_names := static_basic static_pbr insertion_sort
+executable_names := static_basic static_pbr fscanf fscanf_pbr
 
 # Make all
 all: $(executable_names)
