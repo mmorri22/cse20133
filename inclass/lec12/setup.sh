@@ -1,5 +1,5 @@
-wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec10/Makefile
-wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec10/static_basic.c
-wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec10/static_pbr.c
-wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec10/fscanf.c
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec12/Makefile
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec12/insertion_sort.c
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec12/maze.c
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec12/maze_demo.c
 rm setup.sh

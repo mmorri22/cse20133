@@ -24,47 +24,34 @@ insertion_sort: $(insertion_sort_objs)
 	./insertion_sort
 
 
-# Create the Static Basic Pass By Reference Object
-static_pbr.o: static_pbr.c
-	$(CC) $(CFLAGS) -c static_pbr.c
+# Create the maze Object
+maze.o: maze.c
+	$(CC) $(CFLAGS) -c maze.c
 
-# Static Basic Objects
-static_pbr_objs := static_pbr.o
+# Float Compile Objects
+maze_objs := maze.o
 
-# Trace Executable and Run
-static_pbr: $(static_pbr_objs)
-	$(CC) $(CFLAGS) -o static_pbr $(static_pbr_objs) -lm
-	./static_pbr
-
-
-# Create the fscanf  Object
-fscanf.o: fscanf.c
-	$(CC) $(CFLAGS) -c fscanf.c
-
-# Trace Objects
-fscanf_objs := fscanf.o
-
-# Trace Executable and Run
-fscanf: $(fscanf_objs)
-	$(CC) $(CFLAGS) -o fscanf $(fscanfc_objs) -lm
-	./fscanf
+# Float Compile Executable
+maze: $(maze_objs)
+	$(CC) $(CFLAGS) -o maze $(maze_objs)
+	./maze
 
 
-# Create the Static Basic Pass By Reference Object
-fscanf_pbr.o: fscanf_pbr.c
-	$(CC) $(CFLAGS) -c fscanf_pbr.c
+# Create the maze_demo Object
+maze_demo.o: maze_demo.c
+	$(CC) $(CFLAGS) -c maze_demo.c
 
-# Static Basic Objects
-fscanf_pbr_objs := fscanf_pbr.o
+# Float Compile Objects
+maze_demo_objs := maze_demo.o
 
-# Trace Executable and Run
-fscanf_pbr: $(fscanf_pbr_objs)
-	$(CC) $(CFLAGS) -o fscanf_pbr $(fscanf_pbr_objs) -lm
-	./fscanf_pbr
+# Float Compile Executable
+maze_demo: $(maze_demo_objs)
+	$(CC) $(CFLAGS) -o maze_demo $(maze_demo_objs)
+	./maze_demo
 
 
 # Executable Names
-executable_names := static_basic static_pbr fscanf fscanf_pbr
+executable_names := insertion_sort maze maze_demo
 
 # Make all
 all: $(executable_names)
