@@ -48,7 +48,11 @@ int main(){
 void print_maze( char the_maze[ROWS][COLS] ){
 
   sleep( 1 );
-  system("clear");
+  int sys_clear = system("clear");
+
+  if( sys_clear == -1 ){
+    exit(-1);
+  }
 
   int row_iter, col_iter;
   for(row_iter = 0; row_iter < ROWS; ++row_iter){
