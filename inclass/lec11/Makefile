@@ -63,34 +63,10 @@ fib_memo: $(fib_memo_objs)
 	./fib_memo
 
 
-# Create the Maze Object
-maze.o: maze.c
-	$(CC) $(CFLAGS) -c maze.c
-
-# Maze Objects
-maze_objs := maze.o
-
-# Maze Executable
-maze: $(maze_objs)
-	$(CC) $(CFLAGS) -o maze $(maze_objs)
-	./maze
-
-
-# Create the Maze Demo Object
-maze_demo.o: maze_demo.c
-	$(CC) $(CFLAGS) -c maze_demo.c
-
-# Maze Demo Objects
-maze_demo_objs := maze_demo.o
-
-# Maze Executable
-maze_demo: $(maze_demo_objs)
-	$(CC) $(CFLAGS) -o maze_demo $(maze_demo_objs)
-	./maze_demo
 
 
 # Executable Names
-executable_names := void_recast trace trace_ptr fib fib_memo maze maze_demo
+executable_names := trace trace_ptr fib fib_memo
 
 # Make all
 all: $(executable_names)
