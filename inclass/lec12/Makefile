@@ -11,18 +11,6 @@ FLAGS := -O2 -g -Wall -Wextra -Wconversion -Wshadow -Werror
 CFLAGS := -std=c2x $(FLAGS)
 
 
-# Create the Static Basic Object
-insertion_sort.o: insertion_sort.c
-	$(CC) $(CFLAGS) -c insertion_sort.c
-
-# Insertion Sort Objects
-insertion_sort_objs := insertion_sort.o
-
-# Trace Executable and Run
-insertion_sort: $(insertion_sort_objs)
-	$(CC) $(CFLAGS) -o insertion_sort $(insertion_sort_objs) -lm
-	./insertion_sort
-
 
 # Create the maze Object
 maze.o: maze.c
@@ -51,7 +39,7 @@ maze_demo: $(maze_demo_objs)
 
 
 # Executable Names
-executable_names := insertion_sort maze maze_demo
+executable_names := maze maze_demo
 
 # Make all
 all: $(executable_names)
