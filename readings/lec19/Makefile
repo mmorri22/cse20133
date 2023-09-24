@@ -49,8 +49,22 @@ file_locations: $(file_locations_objs)
 	valgrind --leak-check=full ./file_locations
 
 
+# Create the Better Malloc Object
+FILE_example.o: FILE_example.c
+	$(CC) $(CFLAGS) -c FILE_example.c
+
+# Better Malloc Objects
+FILE_example_objs := FILE_example.o
+
+# Better Malloc Executable
+FILE_example: $(FILE_example_objs)
+	$(CC) $(CFLAGS) -o FILE_example $(FILE_example_objs) -lm
+	valgrind --leak-check=full ./FILE_example test.txt
+
+
+
 # Executable Names
-executable_names := filePtrExBad filePtrExGood file_locations
+executable_names := filePtrExBad filePtrExGood file_locations FILE_example
 
 # Make all
 all: $(executable_names)
