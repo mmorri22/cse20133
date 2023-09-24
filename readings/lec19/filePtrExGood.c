@@ -1,53 +1,28 @@
-/**********************************************
-* File: filePtrExBad.c
-* Author: Matthew Morrison
-* Email: matt.morrison@nd.edu
-*
-* This file contains the introduction example
-* to File pointers in C
-**********************************************/
-
 #include <stdio.h>
 #include <stdlib.h>
 
-/********************************************
-* Function Name  : main
-* Pre-conditions : void
-* Post-conditions: int
-*
-* This is the main driver function for the program
-********************************************/
-int main(void){
+int main( const int argc, const char* argv[] ){
 
-	/* File Name */
-	char *file_fp1 = "intFile.txt";
-	char *file_DNE = "fileDNE.txt";
+  FILE* print_out =  fopen("example_output.txt", "w");
 
-	/* Allocate File Pointers */
-	FILE *fp1 = fopen(file_fp1, "r");
-	FILE *fpDNE = fopen(file_DNE, "r");
+  if( print_out == NULL ){
+      exit(-1);
+  }
 
-	// Correct implementation
-	if(fp1 == NULL){
-		fprintf(stderr, "The file %s does not exist\n", file_fp1);
-		exit(-1);
-	}
-	else{
-			fprintf(stdout, "The file %s exists!\n", file_fp1);
-	}
-	fclose(fp1);
+  fprintf( print_out, "stdout on the stack at %p\n", stdout );
+  fprintf( print_out, "stdin  on the stack at %p\n", stdin );
+  fprintf( print_out, "print_out  on the heap at %p\n", print_out );
 
-	// Incorrect implementation
-	if(fpDNE == NULL){
-		fprintf(stderr, "The file %s does not exist\n", file_DNE);
-		exit(-1);
-	}
-	else{
-			fprintf(stdout, "The file %s exists!\n", file_DNE);
-	}
+  fprintf( print_out, "Address and value of argc: %p %d\n", &argc, argc );
+  fprintf( print_out, "Register and Base Address of argv: %p %p\n", &argv, argv );
 
-	// Trying to de-allocate a NULL pointer
-	fclose(fpDNE);
+  int iter;
+  for( iter = 0; iter < argc; ++iter ){
+      fprintf( stdout, "Printing to stdout: %s %p\n", argv[iter], &argv[iter] );
+      fprintf( print_out, "Printing to print_out: %s %p\n", argv[iter], &argv[iter] );
+  }
 
-	return 0;
+  fclose(print_out);
+
+  return EXIT_SUCCESS;
 }

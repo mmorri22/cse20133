@@ -24,20 +24,33 @@ filePtrExBad: $(filePtrExBad_objs)
 
 
 # Create the Maze Object
-maze.o: maze.c
-	$(CC) $(CFLAGS) -c maze.c
+filePtrExGood.o: filePtrExGood.c
+	$(CC) $(CFLAGS) -c filePtrExGood.c
 
 # Better Malloc Objects
-maze_objs := maze.o
+filePtrExGood_objs := filePtrExGood.o
 
 # Better Malloc Executable
-maze: $(maze_objs)
-	$(CC) $(CFLAGS) -o maze $(maze_objs)
-	valgrind --leak-check=full ./maze -lm
+filePtrExGood: $(filePtrExGood_objs)
+	$(CC) $(CFLAGS) -o filePtrExGood $(filePtrExGood_objs) -lm
+	valgrind --leak-check=full ./filePtrExGood
+
+
+# Create the Better Malloc Object
+file_locations.o: file_locations.c
+	$(CC) $(CFLAGS) -c file_locations.c
+
+# Better Malloc Objects
+file_locations_objs := file_locations.o
+
+# Better Malloc Executable
+file_locations: $(file_locations_objs)
+	$(CC) $(CFLAGS) -o file_locations $(file_locations_objs) -lm
+	valgrind --leak-check=full ./file_locations
 
 
 # Executable Names
-executable_names := maze_demo maze
+executable_names := filePtrExBad filePtrExGood file_locations
 
 # Make all
 all: $(executable_names)
