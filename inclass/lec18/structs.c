@@ -34,10 +34,10 @@ int main( const int argc, const char* argv[] ){
 	// Step 4: Dynamically Allocate a NEW_STRUCT
 
 
-	// Step 5: De-reference and set values for the int, long unsigned int, and float
+	// Step 6: De-reference and set values for the int, long unsigned int, and float
 
 
-	// Step 6: Print use fprintf
+	// Step 7: Print use fprintf
 	// 1) The address of the register containing the dynamic struct pointer
   // 2) The address of the address of the dynamic struct pointer on the heap
   // 3) The value and address of the dynamic struct's int
@@ -45,7 +45,7 @@ int main( const int argc, const char* argv[] ){
 	// 5) The value and address of the dynamic struct's double
 
 
-	// Step 7: Free the Dynamically Allocated Memory
+	// Step 5: Free the Dynamically Allocated Memory
 
 
 	return EXIT_SUCCESS;
