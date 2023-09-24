@@ -40,6 +40,7 @@ int main(void){
 	// Incorrect implementation
 	if(fpDNE == NULL){
 		fprintf(stderr, "The file %s does not exist\n", file_DNE);
+		exit(-1);
 	}
 	else{
 			fprintf(stdout, "The file %s exists!\n", file_DNE);
