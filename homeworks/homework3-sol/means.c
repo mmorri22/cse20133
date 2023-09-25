@@ -15,7 +15,7 @@ void FillArray( double user_array[], unsigned int* num_items ){
   while( *num_items < NMAX ){
 
     fprintf( stdout, "enter a positive double (or -1 to end): " );
-    fscanf( stdin, "%lf", &user_array[ iter ] );
+    fscanf( stdin, "%lf", &user_array[ *num_items ] );
 
     /* check to see if user terminated program */
     if( user_array[ *num_items ] < 0){
@@ -23,7 +23,7 @@ void FillArray( double user_array[], unsigned int* num_items ){
     }
 
     /* continue asking for entries if user has not terminated */
-    *num_items += *num_items;
+    *num_items += 1;
 
   }
 }
@@ -83,13 +83,7 @@ double harmonMean( double user_array[], unsigned int array_length ){
     inverseSum = inverseSum + user_array_inverse;
   }
 
-  /* calculate average of inverse sum */
-  inverseSumAvg = inverseSum / array_length;
-
-  /* calculate harmonic mean */
-  double hMean = 1 / inverseSumAvg;
-
-  return hMean;
+  return (double)array_length / inverseSum;
 
 }
 
