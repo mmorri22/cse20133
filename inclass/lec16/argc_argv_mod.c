@@ -24,8 +24,6 @@ int main( int argc, char* argv[] ){
 	// We will change this to 5, 25, 39, 40, and 41
 	argc += 1;
 
-  fprintf( stdout, "stdout at %p\n", stdout );
-
 	print_inputs( argc, argv );
 
 	return 0;
