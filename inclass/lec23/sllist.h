@@ -20,6 +20,8 @@ typedef struct sllist{
 }sllist;
 
 
+sllist* constructor();
+
 // Step 6 - Create the constructor method for sllist
 void insert( sllist* the_list, int the_value );
 
