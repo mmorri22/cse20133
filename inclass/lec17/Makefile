@@ -8,7 +8,7 @@ CC := gcc
 
 # CFLAGS are the compiler flages for when we compile C code in this course
 FLAGS := -O2 -g -Wall -Wextra -Wconversion -Wshadow -Werror -lm
-CFLAGS := -std=c11 $(FLAGS)
+CFLAGS := -std=c2x $(FLAGS)
 
 # Create the Better Malloc Object
 maze_demo.o: maze_demo.c
