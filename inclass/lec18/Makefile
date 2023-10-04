@@ -8,7 +8,7 @@ CC := gcc
 
 # CFLAGS are the compiler flages for when we compile C code in this course
 FLAGS := -O2 -g -Wall -Wextra -Wconversion -Wshadow -Werror -lm
-CFLAGS := -std=c11 $(FLAGS)
+CFLAGS := -std=c2x $(FLAGS)
 
 # Create the Better Malloc Object
 structs.o: structs.c
@@ -20,24 +20,22 @@ structs_objs := structs.o
 # Better Malloc Executable
 structs: $(structs_objs)
 	$(CC) $(CFLAGS) -o structs $(structs_objs)
-	valgrind --leak-check=full ./structs -lm
 
 
-# Create the Maze Object
-maze.o: maze.c
-	$(CC) $(CFLAGS) -c maze.c
+# Create the mem_map Object
+mem_map.o: mem_map.c
+	$(CC) $(CFLAGS) -c mem_map.c
 
 # Better Malloc Objects
-maze_objs := maze.o
+mem_map_objs := mem_map.o
 
 # Better Malloc Executable
-maze: $(maze_objs)
-	$(CC) $(CFLAGS) -o maze $(maze_objs)
-	valgrind --leak-check=full ./maze -lm
+mem_map: $(mem_map_objs)
+	$(CC) $(CFLAGS) -o mem_map $(mem_map_objs)
 
 
 # Executable Names
-executable_names := maze_demo maze
+executable_names := structs mem_map
 
 # Make all
 all: $(executable_names)
