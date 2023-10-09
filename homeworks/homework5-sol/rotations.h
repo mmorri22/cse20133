@@ -1,6 +1,9 @@
 #ifndef ROTATIONS_H
 #define ROTATIONS_H
 
+#include <stdio.h>
+#include <stdlib.h>
+
 /********************************************
  * Function Name: get_inputs
  * Pre-Conditions: long unsigned int size, int* rotate_array
