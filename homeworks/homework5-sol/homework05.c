@@ -1,12 +1,3 @@
-/********************************
- * File Name: homework4.c
- * Student's Name: Ciera McFarland
- * Student's Notre Dame NetID: cmcfarl2@nd.edu
- * Date Started: 6/27/23
- *******************************/
-
- #include <stdio.h>
- #include <stdlib.h>
  #include "rotations.h"
 
   int main()
