@@ -23,7 +23,11 @@ typedef struct sllist{
 sllist* constructor();
 
 // Step 6 - Create the constructor method for sllist
-void insert( sllist* the_list, int the_value );
+void push( sllist* the_list, int the_value );
+
+
+// Step 6 - Create the constructor method for sllist
+void pop( sllist* the_list );
 
 
 // Step 8 - Print the Singly Linked List

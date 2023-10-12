@@ -4,7 +4,7 @@
 CC := gcc
 
 # CFLAGS are the compiler flages for when we compile C code in this course
-FLAGS := -O2 -g -Wall -Wextra -Wconversion -Wshadow -Werror -lm
+FLAGS := -O2 -g -Wall -Wextra -Wconversion -Wshadow -Werror
 CFLAGS := -std=c2x $(FLAGS)
 
 # Build the main object
@@ -16,14 +16,14 @@ sllist.o: sllist.c
 	$(CC) $(CFLAGS) -c sllist.c
 
 # All Objects
-sllist_objects := lec23.o sllist.o
+lec23_objects := lec23.o sllist.o
 
 # Compilation
-sllist: $(sllist_objects)
-	$(CC) $(CFLAGS) -o sllist $(sllist_objects) -lm
+lec23: $(lec23_objects)
+	$(CC) $(CFLAGS) -o lec23 $(lec23_objects) -lm
 
 # All executables
-executable_names := sllist
+executable_names := lec23
 
 # Make all
 all: $(executable_names)
