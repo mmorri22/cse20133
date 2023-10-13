@@ -60,6 +60,7 @@ int main( const int argc, const char* argv[] ){
     // Remember Dr. Morrison's Golden Rule of Pointers
     // Put the second bracket after Step 6b
     // Also, create an iterator before the loop
+    int iter = 0;
     while(lib_file != NULL){
 
         // Step 7 - Scan in each value
@@ -69,7 +70,7 @@ int main( const int argc, const char* argv[] ){
         if( fscanf( lib_file, "%u", &(the_lib[iter].num_books) ) ){}
 
         // Print the values
-        fprintf( stdout, "%s %s %u %u\n", the_lib[iter].title, 
+        fprintf( stdout, "%s %s %u %u\n", the_lib[iter].title,
             the_lib[iter].course_dept, the_lib[iter].course_num,
             the_lib[iter].num_books);
 
@@ -81,26 +82,26 @@ int main( const int argc, const char* argv[] ){
          if( lib_file->_IO_read_ptr == lib_file->_IO_read_end  )
             break;
 
-        ++iter;       
-            
+        ++iter;
 
-    // Step 6b - Put the bracket from the while loop here  
+
+    // Step 6b - Put the bracket from the while loop here
     }
 
     // Step 1b - Close the FILE*
     fclose( lib_file );
 
-    // Step 8a - Create a read FILE* with the argv[1]
-    
+    // Step 8a - Create a write FILE* with the argv[1]
+
 
     // Step 9 - Print to the output
 
 
-    // Step 8b - Close the 
-    
+    // Step 8b - Close the
+
 
     // Step 5b - Free the lib_entry array
-    
+
 
     return EXIT_SUCCESS;
 }
