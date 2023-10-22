@@ -7,6 +7,19 @@ CC := gcc
 FLAGS := -O2 -g -Wall -Wextra -Wconversion -Wshadow -Werror
 CFLAGS := -std=c2x $(FLAGS)
 
+
+# Build the main object
+struct_align.o: struct_align.c
+	$(CC) $(CFLAGS) -c struct_align.c
+
+# All Objects
+struct_align_objects := struct_align.o
+
+# Compilation
+struct_align: $(struct_align_objects)
+	$(CC) $(CFLAGS) -o struct_align $(struct_align_objects) -lm
+
+
 # Build the main object
 lec23.o: lec23.c
 	$(CC) $(CFLAGS) -c lec23.c
@@ -23,7 +36,7 @@ lec23: $(lec23_objects)
 	$(CC) $(CFLAGS) -o lec23 $(lec23_objects) -lm
 
 # All executables
-executable_names := lec23
+executable_names := lec23 struct_align
 
 # Make all
 all: $(executable_names)
