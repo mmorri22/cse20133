@@ -92,11 +92,12 @@ void print_list( sll_node* head_node ){
 void destructor( sll_node* curr_ptr ){
 
 	// Dr. Morrison's Golden Rule of Pointers
-	// Recursively call destructor on the next node
-	
+	if( /* Delete this comment */ ){
 		
+		// Recursively call destructor on the next node
 
-	// Free the current pointer
-	
+		// Free the current pointer
+		
+	}
 
 }

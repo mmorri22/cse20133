@@ -1,33 +1,12 @@
 #include "sllist.h"
 
 
-int main( const int argc, const char* argv[] ){
-
-	fprintf( stdout, "argc: %p %d\n", &argc, argc );
-	fprintf( stdout, "argv: %p %p\n", &argv, argv );
-
-	int iter;
-	for( iter = 0; iter < argc; ++iter ){
-
-		fprintf( stdout, "argv[%d]: %p %p %s\n", iter, &argv[iter], argv[iter], argv[iter] );
-	}
-
-	fprintf( stdout, "---------------------------------\n");
+int main(  ){
 
 	// Dynamically allocate a sllist
 	sllist* the_list = constructor();
 
 	fprintf( stdout, "Base Addresses: %p %p\n", &the_list, the_list );
-
-	// Step 11 - Replace 7 - Call insert with as many as we want to insert
-	for( iter = 1; iter < argc; ++iter ){
-
-		int the_value = atoi( argv[iter] );
-
-		push( the_list, the_value );
-
-	}
-
 
 	// Step 9 - Call in main
 	fprintf( stdout, "Head Node Addresses: %p %p\n", &(the_list->head_node), the_list->head_node );

@@ -1,4 +1,4 @@
-#include "sllist.h"
+#include "sllist_sol.h"
 
 
 sllist* constructor(){
@@ -67,23 +67,23 @@ void pop( sllist* the_list ){
 }
 
 
+
+
 // Step 8 - Print the Singly Linked List
-void print_list( sll_node* head_node ){
+void print_list( sll_node* curr_ptr ){
 
-	// Just change node_0 to head_node
-	sll_node* curr_ptr = head_node;
-	while( curr_ptr != NULL ){
+	if( curr_ptr != NULL ){
 
-		fprintf( stdout, "Address: %p, ", curr_ptr );
-		fprintf( stdout, "Value: %d, ", curr_ptr->data );
+		fprintf( stdout, "Addr: %p, ", curr_ptr );
+		fprintf( stdout, "Data: %d, ", curr_ptr->data );
 		fprintf( stdout, "next_node Addr: %p, ", &(curr_ptr->next_node) );
-		fprintf( stdout, "next_node Value: %p\n", curr_ptr->next_node );
+		fprintf( stdout, "next_node Data: %p\n", curr_ptr->next_node );
+		fprintf( stdout, "\n" );
 
 		// Iterate through the next node
-		curr_ptr = curr_ptr->next_node;
+		print_list( curr_ptr->next_node );
 
 	}
-	fprintf( stdout, "\n" );
 
 }
 
@@ -93,10 +93,11 @@ void destructor( sll_node* curr_ptr ){
 
 	// Dr. Morrison's Golden Rule of Pointers
 	// Recursively call destructor on the next node
-	if( curr_ptr->next_node != NULL )
+	if( curr_ptr != NULL ){
 		destructor(curr_ptr->next_node);
 
-	// Free the current pointer
-	free(curr_ptr);
+		// Free the current pointer
+		free(curr_ptr);
+	}
 
 }
