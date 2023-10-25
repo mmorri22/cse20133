@@ -1,9 +1,9 @@
-#include "stack.h"
+#include "sllist.h"
 
 
-stack* constructor(){
+sllist* constructor(){
 
-    stack* temp_node = (stack *)malloc( sizeof(stack) );
+    sllist* temp_node = (sllist *)malloc( sizeof(sllist) );
 
 	temp_node->head_node = NULL;
 
@@ -12,11 +12,11 @@ stack* constructor(){
 }
 
 
-// Create the constructor method for stack
-void push( stack* the_list, int the_value ){
+// Create the constructor method for sllist
+void push( sllist* the_list, int the_value ){
 
-	// Create a stack_node pointer called insert_node
-	stack_node* insert_node = (stack_node *)malloc( sizeof(stack_node) );
+	// Create a sll_node pointer called insert_node
+	sll_node* insert_node = (sll_node *)malloc( sizeof(sll_node) );
 
 	// Set the insert_node's data to the_value and next_node to NULL
 	insert_node->data = the_value;
@@ -34,7 +34,7 @@ void push( stack* the_list, int the_value ){
 	}
 
 	// Otherwise, create a curr_ptr equal to the head_node
-	stack_node* curr_ptr = the_list->head_node;
+	sll_node* curr_ptr = the_list->head_node;
 
 	// Set the head node equal to the insert node
 	the_list->head_node = insert_node;
@@ -44,14 +44,14 @@ void push( stack* the_list, int the_value ){
 	
 }
 
-void pop( stack* the_list ){
+void pop( sllist* the_list ){
 
 	// Dr. Morrison's Golden Rule of Pointers
 	// Check if the head node is not empty
 	if(the_list->head_node != NULL){
 
 		// Set a temp node equal to the current head node
-		stack_node* temp_node = the_list->head_node;
+		sll_node* temp_node = the_list->head_node;
 
 		// Set the head node equal to the head node's next node
 		the_list->head_node = temp_node->next_node;
@@ -66,29 +66,12 @@ void pop( stack* the_list ){
 	fprintf( stdout, "Can't pop. List is empty\n");
 }
 
-// Print the Singly Linked List 
-void print_stack( stack_node* head_node ){
-
-	stack_node* curr_ptr = head_node;
-	while( curr_ptr != NULL ){
-		
-		// Only print the value
-		fprintf( stdout, "%d ", curr_ptr->data );		
-
-		// Iterate through the next node
-		curr_ptr = curr_ptr->next_node;
-
-	}
-	fprintf( stdout, "\n" );
-
-}	
-
 
 // Step 8 - Print the Singly Linked List
-void print_list( stack_node* head_node ){
+void print_list( sll_node* head_node ){
 
 	// Just change node_0 to head_node
-	stack_node* curr_ptr = head_node;
+	sll_node* curr_ptr = head_node;
 	while( curr_ptr != NULL ){
 
 		fprintf( stdout, "Address: %p, ", curr_ptr );
@@ -106,7 +89,7 @@ void print_list( stack_node* head_node ){
 
 
 // Free all the elements
-void destructor( stack_node* curr_ptr ){
+void destructor( sll_node* curr_ptr ){
 
 	// Dr. Morrison's Golden Rule of Pointers
 	if( curr_ptr != NULL ){
