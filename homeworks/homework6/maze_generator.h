@@ -1,7 +1,7 @@
 #ifndef MAZE_GENERATOR_H
 #define MAZE_GENERATOR_H
 
-#include "labrynth.h"
+#include "labyrinth.h"
 
 #define LEFT 0
 #define MIDDLE 1
