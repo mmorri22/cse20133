@@ -33,9 +33,19 @@ animal_fixed_objs := animal_fixed.o
 
 animal_fixed: $(animal_fixed_objs)
 	$(PP) $(CXXFLAGS) -o animal_fixed $(animal_fixed_objs) -lm
-	
 
-executable_names := animal_bad animal_fixed
+
+# C++ Class with Constructor and Destructor Example
+# Command: make animal_class
+animal_class.o: animal_class.cpp
+	$(PP) $(CXXFLAGS) -c animal_class.cpp
+	
+animal_class_objs := animal_class.o
+
+animal_class: $(animal_class_objs)
+	$(PP) $(CXXFLAGS) -o animal_class $(animal_class_objs) -lm
+
+executable_names := animal_bad animal_fixed animal_class
 	
 # Make clean
 clean :
