@@ -27,6 +27,22 @@ class Iris {
         // Destructor
         ~Iris(){}
 
+        float get_sepal_length() const{
+            return this->sepal_length;
+        }
+
+        float get_sepal_width() const{
+            return this->sepal_width;
+        }
+
+        float get_petal_length() const{
+            return this->petal_length;
+        }
+
+        float get_petal_width() const{
+            return this->petal_width;
+        }
+
         void print_iris_data() const{
 
             std::cout << "------------------------------------------------------" << std::endl;
