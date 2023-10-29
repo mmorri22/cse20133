@@ -7,55 +7,35 @@
 PP := g++
 
 # CFLAGS are the compiler flages for when we compile C++ code in this course
-FLAGS := -O2 -g -Wall -Wextra -Wconversion -Wshadow -Werror
+FLAGS := -O2 -g -Wall -Wextra -Wconversion -Werror
 CXXFLAGS := -m64 -std=c++2a $(FLAGS)
 
 
-# C++ Hello, World Example
-# Command: make hello
-Animal.o: Animal.cpp
-	$(PP) $(CXXFLAGS) -c Animal.cpp
+# C++ Class Example
+# CONTAINS DELIBERATE COMPILER ERRORS
+# SHOWS STUDENTS THE BENEFIT OF PRIVATE MEMBERS IN C++
+# Command: make animal_bad
+animal_bad.o: animal_bad.cpp
+	$(PP) $(CXXFLAGS) -c animal_bad.cpp
 	
-Animal_objs := Animal.o
+animal_bad_objs := animal_bad.o
 
-Animal: $(Animal_objs)
-	$(PP) $(CXXFLAGS) -o Animal $(Animal_objs) -lm
+animal_bad: $(animal_bad_objs)
+	$(PP) $(CXXFLAGS) -o animal_bad $(animal_bad_objs) -lm
 	
 
-# C++ New, Delete Example
-# Command: make new_delete
-new_delete.o: new_delete.cpp
-	$(PP) $(CXXFLAGS) -c new_delete.cpp
+# C++ Fixed Class Example
+# Command: make animal_fixed
+animal_fixed.o: animal_fixed.cpp
+	$(PP) $(CXXFLAGS) -c animal_fixed.cpp
 	
-new_delete_objs := new_delete.o
+animal_fixed_objs := animal_fixed.o
 
-new_delete: $(new_delete_objs)
-	$(PP) $(CXXFLAGS) -o new_delete $(new_delete_objs) -lm
-	valgrind --leak-check=full ./new_delete
+animal_fixed: $(animal_fixed_objs)
+	$(PP) $(CXXFLAGS) -o animal_fixed $(animal_fixed_objs) -lm
 	
-	
-# C++ Call by Reference Example
-# Command: make pass_call_comp
-pass_call_comp.o: pass_call_comp.cpp
-	$(PP) $(CXXFLAGS) -c pass_call_comp.cpp
-	
-pass_call_comp_objs := pass_call_comp.o
 
-pass_call_comp: $(pass_call_comp_objs)
-	$(PP) $(CXXFLAGS) -o pass_call_comp $(pass_call_comp_objs) -lm
-
-
-# C++ Call by Reference Example
-# Command: make alphabet_count
-alphabet_count.o: alphabet_count.cpp
-	$(PP) $(CXXFLAGS) -c alphabet_count.cpp
-	
-alphabet_count_objs := alphabet_count.o
-
-alphabet_count: $(alphabet_count_objs)
-	$(PP) $(CXXFLAGS) -o alphabet_count $(alphabet_count_objs) -lm
-
-executable_names := Animal
+executable_names := animal_bad animal_fixed
 	
 # Make clean
 clean :

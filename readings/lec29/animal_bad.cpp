@@ -9,9 +9,9 @@ class Animal {
     int weight;
 
     /*** Class Methods ***/
-    void setWeight(int w) {
+    void set_weight(int w) {
     
-        if (w > 50) {
+        if (w > 100) {
             printf("error: unrealistic weight!\n");
             return;
         }
@@ -21,11 +21,11 @@ class Animal {
         
     }
 
-    int getWeight() {
+    int get_weight() {
         return this->weight;
     }
     
-    void print_Animal(){
+    void print_animal(){
         
         std::cout << "--------------------------------" << std::endl;
         std::cout << "Name: " << this->name << std::endl;
@@ -35,25 +35,25 @@ class Animal {
 
     }
 
-}
+};
 
 int main()
 {
     Animal stack_cat;
     stack_cat.name = "kitty";
     stack_cat.age = 5;
-    stack_cat.setWeight(12);
-    stack_cat.print_Animal();    
+    stack_cat.set_weight(12);
+    stack_cat.print_animal();    
 
     // C++ Equivalent of Animal* heap_dog = (Animal *)malloc( sizeof(Animal) );
     Animal* heap_dog = new Animal();
     heap_dog->name = "Eirinn";
     heap_dog->age = 7;
-    heap_dog->setWeight(55);
+    heap_dog->set_weight(55);
 
-    heap_dog->print_Animal();
+    heap_dog->print_animal();
 
-    heap_dog->setWeight(999); // will report an error
+    heap_dog->set_weight(999); // will report an error
 
 
     // C++ Equivalent of free( heap_dog );
