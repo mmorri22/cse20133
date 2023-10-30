@@ -8,13 +8,13 @@ PP := g++
 
 # CFLAGS are the compiler flages for when we compile C++ code in this course
 FLAGS := -O2 -g -Wall -Wextra -Wconversion -Werror
-CXXFLAGS := -m64 -std=c++2a $(FLAGS)
+CXXFLAGS := -std=c++2a $(FLAGS)
 
 # C++ output example
 # Command: make output
 output.o: output.cpp
 	$(PP) $(CXXFLAGS) -c output.cpp
-	
+
 output_objs := output.o
 
 output: $(output_objs)
@@ -26,7 +26,7 @@ output: $(output_objs)
 # Command: make cin
 cin.o: cin.cpp
 	$(PP) $(CXXFLAGS) -c cin.cpp
-	
+
 cin_objs := cin.o
 
 cin: $(cin_objs)
@@ -38,7 +38,7 @@ cin: $(cin_objs)
 # Command: make file_io
 file_io.o: file_io.cpp
 	$(PP) $(CXXFLAGS) -c file_io.cpp
-	
+
 file_io_objs := file_io.o
 
 file_io: $(file_io_objs)
@@ -51,18 +51,18 @@ file_io: $(file_io_objs)
 # Command: make namespace
 namespace.o: namespace.cpp
 	$(PP) $(CXXFLAGS) -c namespace.cpp
-	
+
 namespace_objs := namespace.o
 
 namespace: $(namespace_objs)
 	$(PP) $(CXXFLAGS) -o namespace $(namespace_objs) -lm
-	
+
 
 # C++ Fixed Class Example
 # Command: make namespace_fixed
 namespace_fixed.o: namespace_fixed.cpp
 	$(PP) $(CXXFLAGS) -c namespace_fixed.cpp
-	
+
 namespace_fixed_objs := namespace_fixed.o
 
 namespace_fixed: $(namespace_fixed_objs)
@@ -74,7 +74,7 @@ namespace_fixed: $(namespace_fixed_objs)
 # Command: make call_by
 call_by.o: call_by.cpp
 	$(PP) $(CXXFLAGS) -c call_by.cpp
-	
+
 call_by_objs := call_by.o
 
 call_by: $(call_by_objs)
@@ -83,7 +83,7 @@ call_by: $(call_by_objs)
 
 
 executable_names := output cin file_io namespace namespace_fixed call_by
-	
+
 # Make clean
 clean :
 	rm -rf *.o $(executable_names)

@@ -8,7 +8,7 @@ PP := g++
 
 # CFLAGS are the compiler flages for when we compile C++ code in this course
 FLAGS := -O2 -g -Wall -Wextra -Wconversion -Werror
-CXXFLAGS := -m64 -std=c++2a $(FLAGS)
+CXXFLAGS := -std=c++2a $(FLAGS)
 
 # Note, after installation, I ran the commands and got the following:
 # Command: python3 --version
@@ -51,7 +51,7 @@ iris_visual: $(iris_visual_objs)
 	$(PP) $(CXXFLAGS) -o iris_visual $(iris_visual_objs) $(PY_INCLUDES) -lm
 
 executable_names := iris_prepr minimal iris_visual
-	
+
 # Make clean
 clean :
 	rm -rf *.o $(executable_names)

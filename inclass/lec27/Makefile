@@ -1,7 +1,7 @@
 # Author: Matthew Morrison
 # E-mail: matt.morrison@nd.edu
 #
-# This is the Makefile for Lecture 26 In-Class - CSE 20133
+# This is the Makefile for Lecture 27 In-Class - CSE 20133
 
 # G++ is for the GCC compiler for C++
 PP := g++
@@ -10,16 +10,16 @@ PP := g++
 FLAGS := -O2 -g -Wall -Wextra -Wconversion -Werror
 CXXFLAGS := -std=c++2a $(FLAGS)
 
-# C++ output example
-# Command: make output
-output.o: output.cpp
-	$(PP) $(CXXFLAGS) -c output.cpp
+# C++ vector example
+# Command: make vector
+vector.o: vector.cpp
+	$(PP) $(CXXFLAGS) -c vector.cpp
 
-output_objs := output.o
+vector_objs := vector.o
 
-output: $(output_objs)
-	$(PP) $(CXXFLAGS) -o output $(output_objs) -lm
-	./output
+vector: $(vector_objs)
+	$(PP) $(CXXFLAGS) -o vector $(vector_objs) -lm
+	valgrind --leak-check=full ./vector
 
 
 # C++ cin example
@@ -82,7 +82,7 @@ call_by: $(call_by_objs)
 	./call_by
 
 
-executable_names := output cin file_io namespace namespace_fixed call_by
+executable_names := vector
 
 # Make clean
 clean :
