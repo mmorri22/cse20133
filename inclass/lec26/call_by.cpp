@@ -32,10 +32,10 @@ int main(){
 	pass_by_ref( &print_int, &print_dbl );
 
 	// Initial Call by Reference
-	call_by_ref( print_int, print_dbl );
+	
 
 	// Call again to show changes
-	call_by_ref( print_int, print_dbl );
+	
 	
 	return EXIT_SUCCESS;
 }
