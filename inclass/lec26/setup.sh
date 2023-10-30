@@ -1,0 +1,11 @@
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec26/Makefile
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec26/output.cpp
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec26/cin.cpp
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec26/namespace.cpp
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec26/namespace_fixed.cpp
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec26/call_by.cpp
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec26/call_sol.cpp
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec26/inputs.txt
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec26/file_io.cpp
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec26/file_io_sol.cpp
+rm setup.sh
