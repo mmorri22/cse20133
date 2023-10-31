@@ -22,27 +22,27 @@ vector: $(vector_objs)
 	valgrind --leak-check=full ./vector
 
 
-# C++ cin example
-# Command: make cin
-cin.o: cin.cpp
-	$(PP) $(CXXFLAGS) -c cin.cpp
+# C++ count_sort example
+# Command: make count_sort
+count_sort.o: count_sort.cpp
+	$(PP) $(CXXFLAGS) -c count_sort.cpp
 
-cin_objs := cin.o
+count_sort_objs := count_sort.o
 
-cin: $(cin_objs)
-	$(PP) $(CXXFLAGS) -o cin $(cin_objs) -lm
-	./cin
+count_sort: $(count_sort_objs)
+	$(PP) $(CXXFLAGS) -o count_sort $(count_sort_objs) -lm
+	./count_sort
 
 
-# C++ File I/O Example
+# C++ sort_comp Example
 # Command: make file_io
-file_io.o: file_io.cpp
-	$(PP) $(CXXFLAGS) -c file_io.cpp
+sort_comp.o: sort_comp.cpp
+	$(PP) -std=c++2a -c sort_comp.cpp
 
-file_io_objs := file_io.o
+sort_comp_objs := sort_comp.o
 
-file_io: $(file_io_objs)
-	$(PP) $(CXXFLAGS) -o file_io $(file_io_objs) -lm
+sort_comp: $(sort_comp_objs)
+	$(PP) -std=c++2a -o sort_comp $(sort_comp_objs) -lm
 
 
 # C++ Class Example
@@ -82,7 +82,7 @@ call_by: $(call_by_objs)
 	./call_by
 
 
-executable_names := vector
+executable_names := vector count_sort sort_comp
 
 # Make clean
 clean :
