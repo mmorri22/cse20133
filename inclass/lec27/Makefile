@@ -45,44 +45,29 @@ sort_comp: $(sort_comp_objs)
 	$(PP) -std=c++2a -o sort_comp $(sort_comp_objs) -lm
 
 
-# C++ Class Example
-# CONTAINS DELIBERATE COMPILER ERRORS
-# SHOWS STUDENTS THE DRAWBACKS OF using namespace std;
+# C++ std::stack Hanoi Example
 # Command: make namespace
-namespace.o: namespace.cpp
-	$(PP) $(CXXFLAGS) -c namespace.cpp
+hanoi_stl.o: hanoi_stl.cpp
+	$(PP) $(CXXFLAGS) -c hanoi_stl.cpp
 
-namespace_objs := namespace.o
+hanoi_stl_objs := hanoi_stl.o
 
-namespace: $(namespace_objs)
-	$(PP) $(CXXFLAGS) -o namespace $(namespace_objs) -lm
-
-
-# C++ Fixed Class Example
-# Command: make namespace_fixed
-namespace_fixed.o: namespace_fixed.cpp
-	$(PP) $(CXXFLAGS) -c namespace_fixed.cpp
-
-namespace_fixed_objs := namespace_fixed.o
-
-namespace_fixed: $(namespace_fixed_objs)
-	$(PP) $(CXXFLAGS) -o namespace_fixed $(namespace_fixed_objs) -lm
-	./namespace_fixed
+hanoi_stl: $(hanoi_stl_objs)
+	$(PP) $(CXXFLAGS) -o hanoi_stl $(hanoi_stl_objs) -lm
 
 
-# C++ Call By Reference Example
-# Command: make call_by
-call_by.o: call_by.cpp
-	$(PP) $(CXXFLAGS) -c call_by.cpp
+# C++ Two Sums Example
+# Command: make two_sums
+two_sums.o: two_sums.cpp
+	$(PP) $(CXXFLAGS) -c two_sums.cpp
 
-call_by_objs := call_by.o
+two_sums_objs := two_sums.o
 
-call_by: $(call_by_objs)
-	$(PP) $(CXXFLAGS) -o call_by $(call_by_objs) -lm
-	./call_by
+two_sums: $(two_sums_objs)
+	$(PP) $(CXXFLAGS) -o two_sums $(two_sums_objs) -lm
+	./two_sums
 
-
-executable_names := vector count_sort sort_comp
+executable_names := vector count_sort sort_comp hanoi_stl two_sums
 
 # Make clean
 clean :
