@@ -1,4 +1,10 @@
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec28/Makefile
-wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec28/product.cpp
-wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec28/product_sol.cpp
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec28/Prob1.cpp
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec28/Prob2.cpp
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec28/Prob3.cpp
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec28/Prob4.cpp
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec28/Prob5.cpp
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec28/Prob6.cpp
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec28/Prob7.cpp
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec28/Prob8.cpp
 rm setup.sh
