@@ -7,4 +7,5 @@ wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec28/Prob
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec28/Prob6.cpp
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec28/Prob7.cpp
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec28/Prob8.cpp
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec28/Prob9.cpp
 rm setup.sh

@@ -104,7 +104,20 @@ Prob8: $(Prob8_objs)
 	$(PP) $(CXXFLAGS) -o Prob8 $(Prob8_objs) -lm
 	./Prob8
 
-executable_names := Prob1 Prob2 Prob3 Prob4 Prob5 Prob6 Prob7 Prob8
+
+# C++ Prob9 example
+# Command: make product
+Prob9.o: Prob9.cpp
+	$(PP) $(CXXFLAGS) -c Prob9.cpp
+
+Prob9_objs := Prob9.o
+
+Prob9: $(Prob9_objs)
+	$(PP) $(CXXFLAGS) -o Prob9 $(Prob9_objs) -lm
+	./Prob9
+
+
+executable_names := Prob1 Prob2 Prob3 Prob4 Prob5 Prob6 Prob7 Prob8 Prob9
 
 all: $(executable_names)
 
