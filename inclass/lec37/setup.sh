@@ -10,7 +10,7 @@ wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec37/kern
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec37/k-exception.S
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec37/k-hardware.cc
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec37/k-memviewer.cc
-wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec37/k-pic.hh
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec37/k-apic.hh
 get https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec37/k-vmiter.cc
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec37/k-vmiter.hh
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec37/lib.hh
