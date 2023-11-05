@@ -10,9 +10,10 @@ wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec37/kern
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec37/k-exception.S
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec37/k-hardware.cc
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec37/k-memviewer.cc
-wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec37/k-apic.hh
-get https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec37/k-vmiter.cc
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec37/k-pci.hh
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec37/k-vmiter.cc
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec37/k-vmiter.hh
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec37/lib.cc
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec37/lib.hh
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec37/p-allocator.cc
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec37/p-fork.cc
@@ -22,7 +23,6 @@ wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec37/READ
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec37/types.h
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec37/u-lib.cc
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec37/u-lib.hh
-wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec37/lib.cc
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec37/x86-64.h
 cd build
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec37/build/findccprefix.sh
