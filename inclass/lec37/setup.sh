@@ -4,7 +4,7 @@ wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec37/boot
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec37/COPYRIGHT
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec37/elf.h
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec37/GNUmakefile
-wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec37/k-apci.hh
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec37/k-apic.hh
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec37/kernel.cc
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec37/kernel.hh
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec37/k-exception.S
