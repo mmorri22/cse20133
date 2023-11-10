@@ -1,60 +1,53 @@
 # Author: Matthew Morrison
 # E-mail: matt.morrison@nd.edu
 #
-# This is the Makefile for Lecture 32 Reading - CSE 20133
+# This is the Makefile for Lecture 31
 
 # G++ is for the GCC compiler for C++
 PP := g++
 
-# CFLAGS are the compiler flages for when we compile C++ code in this course
-FLAGS := -O2 -g -Wall -Wextra -Wconversion -Werror
-CXXFLAGS := -m64 -std=c++2a $(FLAGS)
-
-# Note, after installation, I ran the commands and got the following:
-# Command: python3 --version
-# Result : Python 3.8.10
-PY_INCLUDES = -I/usr/include/python3.8 -lpython3.8
+# CFLAGS are the compiler flages for when we compile C code in this course
+FLAGS := -O2 -g -Wall -Wextra -Wconversion -Wshadow -Werror -lm
+CXXFLAGS := -std=c++2a $(FLAGS)
 
 
-# C++ Visualization Introduction
-# Command: make minimal
-# Practice - Putting $(PY_INCLUDES) in the correct location
-minimal.o: minimal.cpp
-	$(PP) $(CXXFLAGS) -c minimal.cpp
-
-minimal_objs := minimal.o
-
-# Practice - Putting $(PY_INCLUDES) in the correct location
-minimal: $(minimal_objs)
-	$(PP) $(CXXFLAGS) -o minimal $(minimal_objs) -lm
+# Point Class Compilation:
+point.o: point.cpp
+	$(PP) $(CXXFLAGS) -c point.cpp
 
 
-# C++ Class with Data Preprocessing and Visualization
-# Command: make iris
-preprocessing.o: preprocessing.cpp
-	$(PP) $(CXXFLAGS) -c preprocessing.cpp
-
-iris_prepr.o: iris_prepr.cpp
-	$(PP) $(CXXFLAGS) -c iris_prepr.cpp
-
-iris_prepr_objs := preprocessing.o iris_prepr.o
-
-iris_prepr: $(iris_prepr_objs)
-	$(PP) $(CXXFLAGS) -o iris_prepr $(iris_prepr_objs) -lm
+# Line Class Compilation:
+line.o: line.cpp
+	$(PP) $(CXXFLAGS) -c line.cpp
 
 
-# C++ Preprocessing and Visualization Introduction
-# Command: make iris_visual
-iris_visual.o: iris_visual.cpp
-	$(PP) $(CXXFLAGS) -c iris_visual.cpp $(PY_INCLUDES)
+# class_intro Example
+# Command: make class_intro 
+class_intro.o: class_intro.cpp
+	$(PP) $(CXXFLAGS) -c class_intro.cpp
 
-iris_visual_objs := preprocessing.o iris_visual.o
+class_intro_objs := class_intro.o point.o
 
-iris_visual: $(iris_visual_objs)
-	$(PP) $(CXXFLAGS) -o iris_visual $(iris_visual_objs) $(PY_INCLUDES) -lm
+class_intro: $(class_intro_objs)
+	$(PP) $(CXXFLAGS) -o class_intro $(class_intro_objs)
+	./class_intro
 
-executable_names := iris_prepr minimal iris_visual
+
+# aggregate Example
+# Command: make aggregate 
+aggregate.o: aggregate.cpp
+	$(PP) $(CXXFLAGS) -c aggregate.cpp
+
+aggregate_objs := aggregate.o line.o point.o
+
+aggregate: $(aggregate_objs)
+	$(PP) $(CXXFLAGS) -o aggregate $(aggregate_objs)
+	./aggregate
+
+
+# Make all
+executables := class_intro aggregate
 
 # Make clean
 clean :
-	rm -rf *.o $(executable_names)
+	rm -rf *.o $(executables)
