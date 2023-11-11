@@ -21,18 +21,6 @@ line.o: line.cpp
 	$(PP) $(CXXFLAGS) -c line.cpp
 
 
-# class_intro Example
-# Command: make class_intro 
-class_intro.o: class_intro.cpp
-	$(PP) $(CXXFLAGS) -c class_intro.cpp
-
-class_intro_objs := class_intro.o point.o
-
-class_intro: $(class_intro_objs)
-	$(PP) $(CXXFLAGS) -o class_intro $(class_intro_objs)
-	./class_intro
-
-
 # aggregate Example
 # Command: make aggregate 
 aggregate.o: aggregate.cpp
@@ -45,8 +33,24 @@ aggregate: $(aggregate_objs)
 	./aggregate
 
 
+# Fractals Example
+# Command: make fractals 
+fractals.o: fractals.cpp
+	$(PP) $(CXXFLAGS) -c fractals.cpp
+
+fractal_lib.o: fractal_lib.cpp
+	$(PP) $(CXXFLAGS) -c fractal_lib.cpp
+
+gfx.o: gfx.cpp
+	$(PP) $(CXXFLAGS) -c gfx.cpp
+
+fractals_objs := fractals.o fractal_lib.o gfx.o
+
+fractals: $(fractals_objs)
+	$(PP) $(CXXFLAGS) -o fractals $(fractals_objs) -lX11
+
 # Make all
-executables := class_intro aggregate
+executables := aggregate fractals
 
 # Make clean
 clean :
