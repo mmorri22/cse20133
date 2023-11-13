@@ -5,6 +5,11 @@ wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec32/line
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec32/line.h
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec32/line_sol.cpp
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec32/line_sol.h
-wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec32/class_intro.cpp
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec32/aggregate.cpp
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec32/fractal_lib.cpp
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec32/fractal_lib.h
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec32/fractal_lib_sol.cpp
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec32/fractals.cpp
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec32/gfx.cpp
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec32/gfx.h
 rm setup.sh
