@@ -3,15 +3,13 @@
 void sierpinski( double x1, double y1, double x2, double y2, double x3, double y3 )
 {
    // Base case. 
-   if( abs(x2-x1) < 5 ) return;
+   
 
    // Draw the triangle
-   drawTriangle( x1, y1, x2, y2, x3, y3 );
+   
 
    // Recursive calls
-   sierpinski( x1, y1, (x1+x2)/2, (y1+y2)/2, (x1+x3)/2, (y1+y3)/2 );
-   sierpinski( (x1+x2)/2, (y1+y2)/2, x2, y2, (x2+x3)/2, (y2+y3)/2 );
-   sierpinski( (x1+x3)/2, (y1+y3)/2, (x2+x3)/2, (y2+y3)/2, x3, y3 );
+   
 }
 
 void shrinkingSquares( double x1, double y1, double x2, double y2, double x3, double y3, double x4, double y4 ){
@@ -30,18 +28,23 @@ void shrinkingSquares( double x1, double y1, double x2, double y2, double x3, do
 }
 
 void spiralSquares(double x0,double y0, double r, double angle){
-	if(r < 2) return;
+	
+	// Base Case
 
-	double x = x0 + (r * sin(angle * (M_PI / 180)));	// new coordinates
-	double y = y0 - (r * cos(angle * (M_PI / 180)));
+	// New Coordinates
+	
 
-	double angle1 = angle + 30;
+	// Set the new angle
+	
 
-	double s = r/6;
-	drawSquare(x-s, y-s, x+s,y-s, x-s, y+s, x+s, y+s);
+	// Derive the offset
+	
+	// Draw a square
+	
 
-	double rNew = r*.92;
-	spiralSquares(x0,y0, rNew, angle1);
+	// Set the new radius as 0.92 of the old radius and call spiralSquares
+	
+	
 
 }
 
