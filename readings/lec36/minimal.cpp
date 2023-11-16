@@ -1,14 +1,13 @@
-#include "matplotlibcpp.h"
-
-namespace plt = matplotlibcpp;
+#include <cmath>
+#include <matplot/matplot.h>
 
 int main() {
 
     // Plot four points
-    plt::plot({1,3,2,4});
+    matplot::plot({1,3,2,4});
 
     // Show the plot
-    plt::show();
+    matplot::show();
 
     return EXIT_SUCCESS;
 }

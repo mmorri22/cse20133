@@ -10,10 +10,17 @@ PP := g++
 FLAGS := -O2 -g -Wall -Wextra -Wconversion -Werror
 CXXFLAGS := -std=c++2a $(FLAGS)
 
-# Note, after installation, I ran the commands and got the following:
-# Command: python3 --version
-# Result : Python 3.8.10
-PY_INCLUDES = -I/usr/include/python3.8 -lpython3.8
+
+# C++ Visualization Introduction
+# Command: make minimal
+minimal.o: minimal.cpp
+	$(PP) $(CXXFLAGS) -c minimal.cpp
+
+minimal_objs := minimal.o
+
+minimal: $(minimal_objs)
+	$(PP) $(CXXFLAGS) -o minimal $(minimal_objs) -lm
+
 
 # C++ Class with Data Preprocessing and Visualization
 # Command: make iris
@@ -28,16 +35,6 @@ iris_prepr_objs := preprocessing.o iris_prepr.o
 iris_prepr: $(iris_prepr_objs)
 	$(PP) $(CXXFLAGS) -o iris_prepr $(iris_prepr_objs) -lm
 
-
-# C++ Visualization Introduction
-# Command: make minimal
-minimal.o: minimal.cpp
-	$(PP) $(CXXFLAGS) -c minimal.cpp $(PY_INCLUDES)
-
-minimal_objs := minimal.o
-
-minimal: $(minimal_objs)
-	$(PP) $(CXXFLAGS) -o minimal $(minimal_objs) $(PY_INCLUDES) -lm
 
 
 # C++ Preprocessing and Visualization Introduction
