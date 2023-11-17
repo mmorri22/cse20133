@@ -3,11 +3,13 @@
 
 int main() {
 
+    using namespace matplot;
+
     // Plot four points
-    matplot::plot({1,3,2,4});
+    plot({1,3,2,4});
 
     // Show the plot
-    matplot::show();
+    show();
 
     return EXIT_SUCCESS;
 }
