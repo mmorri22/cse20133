@@ -1,0 +1,34 @@
+/bin/bash
+sudo apt-get update
+sudo apt-get install apt-utils build-essential procps curl file
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+brew install matplotplusplus
+
+
+cd /home
+sudo wget https://raw.githubusercontent.com/mmorri22/cse20133/main/readings/lec36/CMakeLists.txt
+cd ~
+sudo apt-get update
+sudo apt install -y build-essential pkg-config
+sudo apt upgrade cmake gnuplot libglfw3-dev
+git clone https://github.com/alandefreitas/matplotplusplus.git
+cd matplotplusplus
+mkdir build
+cd build
+
+cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-O2" -DMATPLOTPP_BUILD_EXAMPLES=OFF -DMATPLOTPP_BUILD_TESTS=OFF
+
+cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-O2" -DCMAKE_C_COMPILER=/usr/bin/gcc-9 -DCMAKE_CXX_COMPILER=/usr/bin/g++-9 -DMATPLOTPP_BUILD_EXAMPLES=OFF -DMATPLOTPP_BUILD_TESTS=OFF
+
+sudo cmake --build . --parallel 2 --config Release
+
+sudo cmake --install .
+
+
+target_link_libraries(matplot_test PUBLIC Matplot++::matplot)
+
+
+python3 -m pip install -U pip
+
+
