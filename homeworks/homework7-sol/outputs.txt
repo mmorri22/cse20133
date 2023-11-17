@@ -1,0 +1,10 @@
+racecar is a palindrome permutation
+rceacra is a palindrome permutation
+abcdefhghfedbca is a palindrome permutation
+ggabcdefhhfedbcag is a palindrome permutation
+gghhabcdefhhfedbcagh is not a palindrome permutation
+aabbccddeeffg is a palindrome permutation
+tacocat is a palindrome permutation
+aardvark is not a palindrome permutation
+pootaatoo is a palindrome permutation
+saippuakivikauppias is a palindrome permutation
