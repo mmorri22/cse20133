@@ -52,12 +52,12 @@ iris_prepr: $(iris_prepr_objs)
 # C++ Preprocessing and Visualization Introduction
 # Command: make iris_visual
 iris_visual.o: iris_visual.cpp
-	$(PP) $(CXXFLAGS) -c iris_visual.cpp $(PY_INCLUDES)
+	$(PP) $(CXXFLAGS) -c iris_visual.cpp $(MATPLOT)
 
 iris_visual_objs := preprocessing.o iris_visual.o
 
 iris_visual: $(iris_visual_objs)
-	$(PP) $(CXXFLAGS) -o iris_visual $(iris_visual_objs) $(PY_INCLUDES) -lm
+	$(PP) $(CXXFLAGS) -o iris_visual $(iris_visual_objs) $(MATPLOT) -lm
 
 executable_names := 3d_plot iris_prepr minimal iris_visual
 

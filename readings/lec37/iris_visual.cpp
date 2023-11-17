@@ -1,7 +1,8 @@
+#include <cmath>
+#include <matplot/matplot.h>
 #include "preprocessing.h"
-#include "matplotlibcpp.h"
 
-namespace plt = matplotlibcpp;
+using namespace matplot;
 
 int main(){
 
@@ -25,13 +26,17 @@ int main(){
     }
 
     // Pass the vectors to the plots
-    plt::plot( sepal_len_vec, {{"label", "sepal_length"}} );
-    plt::plot( sepal_wid_vec, {{"label", "sepal_width"}} );
-    plt::plot( petal_len_vec, {{"label", "petal_length"}} );
-    plt::plot( petal_wid_vec, {{"label", "petal_width"}} );
-    plt::title( "Standard usage" );
-    plt::legend();
-    plt::show();
+    //plot( sepal_len_vec, "label", "sepal_length" );
+    //plot( sepal_wid_vec, "label", "sepal_width" );
+    //plot( petal_len_vec, "label", "petal_length" );
+    //plot( petal_wid_vec, "label", "petal_width" );
+    plot( sepal_len_vec );
+    plot( sepal_wid_vec );
+    plot( petal_len_vec );
+    plot( petal_wid_vec );
+    title( "Standard usage" );
+    legend();
+    show();
 
     return EXIT_SUCCESS;
 
