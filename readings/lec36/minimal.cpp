@@ -1,9 +1,9 @@
 #include <cmath>
 #include <matplot/matplot.h>
 
-int main() {
+using namespace matplot;
 
-    using namespace matplot;
+int main() {
 
     // Plot four points
     plot({1,3,2,4});

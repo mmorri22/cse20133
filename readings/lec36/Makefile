@@ -10,15 +10,28 @@ PP := g++
 FLAGS := -O2 -g -Wall -Wextra -Wconversion -Werror
 CXXFLAGS := -std=c++2a $(FLAGS)
 
+MATPLOT = -I/usr/local/include/matplot/ -lmatplot
+
 # C++ Visualization Introduction
 # Command: make minimal
 minimal.o: minimal.cpp
-	$(PP) $(CXXFLAGS) -c minimal.cpp
+	$(PP) $(CXXFLAGS) -c minimal.cpp $(MATPLOT)
 
 minimal_objs := minimal.o
 
 minimal: $(minimal_objs)
 	$(PP) $(CXXFLAGS) -o minimal $(minimal_objs) $(MATPLOT) -lm
+
+
+# C++ Visualization Introduction
+# Command: make 3d_plot
+3d_plot.o: 3d_plot.cpp
+	$(PP) $(CXXFLAGS) -c 3d_plot.cpp $(MATPLOT)
+
+3d_plot_objs := 3d_plot.o
+
+3d_plot: $(3d_plot_objs)
+	$(PP) $(CXXFLAGS) -o 3d_plot $(3d_plot_objs) $(MATPLOT) -lm
 
 
 # C++ Class with Data Preprocessing and Visualization
