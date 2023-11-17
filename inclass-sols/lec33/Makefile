@@ -1,4 +1,4 @@
-# This is the Makefile for the CSE 20311 course - Lecture 35
+# This is the Makefile for the CSE 20133 course - Lecture 33
 
 # G++ is for the GPP compiler for C++
 PP := g++
