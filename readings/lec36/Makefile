@@ -15,7 +15,7 @@ MATPLOT := -I/usr/local/include/matplot
 # C++ Visualization Introduction
 # Command: make minimal
 minimal.o: minimal.cpp
-	$(PP) $(CXXFLAGS) -c minimal.cpp $(MATPLOT)
+	$(PP) $(CXXFLAGS) -c minimal.cpp
 
 minimal_objs := minimal.o
 
