@@ -10,8 +10,6 @@ PP := g++
 FLAGS := -O2 -g -Wall -Wextra -Wconversion -Werror
 CXXFLAGS := -std=c++2a $(FLAGS)
 
-MATPLOT := -I/usr/local/include/matplot
-
 # C++ Visualization Introduction
 # Command: make minimal
 minimal.o: minimal.cpp
