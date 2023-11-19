@@ -47,7 +47,18 @@ sin_cos_objs := sin_cos.o
 sin_cos: $(sin_cos_objs)
 	$(PP) $(CXXFLAGS) -o sin_cos $(sin_cos_objs) $(MATPLOT) -lm
 
-executable_names := 3d_plot sin_cos minimal
+
+# C++ Visualization - Multiple Plots
+# Command: make sin_cos
+scatter.o: scatter.cpp
+	$(PP) $(CXXFLAGS) -c scatter.cpp $(MATPLOT)
+
+scatter_objs := scatter.o
+
+scatter: $(scatter_objs)
+	$(PP) $(CXXFLAGS) -o scatter $(scatter_objs) $(MATPLOT) -lm
+
+executable_names := 3d_plot sin_cos minimal scatter
 
 # Make clean
 clean :

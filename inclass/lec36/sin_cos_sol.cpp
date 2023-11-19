@@ -13,7 +13,7 @@ int main() {
     std::vector<double> sin_vals;
     std::vector<double> cos_vals;
 
-    for( long unsigned int iter = 0; iter < NUM_POINTS; ++iter){
+    for( size_t iter = 0; iter < NUM_POINTS; ++iter){
 
         sin_vals.push_back( sin(x_vals.at(iter)) );
         cos_vals.push_back( cos(x_vals.at(iter)) );
