@@ -10,17 +10,20 @@ PP := g++
 FLAGS := -O2 -g -Wall -Wextra -Wconversion -Werror
 CXXFLAGS := -std=c++2a $(FLAGS)
 
-MATPLOT = -I/usr/local/include/matplot/ -lmatplot
+# Update with our final flag of the semester: MATPLOT
+
 
 # C++ Visualization Introduction
 # Command: make minimal
+
+#### Update all .o and executable with $(MATPLOT) after .cpp and objs
 minimal.o: minimal.cpp
-	$(PP) $(CXXFLAGS) -c minimal.cpp $(MATPLOT)
+	$(PP) $(CXXFLAGS) -c minimal.cpp
 
 minimal_objs := minimal.o
 
 minimal: $(minimal_objs)
-	$(PP) $(CXXFLAGS) -o minimal $(minimal_objs) $(MATPLOT) -lm
+	$(PP) $(CXXFLAGS) -o minimal $(minimal_objs) -lm
 
 
 # C++ Visualization Introduction
@@ -34,32 +37,7 @@ minimal: $(minimal_objs)
 	$(PP) $(CXXFLAGS) -o 3d_plot $(3d_plot_objs) $(MATPLOT) -lm
 
 
-# C++ Class with Data Preprocessing and Visualization
-# Command: make iris
-preprocessing.o: preprocessing.cpp
-	$(PP) $(CXXFLAGS) -c preprocessing.cpp
-
-iris_prepr.o: iris_prepr.cpp
-	$(PP) $(CXXFLAGS) -c iris_prepr.cpp
-
-iris_prepr_objs := preprocessing.o iris_prepr.o
-
-iris_prepr: $(iris_prepr_objs)
-	$(PP) $(CXXFLAGS) -o iris_prepr $(iris_prepr_objs) -lm
-
-
-
-# C++ Preprocessing and Visualization Introduction
-# Command: make iris_visual
-iris_visual.o: iris_visual.cpp
-	$(PP) $(CXXFLAGS) -c iris_visual.cpp $(MATPLOT)
-
-iris_visual_objs := preprocessing.o iris_visual.o
-
-iris_visual: $(iris_visual_objs)
-	$(PP) $(CXXFLAGS) -o iris_visual $(iris_visual_objs) $(MATPLOT) -lm
-
-executable_names := 3d_plot iris_prepr minimal iris_visual
+executable_names := 3d_plot minimal
 
 # Make clean
 clean :
