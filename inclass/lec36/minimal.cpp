@@ -8,6 +8,9 @@ int main() {
     // Plot four points
     plot({1,3,2,4});
 
+    // Set the Title
+    title("Minimal Example");
+
     // Show the plot
     show();
 
