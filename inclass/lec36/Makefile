@@ -58,7 +58,18 @@ scatter_objs := scatter.o
 scatter: $(scatter_objs)
 	$(PP) $(CXXFLAGS) -o scatter $(scatter_objs) $(MATPLOT) -lm
 
-executable_names := 3d_plot sin_cos minimal scatter
+
+# C++ Visualization - Electric Field
+# Command: make electric
+electric.o: electric.cpp
+	$(PP) $(CXXFLAGS) -c electric.cpp $(MATPLOT)
+
+electric_objs := electric.o
+
+electric: $(electric_objs)
+	$(PP) $(CXXFLAGS) -o electric $(electric_objs) $(MATPLOT) -lm
+
+executable_names := 3d_plot sin_cos minimal scatter electric
 
 # Make clean
 clean :

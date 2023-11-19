@@ -1,8 +1,9 @@
 #include <matplot/matplot.h>
-#include <random>
+#include <cstdlib>
+
+using namespace matplot;
 
 int main() {
-    using namespace matplot;
 
     std::vector<double> theta = linspace(0, 1, 500);
 
@@ -15,9 +16,6 @@ int main() {
         x_coor.push_back( 0.25 * exp(temp_theta) * sin(50 * temp_theta) );
         y_coor.push_back( 0.25 * exp(temp_theta) * cos(50 * temp_theta) );
     }
-
-
-    return 0;
 
 
     return 0;

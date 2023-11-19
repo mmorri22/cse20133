@@ -1,8 +1,9 @@
 #include <matplot/matplot.h>
-#include <random>
+#include <cstdlib>
+
+using namespace matplot;
 
 int main() {
-    using namespace matplot;
 
     std::vector<double> theta = linspace(0, 1, 500);
 
