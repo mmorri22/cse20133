@@ -11,6 +11,7 @@ int main(){
     print_iris_dataset( iris_dataset );
 
     // Create vectors of each data element
+    std::vector<size_t> x_values;
     std::vector<float> sepal_len_vec;
     std::vector<float> sepal_wid_vec;
     std::vector<float> petal_len_vec;
@@ -18,6 +19,7 @@ int main(){
 
     for( long unsigned int iter = 0; iter < iris_dataset.size(); ++iter ){
 
+        x_values.push_back(iter);
         sepal_len_vec.push_back( iris_dataset.at(iter).get_sepal_length() );
         sepal_wid_vec.push_back( iris_dataset.at(iter).get_sepal_width() );
         petal_len_vec.push_back( iris_dataset.at(iter).get_petal_length() );
@@ -26,16 +28,14 @@ int main(){
     }
 
     // Pass the vectors to the plots
-    //plot( sepal_len_vec, "label", "sepal_length" );
-    //plot( sepal_wid_vec, "label", "sepal_width" );
-    //plot( petal_len_vec, "label", "petal_length" );
-    //plot( petal_wid_vec, "label", "petal_width" );
-    plot( sepal_len_vec );
-    plot( sepal_wid_vec );
-    plot( petal_len_vec );
-    plot( petal_wid_vec );
-    title( "Standard usage" );
-    legend();
+    auto the_plots = plot( x_values, sepal_len_vec, x_values, sepal_wid_vec, x_values, petal_len_vec, x_values, petal_wid_vec);
+
+    title( "Ronald Fisher - Iris Data Set" );
+
+    xlabel("x");
+    ylabel("size");
+    legend({"Sepal Length", "Sepal Width", "Petal Length", "Petal Width"});
+
     show();
 
     return EXIT_SUCCESS;

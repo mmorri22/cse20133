@@ -18,7 +18,7 @@ class Iris {
 
     public:
 
-        // Constructor
+        // Write the Constructor
         Iris( const float& sepal_length, const float& sepal_width, 
             const float& petal_length, const float& petal_width, const std::string& ir_class ) :
             sepal_length(sepal_length), sepal_width(sepal_width), petal_length(petal_length),
@@ -27,30 +27,20 @@ class Iris {
         // Destructor
         ~Iris(){}
 
-        float get_sepal_length() const{
-            return this->sepal_length;
-        }
+        // Write the get_sepal_length
+        float get_sepal_length() const;
 
-        float get_sepal_width() const{
-            return this->sepal_width;
-        }
+        // Write the get_sepal_length
+        float get_sepal_width() const;
 
-        float get_petal_length() const{
-            return this->petal_length;
-        }
+        // Write the get_petal_length
+        float get_petal_length() const;
 
-        float get_petal_width() const{
-            return this->petal_width;
-        }
+        // Write the get_petal_length
+        float get_petal_width() const;
 
-        void print_iris_data() const{
-
-            std::cout << "------------------------------------------------------" << std::endl;
-            std::cout << "Type: " << this->ir_class << std::endl;
-            std::cout << "Sepal Length and Width: " <<  this->sepal_length << ", " << sepal_width << std::endl;
-            std::cout << "Petal Length and Width: " <<  this->petal_length << ", " << petal_width << std::endl;
-
-        }
+        // print iris data
+        void print_iris_data() const;
 }; 
 
 std::vector< Iris > read_iris_dataset( const std::string& file_name );

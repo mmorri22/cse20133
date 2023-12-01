@@ -37,7 +37,7 @@ iris_visual_objs := preprocessing.o iris_visual.o
 iris_visual: $(iris_visual_objs)
 	$(PP) $(CXXFLAGS) -o iris_visual $(iris_visual_objs) $(MATPLOT) -lm
 
-executable_names := 3d_plot iris_prepr minimal iris_visual
+executable_names := iris_prepr iris_visual
 
 # Make clean
 clean :
