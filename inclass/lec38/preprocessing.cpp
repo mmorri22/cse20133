@@ -1,16 +1,5 @@
 #include "preprocessing.h"
 
-/* Iris Class Methods */
-
-void Iris::print_iris_data() const{
-
-    std::cout << "------------------------------------------------------" << std::endl;
-    std::cout << "Type: " << this->ir_class << std::endl;
-    std::cout << "Sepal Length and Width: " <<  this->sepal_length << ", " << sepal_width << std::endl;
-    std::cout << "Petal Length and Width: " <<  this->petal_length << ", " << petal_width << std::endl;
-
-}
-
 std::vector< Iris > read_iris_dataset( const std::string& file_name ){
 
     /* Create the input stream from iris.data */

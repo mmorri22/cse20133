@@ -7,9 +7,7 @@
 #include <fstream>
 #include <cstdlib>
 
-/* Iris Class */
-        
-
+#include "Iris.h"
 
 std::vector< Iris > read_iris_dataset( const std::string& file_name );
 
