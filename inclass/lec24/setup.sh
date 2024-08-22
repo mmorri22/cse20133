@@ -1,9 +1,0 @@
-wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec24/Makefile
-wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec24/hanoi.c
-wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec24/hanoi_func.c
-wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec24/hanoi_func_sol.c
-wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec24/hanoi_func.h
-wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec24/sllist.c
-wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec24/sllist.h
-wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec24/lec24.c
-rm setup.sh
