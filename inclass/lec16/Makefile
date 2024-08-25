@@ -1,7 +1,7 @@
 # Author: Prof. Matthew Morrison
 # E-mail: matt.morrison@nd.edu
 #
-# This is the Makefile for the Lecture 13 Example.
+# This is the Makefile for the Lecture 7 Example.
 
 # gcc is for the compiler for C
 CC := gcc
@@ -10,84 +10,36 @@ CC := gcc
 FLAGS := -O2 -g -Wall -Wextra -Wconversion -Wshadow -Werror
 CFLAGS := -std=c2x $(FLAGS)
 
-# Create the Better Malloc Object
-better_malloc.o: better_malloc.c
-	$(CC) $(CFLAGS) -c better_malloc.c
+# Create the Void Recast Object
+void_recast.o: void_recast.c
+	$(CC) $(CFLAGS) -c void_recast.c
 
-# Better Malloc Objects
-better_malloc_objs := better_malloc.o
+# Void Recast Compile Objects
+void_recast_objs := void_recast.o
 
-# Better Malloc Executable
-better_malloc: $(better_malloc_objs)
-	$(CC) $(CFLAGS) -o better_malloc $(better_malloc_objs) -lm
-	valgrind --leak-check=full ./better_malloc
-
-
-# Create the Better Malloc Long Int Object
-better_malloc_li.o: better_malloc_li.c
-	$(CC) $(CFLAGS) -c better_malloc_li.c
-
-# Better Malloc Long Objects
-better_malloc_li_objs := better_malloc_li.o
-
-# Better Malloc Executable
-better_malloc_li: $(better_malloc_li_objs)
-	$(CC) $(CFLAGS) -o better_malloc_li $(better_malloc_li_objs) -lm
-	valgrind --leak-check=full ./better_malloc_li
+# Void Recast Compile Executable
+void_recast: $(void_recast_objs)
+	$(CC) $(CFLAGS) -o void_recast $(void_recast_objs) -lm
+	valgrind --leak-check=full ./void_recast
 
 
-# Create the Better Malloc Float Object
-better_malloc_float.o: better_malloc_float.c
-	$(CC) $(CFLAGS) -c better_malloc_float.c
+# Create the Static Dynamic Address Object
+stat_dyn_addr.o: stat_dyn_addr.c
+	$(CC) $(CFLAGS) -c stat_dyn_addr.c
 
-# Better Malloc Float Objects
-better_malloc_float_objs := better_malloc_float.o
+# Static Dynamic Address Objects
+stat_dyn_addr_objs := stat_dyn_addr.o
 
-# Better Malloc Executable
-better_malloc_float: $(better_malloc_float_objs)
-	$(CC) $(CFLAGS) -o better_malloc_float $(better_malloc_float_objs) -lm
-	valgrind --leak-check=full ./better_malloc_float
-
-
-# Create the Better Malloc Double Object
-better_malloc_double.o: better_malloc_double.c
-	$(CC) $(CFLAGS) -c better_malloc_double.c
-
-# Better Malloc Double Objects
-better_malloc_double_objs := better_malloc_double.o
-
-# Better Malloc Executable
-better_malloc_double: $(better_malloc_double_objs)
-	$(CC) $(CFLAGS) -o better_malloc_double $(better_malloc_double_objs) -lm
-	valgrind --leak-check=full ./better_malloc_double
+# Static Dynamic Address Executable
+stat_dyn_addr: $(stat_dyn_addr_objs)
+	$(CC) $(CFLAGS) -o stat_dyn_addr $(stat_dyn_addr_objs) -lm
+	valgrind --leak-check=full ./stat_dyn_addr
 
 
-# Create the argc argv Object
-argc_argv.o: argc_argv.c
-	$(CC) $(CFLAGS) -c argc_argv.c
-
-# argc argv Objects
-argc_argv_objs := argc_argv.o
-
-# argc argv Executable
-argc_argv: $(argc_argv_objs)
-	$(CC) $(CFLAGS) -o argc_argv $(argc_argv_objs) -lm
-
-
-# Create the argc argv mod Object
-argc_argv_mod.o: argc_argv_mod.c
-	$(CC) $(CFLAGS) -c argc_argv_mod.c
-
-# argc argv mod Objects
-argc_argv_mod_objs := argc_argv_mod.o
-
-# argc argv mod Executable
-argc_argv_mod: $(argc_argv_mod_objs)
-	$(CC) $(CFLAGS) -o argc_argv_mod $(argc_argv_mod_objs) -lm
 
 
 # Executable Names
-executable_names := better_malloc better_malloc_li better_malloc_float better_malloc_double argc_argv argc_argv_mod
+executable_names := void_recast stat_dyn_addr
 
 # Make all
 all: $(executable_names)
