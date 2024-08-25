@@ -1,7 +1,7 @@
 # Author: Prof. Matthew Morrison
 # E-mail: matt.morrison@nd.edu
 #
-# This is the Makefile for the Lecture 7 Example.
+# This is the Makefile for the Lecture 12 Example.
 
 # gcc is for the compiler for C
 CC := gcc
@@ -10,36 +10,36 @@ CC := gcc
 FLAGS := -O2 -g -Wall -Wextra -Wconversion -Wshadow -Werror
 CFLAGS := -std=c2x $(FLAGS)
 
-# Create the Void Recast Object
-void_recast.o: void_recast.c
-	$(CC) $(CFLAGS) -c void_recast.c
-
-# Void Recast Compile Objects
-void_recast_objs := void_recast.o
-
-# Void Recast Compile Executable
-void_recast: $(void_recast_objs)
-	$(CC) $(CFLAGS) -o void_recast $(void_recast_objs) -lm
-	valgrind --leak-check=full ./void_recast
 
 
-# Create the Static Dynamic Address Object
-stat_dyn_addr.o: stat_dyn_addr.c
-	$(CC) $(CFLAGS) -c stat_dyn_addr.c
+# Create the maze Object
+maze.o: maze.c
+	$(CC) $(CFLAGS) -c maze.c
 
-# Static Dynamic Address Objects
-stat_dyn_addr_objs := stat_dyn_addr.o
+# Float Compile Objects
+maze_objs := maze.o
 
-# Static Dynamic Address Executable
-stat_dyn_addr: $(stat_dyn_addr_objs)
-	$(CC) $(CFLAGS) -o stat_dyn_addr $(stat_dyn_addr_objs) -lm
-	valgrind --leak-check=full ./stat_dyn_addr
+# Float Compile Executable
+maze: $(maze_objs)
+	$(CC) $(CFLAGS) -o maze $(maze_objs)
+	./maze
 
 
+# Create the maze_demo Object
+maze_demo.o: maze_demo.c
+	$(CC) $(CFLAGS) -c maze_demo.c
+
+# Float Compile Objects
+maze_demo_objs := maze_demo.o
+
+# Float Compile Executable
+maze_demo: $(maze_demo_objs)
+	$(CC) $(CFLAGS) -o maze_demo $(maze_demo_objs)
+	./maze_demo
 
 
 # Executable Names
-executable_names := void_recast stat_dyn_addr
+executable_names := maze maze_demo
 
 # Make all
 all: $(executable_names)
