@@ -2,7 +2,9 @@
 
 int main(void){
 
-	fprintf( stdout, "Eirinn the Pupfessor loves her CSE 20133/20232 students!\n" );
+	int the_int = -56;
+
+	fprintf( stdout, "int the_int = %d %x %p\n", the_int, the_int, &the_int );
 	return 0;
 
 }
