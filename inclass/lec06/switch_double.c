@@ -26,7 +26,7 @@ int main(void){
 
 		default:
 			fprintf( stdout, "Error!\n" );
-			fprintf( stdout, "Should be 0-3, is %lf\n", ND_Class );
+			fprintf( stdout, "Should be 0-3, is %.23lf\n", ND_Class );
 			break;
 	}
 
