@@ -7,39 +7,66 @@
 CC := gcc
 
 # CFLAGS are the compiler flages for when we compile C code in this course
-FLAGS := -O2 -g -Wall -Wextra -Wconversion -Wshadow -Werror
-CFLAGS := -std=c2x $(FLAGS)
-
-# Create the Void Recast Object
-void_recast.o: void_recast.c
-	$(CC) $(CFLAGS) -c void_recast.c
-
-# Void Recast Compile Objects
-void_recast_objs := void_recast.o
-
-# Void Recast Compile Executable
-void_recast: $(void_recast_objs)
-	$(CC) $(CFLAGS) -o void_recast $(void_recast_objs) -lm
-	valgrind --leak-check=full ./void_recast
+FLAGS := -O2 -g -Wall -Wextra -Wconversion -Wshadow -Werror -lm
+CFLAGS := -std=c11 $(FLAGS)
 
 
-# Create the Static Dynamic Address Object
-stat_dyn_addr.o: stat_dyn_addr.c
-	$(CC) $(CFLAGS) -c stat_dyn_addr.c
+# Create the Trace Object
+trace.o: trace.c
+	$(CC) $(CFLAGS) -c trace.c
 
-# Static Dynamic Address Objects
-stat_dyn_addr_objs := stat_dyn_addr.o
+# Float Compile Objects
+trace_objs := trace.o
 
-# Static Dynamic Address Executable
-stat_dyn_addr: $(stat_dyn_addr_objs)
-	$(CC) $(CFLAGS) -o stat_dyn_addr $(stat_dyn_addr_objs) -lm
-	valgrind --leak-check=full ./stat_dyn_addr
+# Float Compile Executable
+trace: $(trace_objs)
+	$(CC) $(CFLAGS) -o trace $(trace_objs)
+	./trace
+
+
+# Create the Trace Pointer Object
+trace_ptr.o: trace_ptr.c
+	$(CC) $(CFLAGS) -c trace_ptr.c
+
+# Trace Pointer Objects
+trace_ptr_objs := trace_ptr.o
+
+# Float Compile Executable
+trace_ptr: $(trace_ptr_objs)
+	$(CC) $(CFLAGS) -o trace_ptr $(trace_ptr_objs)
+	./trace_ptr
+
+
+# Create the Fibonacci Object
+fib.o: fib.c
+	$(CC) $(CFLAGS) -c fib.c
+
+# Fibonacci Objects
+fib_objs := fib.o
+
+# Fibonacci Executable and Run
+fib: $(fib_objs)
+	$(CC) $(CFLAGS) -o fib $(fib_objs)
+	./fib
+
+
+# Create the Fib Memo
+fib_memo.o: fib_memo.c
+	$(CC) $(CFLAGS) -c fib_memo.c
+
+# Trace Objects
+fib_memo_objs := fib_memo.o
+
+# Trace Executable and Run
+fib_memo: $(fib_memo_objs)
+	$(CC) $(CFLAGS) -o fib_memo $(fib_memo_objs)
+	./fib_memo
 
 
 
 
 # Executable Names
-executable_names := void_recast stat_dyn_addr
+executable_names := trace trace_ptr fib fib_memo
 
 # Make all
 all: $(executable_names)
