@@ -23,11 +23,13 @@ void function (int a, int * b){
 
   /* Step 1 - How would we print the address and value of what a and b is pointing at? */
 
+   fprintf(stdout, "%d %p %p %p %d\n", a, &a, b, &b, *b );
+
    a = 7 ;
    *b = a ;
    b = &a ;
    *b = 4 ;
 
    /* Step 1b - How would we print the address and value of what b is pointing at? */
-
+   fprintf(stdout, "%d %p %p %p %d\n", a, &a, b, &b, *b );
 }

@@ -1,0 +1,9 @@
+gcc -std=c2x -O2 -g -Wall -Wextra -Wconversion -Wshadow -Werror -lm -c ptr_trace_pbr.c
+gcc -std=c2x -O2 -g -Wall -Wextra -Wconversion -Wshadow -Werror -lm -o ptr_trace_pbr ptr_trace_pbr.o
+./ptr_trace_pbr
+main - int m = 3 at 0x7ffe3fb74840
+main - int n = 5 at 0x7ffe3fb74844
+3 0x7ffe3fb7481c 0x7ffe3fb74844 0x7ffe3fb74810 5
+4 0x7ffe3fb7481c 0x7ffe3fb7481c 0x7ffe3fb74810 4
+main - int m = 3 at 0x7ffe3fb74840
+main - int n = 7 at 0x7ffe3fb74844
