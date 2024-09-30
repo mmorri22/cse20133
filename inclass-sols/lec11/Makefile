@@ -46,7 +46,7 @@ fscanf_objs := fscanf.o
 
 # Trace Executable and Run
 fscanf: $(fscanf_objs)
-	$(CC) $(CFLAGS) -o fscanf $(fscanfc_objs) -lm
+	$(CC) $(CFLAGS) -o fscanf $(fscanf_objs) -lm
 	./fscanf
 
 
