@@ -3,7 +3,6 @@
 int foo( int x );
 int bar( int y );
 
-
 int main(){
     fprintf( stdout, "%d\n", foo(10) );
     return 0;
