@@ -8,33 +8,20 @@ CC := gcc
 
 # CFLAGS are the compiler flages for when we compile C code in this course
 FLAGS := -O2 -g -Wall -Wextra -Wconversion -Wshadow -Werror -lm
-CFLAGS := -std=c11 $(FLAGS)
+CFLAGS := -std=c2x $(FLAGS)
 
 
-# Create the Trace Object
-trace.o: trace.c
-	$(CC) $(CFLAGS) -c trace.c
+# Create the Void Recast
+void_recast.o: void_recast.c
+	$(CC) $(CFLAGS) -c void_recast.c
 
-# Float Compile Objects
-trace_objs := trace.o
+# Void Recast Objects
+void_recast_objs := void_recast.o
 
-# Float Compile Executable
-trace: $(trace_objs)
-	$(CC) $(CFLAGS) -o trace $(trace_objs)
-	./trace
-
-
-# Create the Trace Pointer Object
-trace_ptr.o: trace_ptr.c
-	$(CC) $(CFLAGS) -c trace_ptr.c
-
-# Trace Pointer Objects
-trace_ptr_objs := trace_ptr.o
-
-# Float Compile Executable
-trace_ptr: $(trace_ptr_objs)
-	$(CC) $(CFLAGS) -o trace_ptr $(trace_ptr_objs)
-	./trace_ptr
+# Void Recast Executable and Run 
+void_recast: $(void_recast_objs)
+	$(CC) $(CFLAGS) -o void_recast $(void_recast_objs)
+	./void_recast
 
 
 # Create the Fibonacci Object
@@ -60,13 +47,11 @@ fib_memo_objs := fib_memo.o
 # Trace Executable and Run
 fib_memo: $(fib_memo_objs)
 	$(CC) $(CFLAGS) -o fib_memo $(fib_memo_objs)
-	./fib_memo
-
-
+	valgrind --leak-check=full ./fib_memo
 
 
 # Executable Names
-executable_names := trace trace_ptr fib fib_memo
+executable_names := fib fib_memo void_recast
 
 # Make all
 all: $(executable_names)

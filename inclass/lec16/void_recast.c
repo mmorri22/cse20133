@@ -24,7 +24,7 @@ int main()
 
 
   /* Step 1c - Free the void array*/
-  free(void_array);
+  
 
   return 0;
 }
