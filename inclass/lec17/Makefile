@@ -11,6 +11,32 @@ FLAGS := -O2 -g -Wall -Wextra -Wconversion -Wshadow -Werror -lm
 CFLAGS := -std=c2x $(FLAGS)
 
 
+# Create the Fibonacci Object
+fib.o: fib.c
+	$(CC) $(CFLAGS) -c fib.c
+
+# Fibonacci Objects
+fib_objs := fib.o
+
+# Fibonacci Executable and Run
+fib: $(fib_objs)
+	$(CC) $(CFLAGS) -o fib $(fib_objs)
+	./fib
+
+
+# Create the Fib Memo
+fib_memo.o: fib_memo.c
+	$(CC) $(CFLAGS) -c fib_memo.c
+
+# Trace Objects
+fib_memo_objs := fib_memo.o
+
+# Trace Executable and Run
+fib_memo: $(fib_memo_objs)
+	$(CC) $(CFLAGS) -o fib_memo $(fib_memo_objs)
+	valgrind --leak-check=full ./fib_memo
+
+
 # Create the Static Dynamic Function Object
 stat_dyn_func.o: stat_dyn_func.c
 	$(CC) $(CFLAGS) -c stat_dyn_func.c
