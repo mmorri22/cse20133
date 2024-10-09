@@ -11,6 +11,19 @@ FLAGS := -O2 -g -Wall -Wextra -Wconversion -Wshadow -Werror -lm
 CFLAGS := -std=c2x $(FLAGS)
 
 
+# Create the Double Object
+double.o: double.c
+	$(CC) $(CFLAGS) -c double.c
+
+# Static Dynamic Function Objects
+double_objs := double.o
+
+# Static Dynamic Function Executable
+double: $(double_objs)
+	$(CC) $(CFLAGS) -o double $(double_objs)
+	./double
+
+
 # Create the Static Dynamic Function Object
 stat_dyn_func.o: stat_dyn_func.c
 	$(CC) $(CFLAGS) -c stat_dyn_func.c
