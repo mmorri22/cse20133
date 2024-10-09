@@ -72,7 +72,7 @@ time_comp: clean dyn_array_time stat_array_time stat_reg_time dyn_array_time_eff
 
 
 # Executable Names
-executable_names := stat_dyn_func dyn_array_time stat_array_time stat_reg_time dyn_array_time_eff
+executable_names := stat_dyn_func dyn_array_time stat_array_time stat_reg_time dyn_array_time_eff double
 
 # Make all
 all: $(executable_names)

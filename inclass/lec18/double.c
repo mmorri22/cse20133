@@ -14,5 +14,7 @@ int main(){
         fprintf( stdout, "No Match\n" );
     }
 
+    fprintf( stdout, "%a %a\n", d_result, 0.1 );
+
     return 0;
 }
