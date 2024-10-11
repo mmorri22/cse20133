@@ -1,0 +1,24 @@
+7
+7 at 0x1fff000358
+4.1
+4.2
+57
+35
+-77
+0.52
+3.9
+In main dyn_double_array = 0x4a518c0 at 0x1fff000360
+In func dyn_double_array = 0x4a518c0 at 0x1fff000328
+dyn_double_array[0] = 4.100000 at 0x4a518c0
+dyn_double_array[1] = 4.200000 at 0x4a518c8
+dyn_double_array[2] = 57.000000 at 0x4a518d0
+dyn_double_array[3] = 35.000000 at 0x4a518d8
+dyn_double_array[4] = -77.000000 at 0x4a518e0
+dyn_double_array[5] = 0.520000 at 0x4a518e8
+dyn_double_array[6] = 3.900000 at 0x4a518f0
+In func stat_double_array = 0x1fff000370 at 0x1fff000328
+stat_double_array[0] = 10.100000 at 0x1fff000370
+stat_double_array[1] = -15.700000 at 0x1fff000378
+stat_double_array[2] = -7.600000 at 0x1fff000380
+stat_double_array[3] = 22.000000 at 0x1fff000388
+stat_double_array[4] = 6.510000 at 0x1fff000390
