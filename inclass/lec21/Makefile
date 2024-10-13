@@ -1,4 +1,4 @@
-# This is the Makefile for the Lecture 19 Example.
+# This is the Makefile for the Lecture 21 Example.
 
 # gcc is for the compiler for C
 CC := gcc
@@ -8,11 +8,11 @@ FLAGS := -O2 -g -Wall -Wextra -Wconversion -Wshadow -Werror
 CFLAGS := -std=c2x $(FLAGS)
 
 # Build the main object
-lec19.o: lec19.c
-	$(CC) $(CFLAGS) -c lec19.c
+lec21.o: lec21.c
+	$(CC) $(CFLAGS) -c lec21.c
 
 # All Objects
-library_objects := lec19.o
+library_objects := lec21.o
 
 # Compilation
 library: $(library_objects)
