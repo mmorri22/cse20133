@@ -38,7 +38,6 @@ int main()
 
    fprintf( stdout, "Main - %p at %p\n", int_dyn_arr, &int_dyn_arr );
 
-
    /* Lets use the memory as an arrray */
    int_dyn_arr[0] = 1;
    factorial = 2;
