@@ -8,11 +8,11 @@ FLAGS := -O2 -g -Wall -Wextra -Wconversion -Wshadow -Werror
 CFLAGS := -std=c2x $(FLAGS)
 
 # Build the main object
-lec21.o: lec21.c
-	$(CC) $(CFLAGS) -c lec21.c
+lec22.o: lec22.c
+	$(CC) $(CFLAGS) -c lec22.c
 
 # All Objects
-library_objects := lec21.o
+library_objects := lec22.o
 
 # Compilation
 library: $(library_objects)

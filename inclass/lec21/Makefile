@@ -8,15 +8,15 @@ FLAGS := -O2 -g -Wall -Wextra -Wconversion -Wshadow -Werror
 CFLAGS := -std=c2x $(FLAGS)
 
 # Build the main object
-lec22.o: lec22.c
-	$(CC) $(CFLAGS) -c lec22.c
+structs.o: structs.c
+	$(CC) $(CFLAGS) -c structs.c
 
 # All Objects
-library_objects := lec22.o
+structs_objects := structs.o
 
 # Compilation
-library: $(library_objects)
-	$(CC) $(CFLAGS) -o library $(library_objects) -lm
+structs: $(structs_objects)
+	$(CC) $(CFLAGS) -o structs $(structs_objects) -lm
 
 
 # Build the main object
@@ -43,7 +43,7 @@ struct_align_fix: $(struct_align_fix_objects)
 	$(CC) $(CFLAGS) -o struct_align_fix $(struct_align_fix_objects) -lm
 
 # All executables
-executable_names := library struct_align struct_align_fix
+executable_names := struct_align struct_align_fix
 
 # Make all
 all: $(executable_names)
