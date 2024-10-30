@@ -9,51 +9,39 @@ CFLAGS := -std=c2x $(FLAGS)
 
 
 # Build the main object
-struct_align.o: struct_align.c
-	$(CC) $(CFLAGS) -c struct_align.c
-
-# All Objects
-struct_align_objects := struct_align.o
-
-# Compilation
-struct_align: $(struct_align_objects)
-	$(CC) $(CFLAGS) -o struct_align $(struct_align_objects) -lm
-
-
-# Build the main object
-lec23.o: lec23.c
-	$(CC) $(CFLAGS) -c lec23.c
+lec24.o: lec24.c
+	$(CC) $(CFLAGS) -c lec24.c
 
 # Build the sllist object
 sllist.o: sllist.c
 	$(CC) $(CFLAGS) -c sllist.c
 
 # All Objects
-lec23_objects := lec23.o sllist.o
+lec24_objects := lec24.o sllist.o
 
 # Compilation
-lec23: $(lec23_objects)
-	$(CC) $(CFLAGS) -o lec23 $(lec23_objects) -lm
+lec24: $(lec24_objects)
+	$(CC) $(CFLAGS) -o lec24 $(lec24_objects) -lm
 
 
 # Build the main object
-lec23_sol.o: lec23_sol.c
-	$(CC) $(CFLAGS) -c lec23_sol.c
+lec24_sol.o: lec24_sol.c
+	$(CC) $(CFLAGS) -c lec24_sol.c
 
 # Build the sllist object
 sllist_sol.o: sllist_sol.c
 	$(CC) $(CFLAGS) -c sllist_sol.c
 
 # All Objects
-lec23_sol_objects := lec23_sol.o sllist_sol.o
+lec24_sol_objects := lec24_sol.o sllist_sol.o
 
 # Compilation
-lec23_sol: $(lec23_sol_objects)
-	$(CC) $(CFLAGS) -o lec23_sol $(lec23_sol_objects) -lm
-	valgrind --leak-check=full ./lec23_sol
+lec24_sol: $(lec24_sol_objects)
+	$(CC) $(CFLAGS) -o lec24_sol $(lec24_sol_objects) -lm
+	valgrind --leak-check=full ./lec24_sol
 
 # All executables
-executable_names := lec23 lec23_sol struct_align
+executable_names := lec24 lec24_sol struct_align
 
 # Make all
 all: $(executable_names)
