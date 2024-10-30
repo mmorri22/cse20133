@@ -1,9 +1,8 @@
-wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec24/Makefile
-wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec24/hanoi.c
-wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec24/hanoi_func.c
-wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec24/hanoi_func_sol.c
-wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec24/hanoi_func.h
-wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec24/sllist.c
-wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec24/sllist.h
-wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec24/lec24.c
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec23/Makefile
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec23/struct_align.c
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec23/sllist.c
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec23/sllist_sol.c
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec23/sllist.h
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec23/lec23.c
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec23/lec23_sol.c
 rm setup.sh

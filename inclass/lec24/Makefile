@@ -9,46 +9,51 @@ CFLAGS := -std=c2x $(FLAGS)
 
 
 # Build the main object
-lec24.o: lec24.c
-	$(CC) $(CFLAGS) -c lec24.c
+struct_align.o: struct_align.c
+	$(CC) $(CFLAGS) -c struct_align.c
+
+# All Objects
+struct_align_objects := struct_align.o
+
+# Compilation
+struct_align: $(struct_align_objects)
+	$(CC) $(CFLAGS) -o struct_align $(struct_align_objects) -lm
+
+
+# Build the main object
+lec23.o: lec23.c
+	$(CC) $(CFLAGS) -c lec23.c
 
 # Build the sllist object
 sllist.o: sllist.c
 	$(CC) $(CFLAGS) -c sllist.c
 
 # All Objects
-lec24_objects := lec24.o sllist.o
+lec23_objects := lec23.o sllist.o
 
 # Compilation
-lec24: $(lec24_objects)
-	$(CC) $(CFLAGS) -o lec24 $(lec24_objects) -lm
-	valgrind --leak-check=full ./lec24
+lec23: $(lec23_objects)
+	$(CC) $(CFLAGS) -o lec23 $(lec23_objects) -lm
 
-##############################################
-# Refer to this for your Homework 06 Makefile
-##############################################
 
-# Build the hanoi object
-hanoi.o: hanoi.c
-	$(CC) $(CFLAGS) -c hanoi.c
+# Build the main object
+lec23_sol.o: lec23_sol.c
+	$(CC) $(CFLAGS) -c lec23_sol.c
 
-# Build the hanoi library object
-hanoi_func.o: hanoi_func.c
-	$(CC) $(CFLAGS) -c hanoi_func.c
-
-# Build the stack object
-stack.o: stack.c
-	$(CC) $(CFLAGS) -c stack.c
+# Build the sllist object
+sllist_sol.o: sllist_sol.c
+	$(CC) $(CFLAGS) -c sllist_sol.c
 
 # All Objects
-hanoi_objects := hanoi.o hanoi_func.o stack.o
+lec23_sol_objects := lec23_sol.o sllist_sol.o
 
 # Compilation
-hanoi: $(hanoi_objects)
-	$(CC) $(CFLAGS) -o hanoi $(hanoi_objects) -lm
+lec23_sol: $(lec23_sol_objects)
+	$(CC) $(CFLAGS) -o lec23_sol $(lec23_sol_objects) -lm
+	valgrind --leak-check=full ./lec23_sol
 
 # All executables
-executable_names := lec24 hanoi
+executable_names := lec23 lec23_sol struct_align
 
 # Make all
 all: $(executable_names)

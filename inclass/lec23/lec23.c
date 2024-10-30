@@ -1,56 +1,93 @@
-#include "sllist.h"
+#include <stdio.h>
+#include <stdlib.h>
+
+#define BUFFER 45
+#define DEPARTMENT 4
+
+// Step 4:
+// Struct Definition will go here - lib_entry
+// Must contain an index, title string sized BUFFER,
+// a course_dept sized DEPARTMENT
+// a Course Number course_num and the number of books num_books
 
 
-int main(  ){
+int main( const int argc, const char* argv[] ){
 
-	// Dynamically allocate a sllist
-	sllist* the_list = constructor();
+    // Protect the inputs
+    if( argc != 3 ){
+        fprintf( stdout, "Incorrect Number of Inputs\n" );
+        return EXIT_FAILURE;
+    }
 
-	fprintf( stdout, "Base Addresses: %p %p\n", &the_list, the_list );
+    // Step 1a - Create a read FILE* with the argv[1]
+    
 
-	// Step 9 - Call in main
-	fprintf( stdout, "Head Node Addresses: %p %p\n", &(the_list->head_node), the_list->head_node );
-	print_list( the_list->head_node );
-
-	int choice = -1;
-	while ( choice != 3 ){
-		fprintf( stdout, "---------------------------------\n");
-		fprintf( stdout, "Select a choice:\n");
-		fprintf( stdout, "1: Push value\n");
-		fprintf( stdout, "2: Pop\n");
-		fprintf( stdout, "3: Stop Program\n");
-		fprintf( stdout, "Enter your choice: ");
-		if( fscanf(stdin, "%d", &choice) ){}
-
-		if( choice == 3 )
-			break;
-
-		if( choice == 1 ){
-			int scan_value;
-			fprintf( stdout, "Enter the value to push: ");
-			if( fscanf(stdin, "%d", &scan_value) ){}
-			push( the_list, scan_value );
-		}
-		else{
-
-			// Dr. Morrison's Golden Rule of Pointers!
-			if( /* DELETE THIS COMMENT */ ){
-				pop( the_list );
-			}
-
-		}
-
-		fprintf( stdout, "\nHead Node Addresses: %p %p\n", &(the_list->head_node), the_list->head_node );
-		print_list( the_list->head_node );
-	}
+    // Step 2 - Check to ensure that the file exists
 
 
-	// Step 11 - Call the destructor
-	
+    // Message to the user, reading from the File
+    fprintf( stdout, "Reading from %s\n", argv[1] );
+    fprintf( stdout, "File memory info: %p -> %p\n", &lib_file, lib_file );
+
+    // Step 3 - Read in the first line, which is the number of entries
 
 
-	// Step 5 - Free the sllist
-	
+    // Print the number of entries
+    fprintf( stdout, "Reading %ld Entries...\n", num_entries );
 
-	return EXIT_SUCCESS;
+    // Step 4 - Create a struct ^
+    // Step 5a - Allocate the amount of dynamic memory for that struct
+
+
+    // Print pointers for the dynamically allocated memory
+    fprintf( stdout, "%p -> %p\n", &the_lib, the_lib );
+
+    // Now we can see the location of the pointers
+    fprintf( stdout, "_IO_read_ptr = %p, ", lib_file->_IO_read_ptr);
+    fprintf( stdout, "_IO_read_end = %p\n", lib_file->_IO_read_end);
+
+    // Step 6a - Loop through the array
+    // Remember Dr. Morrison's Golden Rule of Pointers
+    // Put the second bracket after Step 6b
+    // Also, create an iterator before the loop
+
+
+        // Step 7 - Scan in each value
+        
+        
+        
+        
+
+        // Print the values
+        fprintf( stdout, "%s %s %u %u\n", the_lib[iter].title, 
+            the_lib[iter].course_dept, the_lib[iter].course_num,
+            the_lib[iter].num_books);
+
+        // Print the locations of the pointers
+        fprintf( stdout, "_IO_read_ptr = %p, ", lib_file->_IO_read_ptr);
+        fprintf( stdout, "_IO_read_end = %p\n", lib_file->_IO_read_end);
+
+        // Step 6c - Use the break command from the reading
+        
+            
+
+    // Step 6b - Put the bracket from the while loop here  
+    
+
+    // Step 1b - Close the FILE*
+    
+
+    // Step 8a - Create a read FILE* with the argv[1]
+    
+
+    // Step 9 - Print to the output
+
+
+    // Step 8b - Close the 
+    
+
+    // Step 5b - Free the lib_entry array
+    
+
+    return EXIT_SUCCESS;
 }
