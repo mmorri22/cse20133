@@ -16,31 +16,31 @@ sllist* constructor(){
 void push( sllist* the_list, int the_value ){
 
 	// Create a sll_node pointer called insert_node
-	
+	sll_node* insert_node = (sll_node*)malloc( sizeof(sll_node));
 
 	// Set the insert_node's data to the_value and next_node to NULL
-	
-	
+	insert_node->data = the_value;
+	insert_node->next_node = NULL;
 
 	// Dr. Morrison's Golden Rule of Pointers
 	// Check if the list is empty
-	
+	if( the_list->head_node == NULL){
 
 		// Set the head node equal to insert_node
-		
+		the_list->head_node = insert_node;
 
 		// And return
-		
-	
+		return;
+	}
 
 	// Otherwise, create a curr_ptr equal to the head_node
-	
+	sll_node* curr_ptr = the_list->head_node;
 
 	// Set the head node equal to the insert node
-	
+	the_list->head_node = insert_node;
 
 	// Set the head node's next_node equal to curr_ptr
-	
+	the_list->head_node->next_node = curr_ptr;
 	
 }
 

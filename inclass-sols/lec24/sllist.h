@@ -6,8 +6,8 @@
 
 typedef struct sll_node{
 
-	int data;
 	struct sll_node* next_node;
+	int data;
 
 }sll_node;
 

@@ -93,16 +93,22 @@ int main( const int argc, const char* argv[] ){
     fclose( lib_file );
 
     // Step 8a - Create a read FILE* with the argv[1]
-    
+    FILE* write_file = fopen( argv[2], "w" ); 
 
     // Step 9 - Print to the output
+    fprintf( write_file, "%lu\n", num_entries );
 
+    for( iter = 0; iter < num_entries; ++iter){
+        fprintf( write_file, "%s %s %u %u\n", 
+            the_lib[iter].title, the_lib[iter].course_dept,
+            the_lib[iter].course_num, the_lib[iter].num_books);
+    }
 
     // Step 8b - Close the 
-    
+    fclose( write_file );
 
     // Step 5b - Free the lib_entry array
-    
+    free( the_lib );
 
     return EXIT_SUCCESS;
 }
