@@ -34,7 +34,7 @@ int main(  ){
 		else{
 
 			// Dr. Morrison's Golden Rule of Pointers!
-			if( /* DELETE THIS COMMENT */ ){
+			if( the_list->head_node != NULL ){
 				pop( the_list );
 			}
 
@@ -46,11 +46,11 @@ int main(  ){
 
 
 	// Step 11 - Call the destructor
-	
+	destructor( the_list->head_node );
 
 
 	// Step 5 - Free the sllist
-	
+	free( the_list );
 
 	return EXIT_SUCCESS;
 }

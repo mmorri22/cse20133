@@ -48,16 +48,18 @@ void pop( sllist* the_list ){
 
 	// Dr. Morrison's Golden Rule of Pointers
 	// Check if the head node is not empty
-	
+	if( the_list->head_node != NULL ){
 
 		// Set a temp node equal to the current head node
-		
+		sll_node* temp_node = the_list->head_node;
 
 		// Set the head node equal to the head node's next node
-		
+		the_list->head_node = the_list->head_node->next_node;
+
+		// Equivalent: the_list->head_node = temp_node->next_node;
 
 		// Free the temp pointer
-		
+		free(temp_node);
 
 		return;
 	}
@@ -92,12 +94,13 @@ void print_list( sll_node* head_node ){
 void destructor( sll_node* curr_ptr ){
 
 	// Dr. Morrison's Golden Rule of Pointers
-	if( /* Delete this comment */ ){
+	if( curr_ptr != NULL ){
 		
 		// Recursively call destructor on the next node
+		destructor( curr_ptr->next_node );
 
 		// Free the current pointer
-		
+		free(curr_ptr);
 	}
 
 }
