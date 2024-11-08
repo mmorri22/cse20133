@@ -15,8 +15,10 @@ int main(){
 	unsigned int unsigX;
 	float floatY;
 	
+	// fprintf( stdout, "Input an integer: ");
 	std::cout << "Input an integer: ";
 	
+	// fscanf( stdin, "%d",&tempX);
 	if(std::cin >> tempX){
 		
 		std::cout << "The integer is " << tempX << std::endl;

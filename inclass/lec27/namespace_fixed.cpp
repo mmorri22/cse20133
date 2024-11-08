@@ -8,6 +8,9 @@
 **********************************************/
 #include <iostream>
 
+#define COUT std::cout
+#define ENDL std::endl
+
 namespace foo{
 	
 	int cout(){
@@ -17,7 +20,7 @@ namespace foo{
 
 int main(){
 	
-	std::cout << foo::cout() << std::endl;
+	COUT << foo::cout() << ENDL;
 	
 	return 0;
 	
