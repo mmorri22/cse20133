@@ -1,12 +1,9 @@
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec28/Makefile
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec28/call_by.cpp
-wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec28/call_sol.cpp
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec28/inputs.txt
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec28/file_io.cpp
-wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec28/file_io_sol.cpp
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec28/vector.cpp
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec28/count_sort.cpp
-wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec28/count_sort_sol.cpp
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec28/hanoi_stl.cpp
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec28/two_sums.cpp
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec28/sort_comp.cpp
