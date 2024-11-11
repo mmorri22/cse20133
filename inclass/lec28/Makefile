@@ -10,29 +10,6 @@ PP := g++
 FLAGS := -O2 -g -Wall -Wextra -Wconversion -Werror
 CXXFLAGS := -std=c++2a $(FLAGS)
 
-# C++ output example
-# Command: make output
-output.o: output.cpp
-	$(PP) $(CXXFLAGS) -c output.cpp
-
-output_objs := output.o
-
-output: $(output_objs)
-	$(PP) $(CXXFLAGS) -o output $(output_objs) -lm
-	./output
-
-
-# C++ cin example
-# Command: make cin
-cin.o: cin.cpp
-	$(PP) $(CXXFLAGS) -c cin.cpp
-
-cin_objs := cin.o
-
-cin: $(cin_objs)
-	$(PP) $(CXXFLAGS) -o cin $(cin_objs) -lm
-	./cin
-
 
 # C++ File I/O Example
 # Command: make file_io
@@ -43,32 +20,6 @@ file_io_objs := file_io.o
 
 file_io: $(file_io_objs)
 	$(PP) $(CXXFLAGS) -o file_io $(file_io_objs) -lm
-
-
-# C++ Class Example
-# CONTAINS DELIBERATE COMPILER ERRORS
-# SHOWS STUDENTS THE DRAWBACKS OF using namespace std;
-# Command: make namespace
-namespace.o: namespace.cpp
-	$(PP) $(CXXFLAGS) -c namespace.cpp
-
-namespace_objs := namespace.o
-
-namespace: $(namespace_objs)
-	$(PP) $(CXXFLAGS) -o namespace $(namespace_objs) -lm
-
-
-# C++ Fixed Class Example
-# Command: make namespace_fixed
-namespace_fixed.o: namespace_fixed.cpp
-	$(PP) $(CXXFLAGS) -c namespace_fixed.cpp
-
-namespace_fixed_objs := namespace_fixed.o
-
-namespace_fixed: $(namespace_fixed_objs)
-	$(PP) $(CXXFLAGS) -o namespace_fixed $(namespace_fixed_objs) -lm
-	./namespace_fixed
-
 
 # C++ Call By Reference Example
 # Command: make call_by
@@ -81,8 +32,65 @@ call_by: $(call_by_objs)
 	$(PP) $(CXXFLAGS) -o call_by $(call_by_objs) -lm
 	./call_by
 
+# C++ vector example
+# Command: make vector
+vector.o: vector.cpp
+	$(PP) $(CXXFLAGS) -c vector.cpp
 
-executable_names := output cin file_io namespace namespace_fixed call_by
+vector_objs := vector.o
+
+vector: $(vector_objs)
+	$(PP) $(CXXFLAGS) -o vector $(vector_objs) -lm
+	valgrind --leak-check=full ./vector
+
+
+# C++ count_sort example
+# Command: make count_sort
+count_sort.o: count_sort.cpp
+	$(PP) $(CXXFLAGS) -c count_sort.cpp
+
+count_sort_objs := count_sort.o
+
+count_sort: $(count_sort_objs)
+	$(PP) $(CXXFLAGS) -o count_sort $(count_sort_objs) -lm
+	./count_sort
+
+
+# C++ sort_comp Example
+# Command: make file_io
+sort_comp.o: sort_comp.cpp
+	$(PP) -std=c++2a -c sort_comp.cpp
+
+sort_comp_objs := sort_comp.o
+
+sort_comp: $(sort_comp_objs)
+	$(PP) -std=c++2a -o sort_comp $(sort_comp_objs) -lm
+
+
+# C++ std::stack Hanoi Example
+# Command: make namespace
+hanoi_stl.o: hanoi_stl.cpp
+	$(PP) $(CXXFLAGS) -c hanoi_stl.cpp
+
+hanoi_stl_objs := hanoi_stl.o
+
+hanoi_stl: $(hanoi_stl_objs)
+	$(PP) $(CXXFLAGS) -o hanoi_stl $(hanoi_stl_objs) -lm
+
+
+# C++ Two Sums Example
+# Command: make two_sums
+two_sums.o: two_sums.cpp
+	$(PP) $(CXXFLAGS) -c two_sums.cpp
+
+two_sums_objs := two_sums.o
+
+two_sums: $(two_sums_objs)
+	$(PP) $(CXXFLAGS) -o two_sums $(two_sums_objs) -lm
+	./two_sums
+
+
+executable_names := file_io call_by vector count_sort sort_comp hanoi_stl two_sums
 
 # Make clean
 clean :
