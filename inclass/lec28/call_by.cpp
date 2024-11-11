@@ -15,8 +15,13 @@ void pass_by_ref( int* print_int, double* print_dbl ){
 void call_by_ref( int& print_int, double& print_dbl ){
 	
 	// In-class code here
-	
-	
+	std::cout << print_int << " " << print_dbl << std::endl;
+
+	std::cout << &print_int << " " << &print_dbl << std::endl;
+
+	++print_int;
+	print_dbl *= 2;
+
 }
 
 int main(){
@@ -32,10 +37,10 @@ int main(){
 	pass_by_ref( &print_int, &print_dbl );
 
 	// Initial Call by Reference
-	
+	call_by_ref( print_int, print_dbl );
 
 	// Call again to show changes
-	
+	call_by_ref( print_int, print_dbl );
 	
 	return EXIT_SUCCESS;
 }
