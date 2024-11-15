@@ -1,0 +1,11 @@
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec30/Makefile
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec30/Prob1.cpp
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec30/Prob2.cpp
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec30/Prob3.cpp
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec30/Prob4.cpp
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec30/Prob5.cpp
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec30/Prob6.cpp
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec30/Prob7.cpp
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec30/Prob8.cpp
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec30/Prob9.cpp
+rm setup.sh
