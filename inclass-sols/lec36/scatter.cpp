@@ -17,6 +17,12 @@ int main() {
         y_coor.push_back( 0.25 * exp(temp_theta) * cos(50 * temp_theta) );
     }
 
+    auto scatter_plot = scatter3( x_coor, y_coor, theta );
+
+    scatter_plot->marker_color("#00843D");
+    scatter_plot->marker_face_color("#C99700");
+
+    show();
 
     return 0;
 }
