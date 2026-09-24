@@ -1,59 +1,70 @@
+/********************************
+ * File Name: calibrate.c
+ * Student's Name: Ken Thompson
+ * Student's Notre Dame NetID: kthompso@nd.edu
+ * Date Started: 8/15/1969
+ *******************************/
+
 #include <stdio.h>
 #include "calibrate.h"
 
+/* Running count of every raw sample read this session */
 int total_samples = 0;
 
-void read_raw( int channel, int* raw_value ){
+void read_raw( int channel_number, int* raw_count ){
 
-    *raw_value = channel * 100;
+    *raw_count = channel_number * 100;
 
     total_samples = total_samples + 1;
 }
 
-void apply_gain( int gain, int* value ){
+void apply_gain( int gain_factor, int* channel_value ){
 
-    unsigned int i;
-    int original = *value;
+    unsigned int gain_iter;
+    int original_value = *channel_value;
 
-    for( i = gain - 1; i >= 0; --i ){
-        *value = *value + original;
+    for( gain_iter = gain_factor - 1; gain_iter >= 0; --gain_iter ){
+        *channel_value = *channel_value + original_value;
     }
 }
 
-void apply_offset( int offset, int total ){
+void apply_offset( int offset_value, int bridge_total ){
 
-    total = total + offset;
+    bridge_total = bridge_total + offset_value;
 
-    fprintf( stdout, "Offset of %d applied. Total is now %d\n", offset, total );
+    fprintf( stdout, "Offset of %d applied. Total is now %d\n",
+             offset_value, bridge_total );
 }
 
-void sum_channels( int* channel_a, int* channel_b, int* total ){
+void sum_channels( int* channel_a, int* channel_b, int* bridge_total ){
 
     if( channel_b == NULL ){
         fprintf( stdout, "Channel B was not supplied\n" );
     }
 
-    *total = *channel_a + *channel_a;
+    *bridge_total = *channel_a + *channel_a;
 }
 
-void print_reading( int channel, int* value ){
+void print_reading( int channel_number, int* channel_value ){
 
     fprintf( stdout, "Channel %d: %d at %p (parameter at %p)\n",
-             channel, *value, (void*)value, (void*)&value );
+             channel_number, *channel_value,
+             (void*)channel_value, (void*)&channel_value );
 }
 
-void print_scaled( int channel, int* value ){
+void print_scaled( int channel_number, int* channel_value ){
 
-    double scaled = *value * 0.001;
+    double scaled_voltage = *channel_value * 0.001;
 
-    fprintf( stdout, "Channel %d scaled reading: %d volts\n", channel, scaled );
+    fprintf( stdout, "Channel %d scaled reading: %d volts\n",
+             channel_number, scaled_voltage );
 }
 
 void report_samples( long unsigned int sample_count ){
 
     int total_samples = 0;
 
-    int reported = sample_count;
+    int reported_count = sample_count;
 
-    fprintf( stdout, "Samples taken: %d\n", reported + total_samples );
+    fprintf( stdout, "Samples taken: %d\n", reported_count + total_samples );
 }
