@@ -62,7 +62,7 @@ void print_scaled( int channel_number, int* channel_value ){
 
 void report_samples( long unsigned int sample_count ){
 
-    int total_samples = 0;
+    int total_samples = 10;
 
     int reported_count = sample_count;
 
