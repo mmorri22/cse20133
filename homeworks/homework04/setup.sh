@@ -5,3 +5,4 @@ for f in hw04.c calibrate.c calibrate.h; do
 done
 echo "Downloaded: hw04.c  calibrate.c  calibrate.h"
 echo "You must write your own Makefile."
+rm setup.sh
