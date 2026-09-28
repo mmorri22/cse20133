@@ -32,7 +32,19 @@ int main(){
     int* active_channel = NULL;
 
     for( channel_iter = 0; channel_iter < num_channels; ++channel_iter ){
+
+        /* Select the channel value variable to assign to the active channel*/
+        if( channel_iter == 1 ){
+            active_channel = &channel_2_value;
+        }
         fprintf( stdout, "Calibrating channel %u\n", channel_iter + 1 );
+
+        /* Read the raw counts from the current channel */
+        read_raw( channel_iter + 1, active_channel );
+
+        /* Condition each channel by its gain factor */
+        apply_gain( gain_factor, active_channel );
+
     }
 
     /* Read the raw counts from both channels */
