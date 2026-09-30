@@ -47,15 +47,6 @@ int main(){
 
     }
 
-    /* Read the raw counts from both channels */
-    read_raw( 1, &channel_1_value );
-    read_raw( 2, &channel_2_value );
-
-    /* Condition each channel by its gain factor */
-    apply_gain( gain_factor, active_channel );
-
-    apply_gain( gain_factor, &gain_factor );
-
     /* Combine the two conditioned channels */
     sum_channels( &channel_1_value, &channel_2_value, &bridge_total );
 
