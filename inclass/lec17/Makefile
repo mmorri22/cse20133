@@ -1,7 +1,7 @@
 # Author: Prof. Matthew Morrison
 # E-mail: matt.morrison@nd.edu
 #
-# This is the Makefile for the Lecture 13 Example.
+# This is the Makefile for the Lecture 18 Example.
 
 # gcc is for the compiler for C
 CC := gcc
@@ -9,6 +9,18 @@ CC := gcc
 # CFLAGS are the compiler flages for when we compile C code in this course
 FLAGS := -O2 -g -Wall -Wextra -Wconversion -Wshadow -Werror -lm
 CFLAGS := -std=c2x $(FLAGS)
+
+# Create the Void Recast
+void_recast.o: void_recast.c
+	$(CC) $(CFLAGS) -c void_recast.c
+
+# Void Recast Objects
+void_recast_objs := void_recast.o
+
+# Void Recast Executable and Run 
+void_recast: $(void_recast_objs)
+	$(CC) $(CFLAGS) -o void_recast $(void_recast_objs)
+	./void_recast
 
 # Create the Better Malloc Object
 maze_demo.o: maze_demo.c
@@ -37,7 +49,7 @@ maze: $(maze_objs)
 
 
 # Executable Names
-executable_names := maze_demo maze
+executable_names := maze_demo maze void_recast
 
 # Make all
 all: $(executable_names)
