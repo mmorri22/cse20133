@@ -38,41 +38,41 @@ stat_dyn_func: $(stat_dyn_func_objs)
 
 
 # Create the Dynamic Array Run Time Object
-dyn_array_time.o: dyn_array_time.c
-	$(CC) $(CFLAGS) -c dyn_array_time.c
+dyn_array_reg.o: dyn_array_reg.c
+	$(CC) $(CFLAGS) -c dyn_array_reg.c
 
 # Dynamic Array Run Time Objects
-dyn_array_time_eff_objs := dyn_array_time.o
+dyn_array_reg_objs := dyn_array_time.o
 
 # Dynamic Array Run Time Executable
-dyn_array_time_eff: $(dyn_array_time_eff_objs)
-	$(CC) $(CFLAGS) -o dyn_array_time $(dyn_array_time_eff_objs)
-	./dyn_array_time_eff
+dyn_array_reg: $(dyn_array_reg_objs)
+	$(CC) $(CFLAGS) -o dyn_array_reg $(dyn_array_reg_objs)
+	./dyn_array_reg
 
 
 # Inefficient Dynamic Array Compilation
-dyn_array_time:
-	gcc dyn_array_time.c -o dyn_array_time
-	./dyn_array_time
+dyn_array_ineff:
+	gcc dyn_array.c -o dyn_array_ineff
+	./dyn_array_ineff
 
 # Simple Stat Array Compiler that is *not* optimized
-stat_array_time:
-	gcc stat_array_time.c -o stat_array_time
-	./stat_array_time
+stat_array_ineff:
+	gcc stat_array.c -o stat_array_ineff
+	./stat_array_ineff
 
 # Simple Stat Array Compiler that is *not* optimized
-stat_reg_time:
-	gcc stat_reg_time.c -o stat_reg_time
-	./stat_reg_time
+stat_array_reg_ineff:
+	gcc stat_array_reg.c -o stat_array_reg_ineff
+	./stat_array_reg_ineff
 
 
 
 # Make Time Comparisons
-time_comp: clean dyn_array_time stat_array_time stat_reg_time dyn_array_time_eff
+time_comp: clean dyn_array_reg stat_array_ineff stat_array_reg_ineff dyn_array_ineff
 
 
 # Executable Names
-executable_names := stat_dyn_func dyn_array_time stat_array_time stat_reg_time dyn_array_time_eff double
+executable_names := stat_dyn_func dyn_array_reg stat_array_ineff stat_array_reg_ineff dyn_array_ineff double
 
 # Make all
 all: $(executable_names)
