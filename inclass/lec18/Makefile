@@ -1,7 +1,7 @@
 # Author: Prof. Matthew Morrison
 # E-mail: matt.morrison@nd.edu
 #
-# This is the Makefile for the Lecture 12 Example.
+# This is the Makefile for the Lecture 18 Example.
 
 # gcc is for the compiler for C
 CC := gcc
