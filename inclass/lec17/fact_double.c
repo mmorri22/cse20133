@@ -1,19 +1,23 @@
 #include <stdio.h>
 
+double factorial( double fact_val );
+
 int main( void ){
 
-	unsigned int time; 
-	// unsigned int value = 170;
-	unsigned int value = 171;
-	double factorial = 1;
+	// In lecture, run with 35 and then 170 and then 171
+	double value = 35;
 
-	for( time = 1; time <= value; ++time ){
-	
-		factorial *= (double)time;
+	double factorial_result = factorial(value);
 
-		fprintf( stdout, "%p %le %la\n", &factorial, factorial, factorial );
-
-	}
+	fprintf( stdout, "%p %f %a\n", &factorial_result, factorial_result, factorial_result );
 
 	return 0;
+}
+
+double factorial( double fact_val ){
+
+	if(fact_val <= 0)
+		return 1;
+
+	return fact_val * factorial (fact_val - 1);
 }

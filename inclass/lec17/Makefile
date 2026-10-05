@@ -49,7 +49,7 @@ maze: $(maze_objs)
 
 
 # Executable Names
-executable_names := maze_demo maze void_recast
+executable_names := maze_demo maze void_recast fact_int fact_float fact_double fact_luint
 
 # Make all
 all: $(executable_names)

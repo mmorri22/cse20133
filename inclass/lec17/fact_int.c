@@ -1,20 +1,23 @@
 #include <stdio.h>
 
+int factorial( int fact_val );
+
 int main( void ){
 
-	int iter;
-	// In lecture, run with 13 and then comment 13 and uncomment 14
-	//int value = 15; 
-	int value = 20;
-	int factorial = 1;
+	// In lecture, run with 12 and then 13
+	int value = 12;
 
-	for( iter = 1; iter <= value; ++iter ){
-	
-		factorial *= iter;
+	int factorial_result = factorial(value);
 
-		fprintf( stdout, "%p %d %x\n", &factorial, factorial, factorial );
-
-	}
+	fprintf( stdout, "%p %d %x\n", &factorial_result, factorial_result, factorial_result );
 
 	return 0;
+}
+
+int factorial( int fact_val ){
+
+	if(fact_val == 0)
+		return 1;
+
+	return fact_val * factorial (fact_val - 1);
 }
