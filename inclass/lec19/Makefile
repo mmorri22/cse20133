@@ -11,19 +11,6 @@ FLAGS := -O2 -g -Wall -Wextra -Wconversion -Wshadow -Werror -lm
 CFLAGS := -std=c2x $(FLAGS)
 
 
-# Create the Double Object
-double.o: double.c
-	$(CC) $(CFLAGS) -c double.c
-
-# Static Dynamic Function Objects
-double_objs := double.o
-
-# Static Dynamic Function Executable
-double: $(double_objs)
-	$(CC) $(CFLAGS) -o double $(double_objs)
-	./double
-
-
 # Create the Static Dynamic Function Object
 stat_dyn_func.o: stat_dyn_func.c
 	$(CC) $(CFLAGS) -c stat_dyn_func.c
@@ -38,41 +25,51 @@ stat_dyn_func: $(stat_dyn_func_objs)
 
 
 # Create the Dynamic Array Run Time Object
-dyn_array_reg.o: dyn_array_reg.c
-	$(CC) $(CFLAGS) -c dyn_array_reg.c
+dyn_array_eff.o: dyn_array.c
+	$(CC) $(CFLAGS) -c dyn_array.c -o dyn_array_eff.o
 
 # Dynamic Array Run Time Objects
-dyn_array_reg_objs := dyn_array_time.o
+dyn_array_eff_objs := dyn_array_eff.o
 
-# Dynamic Array Run Time Executable
-dyn_array_reg: $(dyn_array_reg_objs)
-	$(CC) $(CFLAGS) -o dyn_array_reg $(dyn_array_reg_objs)
-	./dyn_array_reg
+dyn_array_eff: $(dyn_array_eff_objs)
+	$(CC) $(CFLAGS) -o dyn_array_eff $(dyn_array_eff_objs)
+	./dyn_array_eff
+	@echo "----------------------------------------------"
 
 
 # Inefficient Dynamic Array Compilation
-dyn_array_ineff:
-	gcc dyn_array.c -o dyn_array_ineff
-	./dyn_array_ineff
+dyn_array:
+	gcc -std=c2x dyn_array.c -o dyn_array
+	./dyn_array
+	@echo "----------------------------------------------"
+
+dyn_array_stat:
+	gcc -std=c2x dyn_array_stat.c -o dyn_array_stat
+	./dyn_array_stat
+	@echo "----------------------------------------------"
+
+dyn_array_reg:
+	gcc -std=c2x dyn_array_reg.c -o dyn_array_reg
+	./dyn_array_reg
+	@echo "----------------------------------------------"
 
 # Simple Stat Array Compiler that is *not* optimized
-stat_array_ineff:
-	gcc stat_array.c -o stat_array_ineff
-	./stat_array_ineff
+stat_array:
+	gcc -std=c2x stat_array.c -o stat_array
+	./stat_array
+	@echo "----------------------------------------------"
 
 # Simple Stat Array Compiler that is *not* optimized
-stat_array_reg_ineff:
-	gcc stat_array_reg.c -o stat_array_reg_ineff
-	./stat_array_reg_ineff
-
-
+stat_array_reg:
+	gcc -std=c2x stat_array_reg.c -o stat_array_reg
+	./stat_array_reg
+	@echo "----------------------------------------------"
 
 # Make Time Comparisons
-time_comp: clean dyn_array_reg stat_array_ineff stat_array_reg_ineff dyn_array_ineff
-
+time_comp: clean dyn_array dyn_array_stat dyn_array_reg stat_array stat_array_reg dyn_array_eff
 
 # Executable Names
-executable_names := stat_dyn_func dyn_array_reg stat_array_ineff stat_array_reg_ineff dyn_array_ineff double
+executable_names := stat_dyn_func dyn_array dyn_array_eff dyn_array_stat dyn_array_reg stat_array stat_array_reg
 
 # Make all
 all: $(executable_names)

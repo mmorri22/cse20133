@@ -4,28 +4,29 @@
 
 #define NMAX 1000000
 
-
 void fibonacci()
 {
 
 	// Allocate the memory once
 	unsigned int* results_buffer = (unsigned int *)malloc( NMAX * sizeof(unsigned int) );
 
-	/* First array element  */
-	results_buffer[0] = 1;
+	unsigned int first_num = 1;
 
-	/* Second array element */
-	results_buffer[1] = 1;
+	unsigned int second_num = 1;
 
 	long unsigned int iter;
 	for (iter = 2; iter < NMAX; iter++) {
 
-		results_buffer[ iter ] = results_buffer[ iter-2 ] + results_buffer[ iter - 1 ];
+		unsigned int third_num = first_num + second_num;
 
+		results_buffer[ iter ] = third_num;
+
+		first_num = second_num;
+
+		second_num = third_num;
 	}
 
-	// Free the memory
-	free( results_buffer );
+	free(results_buffer);
 
 }
 

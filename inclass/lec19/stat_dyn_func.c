@@ -5,7 +5,7 @@
 /* Step 2 - Create a compiler directive for a size of 5 elements */
 #define ELEMENT_SIZE 5
 
-void print_dyn( long unsigned int dyn_arr_len, double* dyn_double_array );
+void print_dyn( long unsigned int dyn_arr_len, int* dyn_int_array );
 
 void print_stat( double stat_double_array[] );
 
@@ -18,55 +18,54 @@ int main( void ){
   long unsigned int dyn_arr_len;
 
   /* Step 5b - Read in a size using fscanf */
-  if( fscanf( stdin, "%lu", &dyn_arr_len ) == -1 ){
+  if( fscanf( stdin, "%lu", &dyn_arr_len ) == -1 )
     return EXIT_FAILURE;
-  }
 
   /* Step 5c - Print the location and value of this variable */
   fprintf( stdout, "%lu at %p\n", dyn_arr_len, &dyn_arr_len );
 
   /* Step 5d - Dynamically allocate an int array using the size */
-  double* dyn_double_array = (double *)malloc( dyn_arr_len*sizeof(double) );
+  int* dyn_int_array = (int *)malloc( dyn_arr_len*sizeof(int) );
 
   /* Step 6 - Read in the number of values using fscanf into the dynamic array */
   long unsigned int iter;
   for(iter = 0; iter < dyn_arr_len; ++iter){
 
-      double temp;
+      int temp;
 
-      if( fscanf( stdin, "%lf", &temp ) == -1 ){
+      if( fscanf( stdin, "%d", &temp ) == -1 ){
         return EXIT_FAILURE;
       }
 
-      dyn_double_array[iter] = temp;
+      dyn_int_array[iter] = temp;
 
   }
 
   /* Step 7 - Print the address and values of each location in the dynamic array */
   /* Step 7.1 - Location and value of the register containing the base address */
-  fprintf( stdout, "In main dyn_double_array = %p at %p\n", dyn_double_array, &dyn_double_array );
+  fprintf( stdout, "In main dyn_int_array = %p at %p\n", dyn_int_array, &dyn_int_array );
 
-  print_dyn( dyn_arr_len, dyn_double_array );
+  print_dyn( dyn_arr_len, dyn_int_array );
 
   print_stat( stat_double_array );
 
   /* Step 8 - Free the Dynamic Array */
-  free(dyn_double_array);
+  free(dyn_int_array);
 
   /* Step 3 - Now that we have #include<stdlib.h>, use compiler directive EXIT_SUCCESS for return */
   return EXIT_SUCCESS;
 }
 
 
-void print_dyn( long unsigned int dyn_arr_len, double* dyn_double_array ){
+void print_dyn( long unsigned int dyn_arr_len, int* dyn_int_array ){
 
-  fprintf( stdout, "In func dyn_double_array = %p at %p\n", dyn_double_array, &dyn_double_array );
+  fprintf( stdout, "In func dyn_int_array = %p at %p\n", dyn_int_array, &dyn_int_array );
 
   /* Step 7.2 - Location and value of each element in the dynamic array */
   long unsigned int iter;
   for(iter = 0; iter < dyn_arr_len; ++iter){
 
-    fprintf( stdout, "dyn_double_array[%lu] = %lf at %p\n", iter, dyn_double_array[iter], &dyn_double_array[iter] );
+    fprintf( stdout, "dyn_int_array[%lu] = %d at %p\n", iter, dyn_int_array[iter], &dyn_int_array[iter] );
   }
 
 }

@@ -8,24 +8,25 @@
 void fibonacci()
 {
 
-	// Allocate the memory once
-	unsigned int* results_buffer = (unsigned int *)malloc( NMAX * sizeof(unsigned int) );
+	unsigned int results_buffer[NMAX];
 
-	/* First array element  */
-	results_buffer[0] = 1;
+	register unsigned int first_num = 1;
 
-	/* Second array element */
-	results_buffer[1] = 1;
+	register unsigned int second_num = 1;
 
-	long unsigned int iter;
+	register unsigned int third_num; // No need to re-allocate ever loop
+
+	register long unsigned int iter;
 	for (iter = 2; iter < NMAX; iter++) {
 
-		results_buffer[ iter ] = results_buffer[ iter-2 ] + results_buffer[ iter - 1 ];
+		third_num = first_num + second_num;
 
+		results_buffer[ iter ] = third_num;
+
+		first_num = second_num;
+
+		second_num = third_num;
 	}
-
-	// Free the memory
-	free( results_buffer );
 
 }
 
@@ -38,6 +39,8 @@ int main(void) {
 	/* clock_t is equivalent to a 64-bit signed integer */
 	/* We start the profiling */
 	clock_t time_start = clock();
+
+	// Allocate the memory once
 
 	long unsigned int iter;
 	for (iter = 0; iter < num_tests; ++iter)
