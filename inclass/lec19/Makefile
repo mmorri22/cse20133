@@ -7,7 +7,7 @@
 CC := gcc
 
 # CFLAGS are the compiler flages for when we compile C code in this course
-FLAGS := -O2 -g -Wall -Wextra -Wconversion -Wshadow -Werror -lm
+FLAGS := -O2 -g -Wall -Wextra -Wconversion -Wshadow -Werror -lm -lgmp
 CFLAGS := -std=c2x $(FLAGS)
 
 
@@ -39,7 +39,7 @@ dyn_array_eff: $(dyn_array_eff_objs)
 
 # Inefficient Dynamic Array Compilation
 dyn_array:
-	gcc -std=c2x dyn_array.c -o dyn_array
+	gcc -std=c2x -g -Wall -Wextra -Wconversion -Wshadow -Werror dyn_array.c -o dyn_array
 	./dyn_array
 	@echo "----------------------------------------------"
 
