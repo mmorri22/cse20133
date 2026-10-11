@@ -43,11 +43,6 @@ dyn_array:
 	./dyn_array
 	@echo "----------------------------------------------"
 
-dyn_array_stat:
-	gcc -std=c2x dyn_array_stat.c -o dyn_array_stat
-	./dyn_array_stat
-	@echo "----------------------------------------------"
-
 dyn_array_reg:
 	gcc -std=c2x dyn_array_reg.c -o dyn_array_reg
 	./dyn_array_reg
@@ -66,7 +61,7 @@ stat_array_reg:
 	@echo "----------------------------------------------"
 
 # Make Time Comparisons
-time_comp: clean dyn_array dyn_array_stat dyn_array_reg stat_array stat_array_reg dyn_array_eff
+time_comp: clean dyn_array dyn_array_reg stat_array stat_array_reg dyn_array_eff
 
 # Executable Names
 executable_names := stat_dyn_func dyn_array dyn_array_eff dyn_array_stat dyn_array_reg stat_array stat_array_reg
