@@ -12,7 +12,7 @@ void print_stat( double stat_double_array[] );
 int main( void ){
 
   /* Step 4 - Create a static integer array with five elements */
-  register double stat_double_array[ELEMENT_SIZE] = {10.1, -15.7, -7.6, 22, 6.51};
+  double stat_double_array[ELEMENT_SIZE] = {10.1, -15.7, -7.6, 22, 6.51};
 
   /* Step 5a - Create a variable for the size of the dynamic array */
   register long unsigned int dyn_arr_len;
@@ -57,7 +57,7 @@ int main( void ){
 }
 
 
-void print_dyn( register long unsigned int dyn_arr_len, int* dyn_int_array ){
+void print_dyn( register long unsigned int dyn_arr_len, register int* dyn_int_array ){
 
   fprintf( stdout, "In func dyn_int_array = %p at %p\n", dyn_int_array, &dyn_int_array );
 
