@@ -5,7 +5,7 @@
 /* Step 2 - Create a compiler directive for a size of 5 elements */
 #define ELEMENT_SIZE 5
 
-void print_dyn( register long unsigned int dyn_arr_len, int* dyn_int_array );
+void print_dyn(  long unsigned int dyn_arr_len, int* dyn_int_array );
 
 void print_stat( double stat_double_array[] );
 
@@ -15,7 +15,7 @@ int main( void ){
   double stat_double_array[ELEMENT_SIZE] = {10.1, -15.7, -7.6, 22, 6.51};
 
   /* Step 5a - Create a variable for the size of the dynamic array */
-  register long unsigned int dyn_arr_len;
+  long unsigned int dyn_arr_len;
 
   /* Step 5b - Read in a size using fscanf */
   if( fscanf( stdin, "%lu", &dyn_arr_len ) == -1 )
@@ -25,10 +25,10 @@ int main( void ){
   fprintf( stdout, "%lu at %p\n", dyn_arr_len, &dyn_arr_len );
 
   /* Step 5d - Dynamically allocate an int array using the size */
-  register int* dyn_int_array = (int *)malloc( dyn_arr_len*sizeof(int) );
+  int* dyn_int_array = (int *)malloc( dyn_arr_len*sizeof(int) );
 
   /* Step 6 - Read in the number of values using fscanf into the dynamic array */
-  register long unsigned int iter;
+   long unsigned int iter;
   for(iter = 0; iter < dyn_arr_len; ++iter){
 
       int temp;
@@ -42,7 +42,7 @@ int main( void ){
   }
 
   /* Step 7 - Print the address and values of each location in the dynamic array */
-  /* Step 7.1 - Location and value of the register containing the base address */
+  /* Step 7.1 - Location and value of the  containing the base address */
   fprintf( stdout, "In main dyn_int_array = %p at %p\n", dyn_int_array, &dyn_int_array );
 
   print_dyn( dyn_arr_len, dyn_int_array );
@@ -57,12 +57,12 @@ int main( void ){
 }
 
 
-void print_dyn( register long unsigned int dyn_arr_len, register int* dyn_int_array ){
+void print_dyn(  long unsigned int dyn_arr_len, int* dyn_int_array ){
 
   fprintf( stdout, "In func dyn_int_array = %p at %p\n", dyn_int_array, &dyn_int_array );
 
   /* Step 7.2 - Location and value of each element in the dynamic array */
-  register long unsigned int iter;
+   long unsigned int iter;
   for(iter = 0; iter < dyn_arr_len; ++iter){
 
     fprintf( stdout, "dyn_int_array[%lu] = %d at %p\n", iter, dyn_int_array[iter], &dyn_int_array[iter] );
