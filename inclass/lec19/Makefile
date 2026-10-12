@@ -21,7 +21,6 @@ stat_dyn_func_objs := stat_dyn_func.o
 # Static Dynamic Function Executable
 stat_dyn_func: $(stat_dyn_func_objs)
 	$(CC) $(CFLAGS) -o stat_dyn_func $(stat_dyn_func_objs)
-	valgrind --leak-check=full ./stat_dyn_func
 
 
 # Create the Dynamic Array Run Time Object
