@@ -12,14 +12,16 @@ int main()
 {
 
   /* Variables */
-   float* int_dyn_arr;
+   float* dyn_arr_ptr;
    long unsigned int num_elements ;
    long unsigned int iterator;
    float factorial;
 
 
    fprintf( stdout, "Enter number of elements in integer values (greater than 0): ") ;
-   fscanf( stdin, "%lu", &num_elements) ;
+   if( fscanf( stdin, "%lu", &num_elements) == -1 ){
+    return EXIT_FAILURE;
+   }
 
    /* Check for memory leak */
    if (num_elements == 0){
@@ -28,23 +30,29 @@ int main()
    }
 
    /* How do we pass a pointer to a pointer to allocate memory? */
-   alloc_memory(num_elements, &int_dyn_arr);
+   fprintf(stdout, "In main dyn_arr_ptray before alloc_memory - %p %p\n", &dyn_arr_ptr, dyn_arr_ptr );
+
+   alloc_memory(num_elements, &dyn_arr_ptr);
+
+  fprintf(stdout, "In main dyn_arr_ptray after alloc_memory - %p %p\n", &dyn_arr_ptr, dyn_arr_ptr );  
 
    /* Lets use the memory as an arrray */
-   int_dyn_arr[0] = 1;
+   dyn_arr_ptr[0] = 1;
    factorial = (float)2;
    for (iterator = 1; iterator < num_elements; ++iterator){
 
-      int_dyn_arr[iterator] = factorial * int_dyn_arr[iterator-1] ;
+      dyn_arr_ptr[iterator] = factorial * dyn_arr_ptr[iterator-1] ;
       ++factorial;
 
    }
 
    /* Print the memory addresses and data */
-   print_memory(num_elements, int_dyn_arr);
+   print_memory(num_elements, dyn_arr_ptr);
 
    /* Free the memory */
-   free_memory( &int_dyn_arr );
+   free_memory( &dyn_arr_ptr );
+
+   fprintf(stdout, "In main dyn_arr_ptr after free_memory - %p %p\n", &dyn_arr_ptr, dyn_arr_ptr );
 
    return 0;
 }
@@ -62,6 +70,8 @@ void alloc_memory (long unsigned int array_len, float **dyn_arr_ptr )
       fprintf(stderr, "Oops, we're out of memory\n") ;
       exit(-1);
    }
+
+   fprintf(stdout, "In alloc memory - %p %p %p\n", &dyn_arr_ptr, dyn_arr_ptr, *dyn_arr_ptr );
 }
 
 
@@ -76,7 +86,10 @@ void print_memory(long unsigned int array_len, float* dyn_arr_ptr){
 
 void free_memory(float** dyn_arr_ptr){
 
+  fprintf(stdout, "In free_memory before free - %p %p %p\n", &dyn_arr_ptr, dyn_arr_ptr, *dyn_arr_ptr );
+
   /* Free the memory - Be sure to de-reference! */
   free(*dyn_arr_ptr) ;
 
+  fprintf(stdout, "In free_memory after free - %p %p %p\n", &dyn_arr_ptr, dyn_arr_ptr, *dyn_arr_ptr );
 }
