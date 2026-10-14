@@ -30,8 +30,6 @@ int main()
    }
 
    /* How do we pass a pointer to a pointer to allocate memory? */
-   fprintf(stdout, "In main dyn_arr_ptray before alloc_memory - %p %p\n", &dyn_arr_ptr, dyn_arr_ptr );
-
    alloc_memory(num_elements, &dyn_arr_ptr);
 
   fprintf(stdout, "In main dyn_arr_ptray after alloc_memory - %p %p\n", &dyn_arr_ptr, dyn_arr_ptr );  
