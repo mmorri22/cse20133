@@ -19,17 +19,6 @@ argc_argv: $(argc_argv_objects)
 	$(CC) $(CFLAGS) -o argc_argv $(argc_argv_objects) -lm
 
 # Build the main object
-argc_argv_mod.o: argc_argv_mod.c
-	$(CC) $(CFLAGS) -c argc_argv_mod.c
-
-# All Objects
-argc_argv_mod_objects := argc_argv_mod.o
-
-# Compilation
-argc_argv_mod: $(argc_argv_mod_objects)
-	$(CC) $(CFLAGS) -o argc_argv_mod $(argc_argv_mod_objects) -lm
-
-# Build the main object
 structs.o: structs.c
 	$(CC) $(CFLAGS) -c structs.c
 
@@ -41,31 +30,8 @@ structs: $(structs_objects)
 	$(CC) $(CFLAGS) -o structs $(structs_objects) -lm
 
 
-# Build the main object
-struct_align.o: struct_align.c
-	$(CC) $(CFLAGS) -c struct_align.c
-
-# All Objects
-struct_align_objects := struct_align.o
-
-# Compilation
-struct_align: $(struct_align_objects)
-	$(CC) $(CFLAGS) -o struct_align $(struct_align_objects) -lm
-
-
-# Build the main object
-struct_align_fix.o: struct_align_fix.c
-	$(CC) $(CFLAGS) -c struct_align_fix.c
-
-# All Objects
-struct_align_fix_objects := struct_align_fix.o
-
-# Compilation
-struct_align_fix: $(struct_align_fix_objects)
-	$(CC) $(CFLAGS) -o struct_align_fix $(struct_align_fix_objects) -lm
-
 # All executables
-executable_names := argc_argv argc_argv_mod structs struct_align struct_align_fix
+executable_names := argc_argv structs
 
 # Make all
 all: $(executable_names)

@@ -18,7 +18,6 @@ int main(){
     first_struct* example_struct = (first_struct*)malloc( sizeof(first_struct) );
 
     // 1 - Learn about size_t compiler directive and use of sizeof
-    
 
     fprintf( stdout, "Size of optimal first_struct = %lu\n", optimal_size );
     fprintf( stdout, "Actual Size of first_struct = %lu\n", sizeof(first_struct) );

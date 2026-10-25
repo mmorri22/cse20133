@@ -1,4 +1,4 @@
-# This is the Makefile for the Lecture 21 Example.
+# This is the Makefile for the Lecture 23 Example.
 
 # gcc is for the compiler for C
 CC := gcc
@@ -8,18 +8,43 @@ FLAGS := -O2 -g -Wall -Wextra -Wconversion -Wshadow -Werror
 CFLAGS := -std=c2x $(FLAGS)
 
 # Build the main object
-lec23.o: lec23.c
-	$(CC) $(CFLAGS) -c lec23.c
+struct_align.o: struct_align.c
+	$(CC) $(CFLAGS) -c struct_align.c
 
 # All Objects
-library_objects := lec23.o
+struct_align_objects := struct_align.o
 
 # Compilation
-library: $(library_objects)
-	$(CC) $(CFLAGS) -o library $(library_objects) -lm
+struct_align: $(struct_align_objects)
+	$(CC) $(CFLAGS) -o struct_align $(struct_align_objects) -lm
+
+
+# Build the main object
+struct_align_fix.o: struct_align_fix.c
+	$(CC) $(CFLAGS) -c struct_align_fix.c
+
+# All Objects
+struct_align_fix_objects := struct_align_fix.o
+
+# Compilation
+struct_align_fix: $(struct_align_fix_objects)
+	$(CC) $(CFLAGS) -o struct_align_fix $(struct_align_fix_objects) -lm
+
+
+# Build the main object
+mem_map.o: mem_map.c
+	$(CC) $(CFLAGS) -c mem_map.c
+
+# All Objects
+mem_map_objects := mem_map.o
+
+# Compilation
+mem_map: $(mem_map_objects)
+	$(CC) $(CFLAGS) -o mem_map $(mem_map_objects) -lm
+	
 
 # All executables
-executable_names := library
+executable_names := struct_align struct_align_fix mem_map
 
 # Make all
 all: $(executable_names)
