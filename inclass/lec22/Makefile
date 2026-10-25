@@ -1,4 +1,4 @@
-# This is the Makefile for the Lecture 21 Example.
+# This is the Makefile for the Lecture 22 Example.
 
 # gcc is for the compiler for C
 CC := gcc
@@ -8,15 +8,38 @@ FLAGS := -O2 -g -Wall -Wextra -Wconversion -Wshadow -Werror
 CFLAGS := -std=c2x $(FLAGS)
 
 # Build the main object
-lec22.o: lec22.c
-	$(CC) $(CFLAGS) -c lec22.c
+argc_argv.o: argc_argv.c
+	$(CC) $(CFLAGS) -c argc_argv.c
 
 # All Objects
-library_objects := lec22.o
+argc_argv_objects := argc_argv.o
 
 # Compilation
-library: $(library_objects)
-	$(CC) $(CFLAGS) -o library $(library_objects) -lm
+argc_argv: $(argc_argv_objects)
+	$(CC) $(CFLAGS) -o argc_argv $(argc_argv_objects) -lm
+
+# Build the main object
+argc_argv_mod.o: argc_argv_mod.c
+	$(CC) $(CFLAGS) -c argc_argv_mod.c
+
+# All Objects
+argc_argv_mod_objects := argc_argv_mod.o
+
+# Compilation
+argc_argv_mod: $(argc_argv_mod_objects)
+	$(CC) $(CFLAGS) -o argc_argv_mod $(argc_argv_mod_objects) -lm
+
+# Build the main object
+structs.o: structs.c
+	$(CC) $(CFLAGS) -c structs.c
+
+# All Objects
+structs_objects := structs.o
+
+# Compilation
+structs: $(structs_objects)
+	$(CC) $(CFLAGS) -o structs $(structs_objects) -lm
+
 
 # Build the main object
 struct_align.o: struct_align.c
@@ -42,7 +65,7 @@ struct_align_fix: $(struct_align_fix_objects)
 	$(CC) $(CFLAGS) -o struct_align_fix $(struct_align_fix_objects) -lm
 
 # All executables
-executable_names := library struct_align struct_align_fix
+executable_names := argc_argv argc_argv_mod structs struct_align struct_align_fix
 
 # Make all
 all: $(executable_names)
