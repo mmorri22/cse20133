@@ -1,8 +1,4 @@
-wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec31/Makefile
-wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec31/point.cpp
-wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec31/point.h
-wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec31/line.cpp
-wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec31/line.h
-wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec31/class_intro.cpp
-wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec31/aggregate.cpp
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec25/Makefile
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec25/lec25.c
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec25/library.txt
 rm setup.sh

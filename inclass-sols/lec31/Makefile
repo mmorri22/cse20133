@@ -1,69 +1,29 @@
-# Author: Matthew Morrison
-# E-mail: matt.morrison@nd.edu
-#
-# This is the Makefile for Lecture 31
+# This is the Makefile for the Lecture 21 Example.
 
-# G++ is for the GCC compiler for C++
-PP := g++
+# gcc is for the compiler for C
+CC := gcc
 
 # CFLAGS are the compiler flages for when we compile C code in this course
-FLAGS := -O2 -g -Wall -Wextra -Wconversion -Wshadow -Werror -lm
-CXXFLAGS := -std=c++2a $(FLAGS)
+FLAGS := -O2 -g -Wall -Wextra -Wconversion -Wshadow -Werror
+CFLAGS := -std=c2x $(FLAGS)
 
+# Build the main object
+lec23.o: lec23.c
+	$(CC) $(CFLAGS) -c lec23.c
 
-# Point Class Compilation:
-point.o: point.cpp
-	$(PP) $(CXXFLAGS) -c point.cpp
+# All Objects
+library_objects := lec23.o
 
+# Compilation
+library: $(library_objects)
+	$(CC) $(CFLAGS) -o library $(library_objects) -lm
 
-# Line Class Compilation:
-line.o: line.cpp
-	$(PP) $(CXXFLAGS) -c line.cpp
-
-
-# class_intro Example
-# Command: make class_intro 
-class_intro.o: class_intro.cpp
-	$(PP) $(CXXFLAGS) -c class_intro.cpp
-
-class_intro_objs := class_intro.o point.o
-
-class_intro: $(class_intro_objs)
-	$(PP) $(CXXFLAGS) -o class_intro $(class_intro_objs)
-	./class_intro
-
-
-# aggregate Example
-# Command: make aggregate 
-aggregate.o: aggregate.cpp
-	$(PP) $(CXXFLAGS) -c aggregate.cpp
-
-aggregate_objs := aggregate.o line.o point.o
-
-aggregate: $(aggregate_objs)
-	$(PP) $(CXXFLAGS) -o aggregate $(aggregate_objs)
-	./aggregate
-
-
-# Fractals Example
-# Command: make fractals 
-fractals.o: fractals.cpp
-	$(PP) $(CXXFLAGS) -c fractals.cpp
-
-fractal_lib.o: fractal_lib.cpp
-	$(PP) $(CXXFLAGS) -c fractal_lib.cpp
-
-gfx.o: gfx.cpp
-	$(PP) $(CXXFLAGS) -c gfx.cpp
-
-fractals_objs := fractals.o fractal_lib.o gfx.o
-
-fractals: $(fractals_objs)
-	$(PP) $(CXXFLAGS) -o fractals $(fractals_objs) -lX11
+# All executables
+executable_names := library
 
 # Make all
-executables := aggregate fractals class_intro
+all: $(executable_names)
 
 # Make clean
-clean :
-	rm -rf *.o $(executables)
+clean:
+	rm -rf *.o *.swp $(executable_names)

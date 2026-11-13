@@ -1,52 +1,74 @@
-# Author: Matthew Morrison
+# Author: Prof. Matthew Morrison
 # E-mail: matt.morrison@nd.edu
 #
-# This is the Makefile for Lecture 29 Reading - CSE 20133
+# This is the Makefile for the Lecture 19 Reading.
 
-# G++ is for the GCC compiler for C++
-PP := g++
+# gcc is for the compiler for C
+CC := gcc
 
-# CFLAGS are the compiler flages for when we compile C++ code in this course
-FLAGS := -O2 -g -Wall -Wextra -Wconversion -Werror
-CXXFLAGS := -std=c++2a $(FLAGS)
+# CFLAGS are the compiler flages for when we compile C code in this course
+FLAGS := -O2 -g -Wall -Wextra -Wconversion -Wshadow -Werror -lm
+CFLAGS := -std=c11 $(FLAGS)
 
+# Create the Better Malloc Object
+filePtrExBad.o: filePtrExBad.c
+	$(CC) $(CFLAGS) -c filePtrExBad.c
 
-# C++ Class Example
-# CONTAINS DELIBERATE COMPILER ERRORS
-# SHOWS STUDENTS THE BENEFIT OF PRIVATE MEMBERS IN C++
-# Command: make animal_bad
-animal_bad.o: animal_bad.cpp
-	$(PP) $(CXXFLAGS) -c animal_bad.cpp
+# Better Malloc Objects
+filePtrExBad_objs := filePtrExBad.o
 
-animal_bad_objs := animal_bad.o
-
-animal_bad: $(animal_bad_objs)
-	$(PP) $(CXXFLAGS) -o animal_bad $(animal_bad_objs) -lm
-
-
-# C++ Fixed Class Example
-# Command: make animal_fixed
-animal_fixed.o: animal_fixed.cpp
-	$(PP) $(CXXFLAGS) -c animal_fixed.cpp
-
-animal_fixed_objs := animal_fixed.o
-
-animal_fixed: $(animal_fixed_objs)
-	$(PP) $(CXXFLAGS) -o animal_fixed $(animal_fixed_objs) -lm
+# Better Malloc Executable
+filePtrExBad: $(filePtrExBad_objs)
+	$(CC) $(CFLAGS) -o filePtrExBad $(filePtrExBad_objs) -lm
+	valgrind --leak-check=full ./filePtrExBad
 
 
-# C++ Class with Constructor and Destructor Example
-# Command: make animal_class
-animal_class.o: animal_class.cpp
-	$(PP) $(CXXFLAGS) -c animal_class.cpp
+# Create the Maze Object
+filePtrExGood.o: filePtrExGood.c
+	$(CC) $(CFLAGS) -c filePtrExGood.c
 
-animal_class_objs := animal_class.o
+# Better Malloc Objects
+filePtrExGood_objs := filePtrExGood.o
 
-animal_class: $(animal_class_objs)
-	$(PP) $(CXXFLAGS) -o animal_class $(animal_class_objs) -lm
+# Better Malloc Executable
+filePtrExGood: $(filePtrExGood_objs)
+	$(CC) $(CFLAGS) -o filePtrExGood $(filePtrExGood_objs) -lm
+	valgrind --leak-check=full ./filePtrExGood
 
-executable_names := animal_bad animal_fixed animal_class
+
+# Create the Better Malloc Object
+file_locations.o: file_locations.c
+	$(CC) $(CFLAGS) -c file_locations.c
+
+# Better Malloc Objects
+file_locations_objs := file_locations.o
+
+# Better Malloc Executable
+file_locations: $(file_locations_objs)
+	$(CC) $(CFLAGS) -o file_locations $(file_locations_objs) -lm
+	valgrind --leak-check=full ./file_locations
+
+
+# Create the Better Malloc Object
+FILE_example.o: FILE_example.c
+	$(CC) $(CFLAGS) -c FILE_example.c
+
+# Better Malloc Objects
+FILE_example_objs := FILE_example.o
+
+# Better Malloc Executable
+FILE_example: $(FILE_example_objs)
+	$(CC) $(CFLAGS) -o FILE_example $(FILE_example_objs) -lm
+	valgrind --leak-check=full ./FILE_example test.txt
+
+
+
+# Executable Names
+executable_names := filePtrExBad filePtrExGood file_locations FILE_example
+
+# Make all
+all: $(executable_names)
 
 # Make clean
-clean :
-	rm -rf *.o $(executable_names)
+clean:
+	rm -rf *.o *.swp $(executable_names)
