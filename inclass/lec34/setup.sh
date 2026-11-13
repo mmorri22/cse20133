@@ -1,0 +1,5 @@
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec34/Makefile
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec34/cmd_queue.c
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec34/commands.txt
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/inclass/lec34/burst.txt
+rm setup.sh
