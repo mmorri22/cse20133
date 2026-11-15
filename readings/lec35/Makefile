@@ -37,12 +37,12 @@ macros: macros.c
 	./macros
 
 
-cmd_queue: cmd_queue.c
-	$(CC) $(CFLAGS) cmd_queue.c -o cmd_queue -lm
-	./cmd_queue
+cmd_queue_solution: cmd_queue_solution.c
+	$(CC) $(CFLAGS) cmd_queue_solution.c -o cmd_queue_solution -lm
+	./cmd_queue_solution
 
 # Executable Names
-executable_names := assert_ndebug assert_ndebug_off recovery_assert shadow nodiscard macros cmd_queue
+executable_names := assert_ndebug assert_ndebug_off recovery_assert shadow nodiscard macros cmd_queue_solution
 
 # Make clean
 clean:

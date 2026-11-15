@@ -6,4 +6,5 @@ wget https://raw.githubusercontent.com/mmorri22/cse20133/main/readings/lec35/nod
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/readings/lec35/recovery_assert.c
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/readings/lec35/shadow.c
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/readings/lec35/cmd_queue.c
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/readings/lec35/cmd_queue_solution.c
 rm setup.sh
