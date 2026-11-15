@@ -1,0 +1,8 @@
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/readings/lec35/Makefile
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/readings/lec35/assert_ndebug.c
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/readings/lec35/limit.txt
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/readings/lec35/macros.c
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/readings/lec35/nodiscard.c
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/readings/lec35/recovery_assert.c
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/readings/lec35/shadow.c
+rm setup.sh
