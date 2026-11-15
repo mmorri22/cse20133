@@ -5,4 +5,5 @@ wget https://raw.githubusercontent.com/mmorri22/cse20133/main/readings/lec35/mac
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/readings/lec35/nodiscard.c
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/readings/lec35/recovery_assert.c
 wget https://raw.githubusercontent.com/mmorri22/cse20133/main/readings/lec35/shadow.c
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/readings/lec35/cmd_queue.c
 rm setup.sh
