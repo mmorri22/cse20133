@@ -22,7 +22,14 @@ telemetry: telemetry.c
 analyze: telemetry.c
 	$(CC) $(CFLAGS) -fanalyzer telemetry.c -o telemetry -lm
 
-# Step 3 - AddressSanitizer watches every memory access at run time
+# Step 3 - valgrind watches every heap access at run time
+# (student13's AddressSanitizer library is currently unavailable, so we use
+#  valgrind, which catches this heap overflow too)
+overflow: telemetry.c
+	$(CC) $(CFLAGS_O0) telemetry.c -o telemetry_O0 -lm
+	valgrind ./telemetry_O0 full.txt
+
+# Step 3 (original) - AddressSanitizer. Use once the library is reinstalled.
 asan: telemetry.c
 	$(CC) $(CFLAGS) -fsanitize=address telemetry.c -o telemetry_asan -lm
 	./telemetry_asan full.txt
@@ -33,8 +40,10 @@ valgrind: telemetry.c
 	valgrind --leak-check=full ./telemetry_O0 short.txt
 
 # Time Permitting - a sanitizer check that is NOT part of -fsanitize=undefined
+# -fsanitize-undefined-trap-on-error stops the program with "Illegal instruction"
+# instead of printing a message, so it needs no sanitizer library
 floatcheck: telemetry.c
-	$(CC) $(CFLAGS) -fsanitize=undefined,float-cast-overflow telemetry.c -o telemetry_float -lm
+	$(CC) $(CFLAGS) -fsanitize=undefined,float-cast-overflow -fsanitize-undefined-trap-on-error telemetry.c -o telemetry_float -lm
 	./telemetry_float hot.txt
 
 # Executable Names
