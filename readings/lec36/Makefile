@@ -1,66 +1,38 @@
-# Author: Matthew Morrison
+# Author: Prof. Matthew Morrison
 # E-mail: matt.morrison@nd.edu
 #
-# This is the Makefile for Lecture 32 Reading - CSE 20133
+# This is the Makefile for the Lecture 36 Reading.
 
-# G++ is for the GCC compiler for C++
-PP := g++
+# gcc is for the compiler for C
+CC := gcc
 
-# CFLAGS are the compiler flages for when we compile C++ code in this course
-FLAGS := -O2 -g -Wall -Wextra -Wconversion -Werror
-CXXFLAGS := -std=c++2a $(FLAGS)
+# CFLAGS are the compiler flags for when we compile C code in this course
+FLAGS := -O2 -g -Wall -Wextra -Wconversion -Wshadow -Werror
+CFLAGS := -std=c2x $(FLAGS)
 
-MATPLOT = -I/usr/local/include/matplot/ -lmatplot
+# Reading 36-1 - How long until each counter wraps?
+counter_limits: counter_limits.c
+	$(CC) $(CFLAGS) counter_limits.c -o counter_limits -lm
+	./counter_limits
 
-# C++ Visualization Introduction
-# Command: make minimal
-minimal.o: minimal.cpp
-	$(PP) $(CXXFLAGS) -c minimal.cpp $(MATPLOT)
+# Reading 36-1 - Timeouts across the wraparound
+wraparound: wraparound.c
+	$(CC) $(CFLAGS) wraparound.c -o wraparound -lm
+	./wraparound
 
-minimal_objs := minimal.o
+# Reading 36-1 - Three ways to keep one day of 0.1 s ticks
+tick_drift: tick_drift.c
+	$(CC) $(CFLAGS) tick_drift.c -o tick_drift -lm
+	./tick_drift
 
-minimal: $(minimal_objs)
-	$(PP) $(CXXFLAGS) -o minimal $(minimal_objs) $(MATPLOT) -lm
+# Reading 36-2 - A torn read of a two-part counter
+torn_read: torn_read.c
+	$(CC) $(CFLAGS) torn_read.c -o torn_read -lm
+	./torn_read
 
-
-# C++ Visualization Introduction
-# Command: make 3d_plot
-3d_plot.o: 3d_plot.cpp
-	$(PP) $(CXXFLAGS) -c 3d_plot.cpp $(MATPLOT)
-
-3d_plot_objs := 3d_plot.o
-
-3d_plot: $(3d_plot_objs)
-	$(PP) $(CXXFLAGS) -o 3d_plot $(3d_plot_objs) $(MATPLOT) -lm
-
-
-# C++ Class with Data Preprocessing and Visualization
-# Command: make iris
-preprocessing.o: preprocessing.cpp
-	$(PP) $(CXXFLAGS) -c preprocessing.cpp
-
-iris_prepr.o: iris_prepr.cpp
-	$(PP) $(CXXFLAGS) -c iris_prepr.cpp
-
-iris_prepr_objs := preprocessing.o iris_prepr.o
-
-iris_prepr: $(iris_prepr_objs)
-	$(PP) $(CXXFLAGS) -o iris_prepr $(iris_prepr_objs) -lm
-
-
-
-# C++ Preprocessing and Visualization Introduction
-# Command: make iris_visual
-iris_visual.o: iris_visual.cpp
-	$(PP) $(CXXFLAGS) -c iris_visual.cpp $(MATPLOT)
-
-iris_visual_objs := preprocessing.o iris_visual.o
-
-iris_visual: $(iris_visual_objs)
-	$(PP) $(CXXFLAGS) -o iris_visual $(iris_visual_objs) $(MATPLOT) -lm
-
-executable_names := 3d_plot iris_prepr minimal iris_visual
+# Executable Names
+executable_names := counter_limits wraparound tick_drift torn_read
 
 # Make clean
-clean :
-	rm -rf *.o $(executable_names)
+clean:
+	rm -rf *.o *.swp $(executable_names)

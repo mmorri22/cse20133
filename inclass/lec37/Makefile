@@ -1,45 +1,41 @@
-# Author: Matthew Morrison
+# Author: Prof. Matthew Morrison
 # E-mail: matt.morrison@nd.edu
 #
-# This is the Makefile for Lecture 32 Reading - CSE 20133
+# This is the Makefile for the Lecture 37 In-Class Example.
 
-# G++ is for the GCC compiler for C++
-PP := g++
+# gcc is for the compiler for C
+CC := gcc
 
-# CFLAGS are the compiler flages for when we compile C++ code in this course
-FLAGS := -O2 -g -Wall -Wextra -Wconversion -Werror
-CXXFLAGS := -std=c++2a $(FLAGS)
+# CFLAGS are the compiler flags for when we compile C code in this course
+FLAGS := -O2 -g -Wall -Wextra -Wconversion -Wshadow -Werror
+CFLAGS := -std=c2x $(FLAGS)
 
-# Update with our final flag of the semester: MATPLOT
-# MATPLOT = -I/usr/local/include/matplot/ -lmatplot
-MATPLOT = -I/usr/local/include/matplot/ -lmatplot
+fault_protection.o: fault_protection.c fault_protection.h
+	$(CC) $(CFLAGS) -c fault_protection.c
 
+test_fp.o: test_fp.c fault_protection.h
+	$(CC) $(CFLAGS) -c test_fp.c
 
+thermal_run.o: thermal_run.c fault_protection.h
+	$(CC) $(CFLAGS) -c thermal_run.c
 
-# C++ Visualization - Multiple Plots
-# Command: make sin_cos
-sin_cos.o: sin_cos.cpp
-	$(PP) $(CXXFLAGS) -c sin_cos.cpp $(MATPLOT)
+# Build and run all 20 tests
+test: fault_protection.o test_fp.o
+	$(CC) $(CFLAGS) -o test_fp test_fp.o fault_protection.o
+	./test_fp
 
-sin_cos_objs := sin_cos.o
+# Fly the thermal scenario. Ending in safe mode returns EXIT_FAILURE.
+mission: fault_protection.o thermal_run.o
+	$(CC) $(CFLAGS) -o thermal_run thermal_run.o fault_protection.o
+	./thermal_run thermal.csv
 
-sin_cos: $(sin_cos_objs)
-	$(PP) $(CXXFLAGS) -o sin_cos $(sin_cos_objs) $(MATPLOT) -lm
+# GCC's static analyzer
+analyze:
+	$(CC) $(CFLAGS) -fanalyzer -c fault_protection.c test_fp.c thermal_run.c
 
-
-
-# C++ Visualization - Electric Field
-# Command: make electric
-electric.o: electric.cpp
-	$(PP) $(CXXFLAGS) -c electric.cpp $(MATPLOT)
-
-electric_objs := electric.o
-
-electric: $(electric_objs)
-	$(PP) $(CXXFLAGS) -o electric $(electric_objs) $(MATPLOT) -lm
-
-executable_names := sin_cos scatter electric
+# Executable Names
+executable_names := test_fp thermal_run
 
 # Make clean
-clean :
-	rm -rf *.o $(executable_names)
+clean:
+	rm -rf *.o *.swp $(executable_names)

@@ -1,13 +1,6 @@
-sudo apt-get update
-sudo apt install -y build-essential pkg-config
-sudo apt upgrade cmake gnuplot libglfw3-dev
-sudo apt-get install libfftw3-3
-sudo apt-get install libfftw3-dev
-git clone http://github.com/alandefreitas/matplotplusplus
-cd matplotplusplus/
-mkdir compil-release
-cd compil-release
-sudo cmake .. -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DBUILD_EXAMPLES=OFF -DBUILD_TESTS=OFF
-sudo make -j4
-sudo make install
-sudo /sbin/ldconfig -v
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/readings/lec36/Makefile
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/readings/lec36/counter_limits.c
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/readings/lec36/tick_drift.c
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/readings/lec36/torn_read.c
+wget https://raw.githubusercontent.com/mmorri22/cse20133/main/readings/lec36/wraparound.c
+rm setup.sh

@@ -1,76 +1,33 @@
-# Author: Matthew Morrison
+# Author: Prof. Matthew Morrison
 # E-mail: matt.morrison@nd.edu
 #
-# This is the Makefile for Lecture 32 Reading - CSE 20133
+# This is the Makefile for the Lecture 36 In-Class Example.
 
-# G++ is for the GCC compiler for C++
-PP := g++
+# gcc is for the compiler for C
+CC := gcc
 
-# CFLAGS are the compiler flages for when we compile C++ code in this course
-FLAGS := -O2 -g -Wall -Wextra -Wconversion -Werror
-CXXFLAGS := -std=c++2a $(FLAGS)
+# CFLAGS are the compiler flags for when we compile C code in this course
+FLAGS := -O2 -g -Wall -Wextra -Wconversion -Wshadow -Werror
+CFLAGS := -std=c2x $(FLAGS)
 
-# Update with our final flag of the semester: MATPLOT
-# MATPLOT = -I/usr/local/include/matplot/ -lmatplot
-MATPLOT = -I/usr/local/include/matplot/ -lmatplot
+mission_clock.o: mission_clock.c mission_clock.h
+	$(CC) $(CFLAGS) -c mission_clock.c
 
-# C++ Visualization Introduction
-# Command: make minimal
-# We will fix $(MATPLOT) here
-minimal.o: minimal.cpp
-	$(PP) $(CXXFLAGS) -c minimal.cpp $(MATPLOT)
+test_clock.o: test_clock.c mission_clock.h
+	$(CC) $(CFLAGS) -c test_clock.c
 
-minimal_objs := minimal.o
+# Build and run all 15 tests
+test: mission_clock.o test_clock.o
+	$(CC) $(CFLAGS) -o test_clock test_clock.o mission_clock.o
+	./test_clock
 
-minimal: $(minimal_objs)
-	$(PP) $(CXXFLAGS) -o minimal $(minimal_objs) $(MATPLOT) -lm
+# GCC's static analyzer
+analyze:
+	$(CC) $(CFLAGS) -fanalyzer -c mission_clock.c test_clock.c
 
-
-# C++ Visualization Introduction
-# Command: make 3d_plot
-3d_plot.o: 3d_plot.cpp
-	$(PP) $(CXXFLAGS) -c 3d_plot.cpp $(MATPLOT)
-
-3d_plot_objs := 3d_plot.o
-
-3d_plot: $(3d_plot_objs)
-	$(PP) $(CXXFLAGS) -o 3d_plot $(3d_plot_objs) $(MATPLOT) -lm
-
-
-# C++ Visualization - Multiple Plots
-# Command: make sin_cos
-sin_cos.o: sin_cos.cpp
-	$(PP) $(CXXFLAGS) -c sin_cos.cpp $(MATPLOT)
-
-sin_cos_objs := sin_cos.o
-
-sin_cos: $(sin_cos_objs)
-	$(PP) $(CXXFLAGS) -o sin_cos $(sin_cos_objs) $(MATPLOT) -lm
-
-
-# C++ Visualization - Multiple Plots
-# Command: make sin_cos
-scatter.o: scatter.cpp
-	$(PP) $(CXXFLAGS) -c scatter.cpp $(MATPLOT)
-
-scatter_objs := scatter.o
-
-scatter: $(scatter_objs)
-	$(PP) $(CXXFLAGS) -o scatter $(scatter_objs) $(MATPLOT) -lm
-
-
-# C++ Visualization - Electric Field
-# Command: make electric
-electric.o: electric.cpp
-	$(PP) $(CXXFLAGS) -c electric.cpp $(MATPLOT)
-
-electric_objs := electric.o
-
-electric: $(electric_objs)
-	$(PP) $(CXXFLAGS) -o electric $(electric_objs) $(MATPLOT) -lm
-
-executable_names := 3d_plot sin_cos minimal scatter electric
+# Executable Names
+executable_names := test_clock
 
 # Make clean
-clean :
-	rm -rf *.o $(executable_names)
+clean:
+	rm -rf *.o *.swp $(executable_names)
