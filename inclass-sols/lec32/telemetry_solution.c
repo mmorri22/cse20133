@@ -10,7 +10,8 @@
  * way a real downlink packet saves bandwidth.
  *
  * It compiles cleanly with every course flag, and it prints the right answer
- * on nominal.txt. INSTRUCTOR SOLUTION. Each fix is marked FIX 1 through FIX 4.
+ * on nominal.txt. It still has four bugs. Your job is to find them with the
+ * tools from Reading 32-2, fix them, and log which tool caught each one.
  */
 
 #include <stdio.h>
@@ -37,8 +38,7 @@ int process_telemetry(const char *filename)
 		return EXIT_FAILURE;
 	}
 
-	// FIX 1 (-fanalyzer): validate BEFORE allocating, so the early return
-	// cannot leak. (Alternative fix: free(readings) before that return.)
+	// Reject a reading count the buffer cannot hold
 	if (num_readings < 1 || num_readings > MAX_READINGS) {
 		fprintf(stderr, "Invalid number of readings: %lu\n", num_readings);
 		fclose(tlm_file);
@@ -48,27 +48,25 @@ int process_telemetry(const char *filename)
 	// Allocate space for the readings
 	double *readings = (double *)malloc(MAX_READINGS * sizeof(double));
 	if (readings == NULL) {
+		free(readings);
 		fclose(tlm_file);
 		return EXIT_FAILURE;
 	}
 
-	// FIX 2 (AddressSanitizer): never read more values than were reported,
-	// no matter how much data the file contains
+	// Read every temperature in the file
 	long unsigned int count = 0;
 	while (count < num_readings && fscanf(tlm_file, "%lf", &readings[count]) == 1) {
 		count++;
 	}
 	fclose(tlm_file);
 
-	// FIX 3 (valgrind): compute over the values actually read, not the header.
-	// Report the mismatch, because a short file is itself an anomaly.
 	if (count == 0) {
-		fprintf(stderr, "No readings in %s\n", filename);
-		free(readings);
-		return EXIT_FAILURE;
+	    fprintf(stderr, "No readings in %s\n", filename);
+	    free(readings);
+	    return EXIT_FAILURE;
 	}
 	if (count != num_readings) {
-		fprintf(stderr, "ANOMALY: %lu readings reported, %lu read\n", num_readings, count);
+	    fprintf(stderr, "ANOMALY: %lu readings reported, %lu read\n", num_readings, count);
 	}
 
 	// Compute the average and the maximum over the reported readings
@@ -82,21 +80,19 @@ int process_telemetry(const char *filename)
 	}
 	double average = sum / (double)count;
 
-	// FIX 4 (no default tool): check the range BEFORE converting. This is the
-	// Ariane 5 lesson. Saturate to the field limits and flag the anomaly
-	// instead of silently wrapping to a nonsense value.
+	// Pack the average into the 16-bit telemetry field (hundredths of a degree)
 	double scaled = average * 100.0;
 	int16_t packed_avg;
 	if (scaled > INT16_MAX) {
-		fprintf(stderr, "ANOMALY: average %.2f C exceeds the telemetry field; saturating\n", average);
-		packed_avg = INT16_MAX;
+	    fprintf(stderr, "ANOMALY: average %.2f C exceeds the telemetry field; saturating\n", average);
+	    packed_avg = INT16_MAX;
 	}
 	else if (scaled < INT16_MIN) {
-		fprintf(stderr, "ANOMALY: average %.2f C is below the telemetry field; saturating\n", average);
-		packed_avg = INT16_MIN;
+	    fprintf(stderr, "ANOMALY: average %.2f C is below the telemetry field; saturating\n", average);
+	    packed_avg = INT16_MIN;
 	}
 	else {
-		packed_avg = (int16_t)scaled;
+	    packed_avg = (int16_t)scaled;
 	}
 
 	fprintf(stdout, "Readings:      %lu reported, %lu read\n", num_readings, count);
