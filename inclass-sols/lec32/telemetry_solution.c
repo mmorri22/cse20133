@@ -30,8 +30,8 @@ int process_telemetry(const char *filename)
 	}
 
 	// Read the number of readings the instrument reports
-	int num_readings = 0;
-	if (fscanf(tlm_file, "%d", &num_readings) != 1) {
+	long unsigned int num_readings = 0;
+	if (fscanf(tlm_file, "%lu", &num_readings) != 1) {
 		fprintf(stderr, "Could not read the number of readings\n");
 		fclose(tlm_file);
 		return EXIT_FAILURE;
@@ -40,7 +40,7 @@ int process_telemetry(const char *filename)
 	// FIX 1 (-fanalyzer): validate BEFORE allocating, so the early return
 	// cannot leak. (Alternative fix: free(readings) before that return.)
 	if (num_readings < 1 || num_readings > MAX_READINGS) {
-		fprintf(stderr, "Invalid number of readings: %d\n", num_readings);
+		fprintf(stderr, "Invalid number of readings: %lu\n", num_readings);
 		fclose(tlm_file);
 		return EXIT_FAILURE;
 	}
@@ -54,7 +54,7 @@ int process_telemetry(const char *filename)
 
 	// FIX 2 (AddressSanitizer): never read more values than were reported,
 	// no matter how much data the file contains
-	int count = 0;
+	long unsigned int count = 0;
 	while (count < num_readings && fscanf(tlm_file, "%lf", &readings[count]) == 1) {
 		count++;
 	}
@@ -68,19 +68,19 @@ int process_telemetry(const char *filename)
 		return EXIT_FAILURE;
 	}
 	if (count != num_readings) {
-		fprintf(stderr, "ANOMALY: %d readings reported, %d read\n", num_readings, count);
+		fprintf(stderr, "ANOMALY: %lu readings reported, %lu read\n", num_readings, count);
 	}
 
 	// Compute the average and the maximum over the reported readings
 	double sum = 0.0;
 	double max_temp = -273.15;
-	for (int i = 0; i < count; i++) {
+	for (long unsigned int i = 0; i < count; i++) {
 		sum += readings[i];
 		if (readings[i] > max_temp) {
 			max_temp = readings[i];
 		}
 	}
-	double average = sum / count;
+	double average = sum / (double)count;
 
 	// FIX 4 (no default tool): check the range BEFORE converting. This is the
 	// Ariane 5 lesson. Saturate to the field limits and flag the anomaly
@@ -99,7 +99,7 @@ int process_telemetry(const char *filename)
 		packed_avg = (int16_t)scaled;
 	}
 
-	fprintf(stdout, "Readings:      %d reported, %d read\n", num_readings, count);
+	fprintf(stdout, "Readings:      %lu reported, %lu read\n", num_readings, count);
 	fprintf(stdout, "Average:       %.2f C\n", average);
 	fprintf(stdout, "Maximum:       %.2f C\n", max_temp);
 	fprintf(stdout, "Packed field:  %d (decodes to %.2f C)\n", packed_avg, packed_avg / 100.0);
