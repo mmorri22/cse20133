@@ -15,8 +15,9 @@ starter code builds and runs as-is. Two new commands help here:
   make -n hw09  prints the commands make WOULD run, without running them
 
 M1. Run "make clean", then "make" with no target. Which file does it build,
-    and why only that one? Then run "make hw09" twice in a row. What does the
-    second run print, and why doesn't it run ./hw09 results.csv again?
+    and why only that one? Then run "make hw09" twice in a row. What do the
+    second and third runs print, and why doesn't thirs run perform 
+    ./hw09 results.csv again?
 
 
 M2. Run "touch matmul.c", then "make -n hw09". Which commands does it list?
@@ -30,10 +31,10 @@ M3. Run "touch matmul.h", then "make -n hw09". Which .o files are rebuilt
     REPEATS in matmul.h, what would go wrong?
 
 
-M4. The valgrind target adds -DMAX_SIZE=200 -DREPEATS=1. Using the #ifndef
-    lines in matmul.h, explain what these flags do. Why does this target
-    compile the .c files directly into hw09_small instead of reusing hw09.o,
-    matmul.o, and epsilon.o?
+M4. The valgrind target adds -DMAX_SIZE=200 -DREPEATS=1 using $(SMALL). 
+    Using the #ifndef lines in matmul.h, explain what these flags do. Why 
+    does this target compile the .c files directly into hw09_small instead 
+    of reusing hw09.o, matmul.o, and epsilon.o?
 
 
 M5. The three -c compile lines do not include $(LIBS), but the hw09 link line
@@ -45,109 +46,132 @@ M5. The three -c compile lines do not include $(LIBS), but the hw09 link line
 ==============================================================================
 SECTION 1 - SYSTEM INFORMATION
 ==============================================================================
-
-Processor (run: lscpu | grep "Model name"):
-
+ 
+Processor (run: lscpu in the terminal, and look for "Model name"):
+ 
 Compiler (run: gcc --version, first line only):
 
-BLAS implementation and how you linked it:
-
-Compiler flags used for the timing run:
-
-
+Look up your processor's model name on the vendor's website,
+    not a store or a review site. From its specifications page, find:
+      Number of cores:
+      Base frequency:
+      Cache size:
+      Number of AVX-512 FMA units:
+      URL of the page you used:
+ 
+    Now use those numbers (show your arithmetic):
+ 
+    (a) One m x m matrix of doubles takes 8 x m x m bytes. How many MB is one
+        matrix at m = 1000? How many of the three matrices (a, b, and c) can
+        fit in the cache at the same time? (Use 1 MB = 1,000,000 bytes.)
+ 
+ 
+    (b) Each AVX-512 FMA unit can do 8 double multiply-adds per clock cycle,
+        which counts as 16 FLOPs. Using the base frequency, what is the peak
+        GFLOP/s of ONE core? What percentage of that peak did BLAS reach at
+        m = 1000 in your make hw09 run? What percentage did your i-k-j loop
+        reach?
+ 
+ 
 ==============================================================================
 SECTION 2 - RESULTS
 ==============================================================================
-
-Paste the full table that ./hw09 printed to the terminal:
-
-
-
-Your plot of GFLOP/s versus m for all three methods is in the file: plot.png
-
-
+ 
+Run "make hw09" (the full sweep, NOT make valgrind). Paste everything
+./hw09 printed, from the table's header line through the long double line:
+ 
+ 
+ 
 ==============================================================================
 SECTION 3 - PERFORMANCE DISCUSSION (3 to 5 sentences each)
 ==============================================================================
-
-Q1. Using your numbers, how much faster was i-k-j than i-j-k at m = 1000?
-    Both perform exactly the same arithmetic. Explain where the difference
-    comes from, in terms of the cache and row-major storage.
-
-
-Q2. How much faster was BLAS than your best loop at m = 1000? Name at least
-    two things an optimized BLAS can do that your loops do not.
-
-
-Q3. Look at how GFLOP/s changes as m grows for i-j-k. Does it stay constant,
-    rise, or fall? Are there any sizes that do not fit the pattern? Offer an
-    explanation.
-
-
-Q4. Your i-k-j result probably matched i-j-k exactly, while BLAS did not.
+ 
+All four questions use the make hw09 output you pasted in Section 2.
+ 
+Q1. Use the "ijk (s)" and "ikj (s)" columns in the m = 1000 row.
+    How many times faster was i-k-j than i-j-k? Both perform exactly the
+    same arithmetic. Explain where the difference comes from, in terms of
+    the cache and row-major storage.
+ 
+ 
+Q2. Use the "ikj (s)" and "blas (s)" columns in the m = 1000 row.
+    How many times faster was BLAS than your i-k-j loop? Name at least two
+    things an optimized BLAS can do that your loops do not.
+ 
+ 
+Q3. Use the "ijk GF/s" column, every row from m = 100 to m = 1000.
+    Does GFLOP/s stay about the same, rise, or fall as m grows? Are there
+    any sizes that do not fit the pattern? Offer an explanation.
+ 
+ 
+Q4. Use the "diff ikj" and "diff blas" columns, every row.
+    Your diff ikj values are probably exactly 0, while diff blas is not.
     Explain why, and explain why the BLAS answer is not "wrong."
-
-
+ 
+ 
 ==============================================================================
 SECTION 4 - MACHINE EPSILON (2 to 4 sentences each)
 ==============================================================================
-
-Q5. Report your measured epsilon and number of halvings for double and long
-    double. How do the halvings relate to the number of fraction bits in each
-    format?
-
-
-Q6. What does volatile do in your epsilon functions, and what could go wrong
+ 
+Q5. Use the double and long double lines at the end of your Section 2 paste.
+    Report your measured epsilon and number of halvings for each type. How do
+    the halvings relate to the number of fraction bits in each format?
+ 
+ 
+Q6. Use your own double_epsilon and long_double_epsilon in epsilon.c.
+    What does volatile do in these functions, and what could go wrong
     without it?
-
-
-Q7. Run make valgrind and compare its long double epsilon to the one from
-    make hw09. What do you observe? valgrind runs your program on a
-    simulated processor. What does this tell you about trusting any single
-    tool, and about testing on the hardware you will actually fly?
-
-
+ 
+ 
+Q7. Compare the long double line printed by make valgrind with the long
+    double line printed by make hw09. What do you observe? valgrind runs
+    your program on a simulated processor. What does this tell you about
+    trusting any single tool, and about testing on the hardware you will
+    actually fly?
+ 
+ 
 ==============================================================================
 SECTION 5 - THE PEOPLE BEHIND THE NUMBERS (one paragraph each, own words)
 ==============================================================================
-
+ 
 William Kahan - Who was he, and what did he contribute to IEEE 754 and
 floating-point accuracy?
-
-
+ 
+ 
 J. H. Wilkinson - Who was he, and what are backward error analysis and
 numerical stability? Why do they matter for code like yours?
-
-
+ 
+ 
 Sources:
-
-
+ 
+ 
 ==============================================================================
 EXTRA CREDIT (optional - see the assignment page)
 ==============================================================================
-
+ 
 EC-A. Your plots are in plot_time.png and plot_speedup.png.
       (3 to 5 sentences) At m = 1000, report all three speedups. Does the
       BLAS speedup over your loops grow, shrink, or stay about the same as m
       increases? Why does the time plot need a logarithmic y-axis?
-
-
+ 
+ 
 EC-B. Paste the full output of make extra:
-
-
-
+ 
+ 
+ 
       (5 to 8 sentences) Which of the four measurements did not equal
       DBL_EPSILON, and which constant did it equal instead? What does the
       value of FLT_EVAL_METHOD tell you about where each build does its
       arithmetic? Why did storing the result in a double change the answer?
       Connect this to why we used volatile in Reading 33-1, and to why the
       original exercise says only to "try" to measure 80-bit epsilon.
-
-
+ 
+ 
 EC-C. (one paragraph, own words) What does it mean for a problem to be
       ill-conditioned? Explain the difference between an ill-conditioned
       PROBLEM and an unstable ALGORITHM, and why Wilkinson's backward error
       analysis lets us tell them apart.
-
-
+ 
+ 
 EC Sources:
+ 
